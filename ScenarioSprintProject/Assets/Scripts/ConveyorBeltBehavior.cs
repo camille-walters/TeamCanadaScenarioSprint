@@ -1,47 +1,58 @@
+// Source: https://www.youtube.com/watch?v=hC1QZ0h4oco
 using System;
 using UnityEngine;
 
-namespace Unity.Simulation.Authoring
+public class ConveyorBeltBehavior : MonoBehaviour
 {
-    // Source: https://www.youtube.com/watch?v=hC1QZ0h4oco
-    public class ConveyorBeltBehavior : MonoBehaviour
+    public float speed = 0.2f;
+    public bool stop = false;
+
+    float m_InternalSpeed;
+    Rigidbody m_RigidBody;
+    Vector3 m_OriginalPositionState;
+    Quaternion m_OriginalRotationState;
+
+    void Start()
     {
-        public float speed = 0.2f ;
-        Rigidbody m_RigidBody;
+        m_InternalSpeed = speed;
+        m_RigidBody = GetComponent<Rigidbody>();
+    }
 
-        Vector3 m_OriginalPositionState;
-        Quaternion m_OriginalRotationState;
-
-        void Start()
+    void FixedUpdate()
+    {
+        if (stop)
         {
-            m_RigidBody = GetComponent<Rigidbody>();
+            m_InternalSpeed = 0;
+            return;
         }
-
-        void FixedUpdate()
+        else
         {
-            Vector3 pos = m_RigidBody.position;
-            m_RigidBody.position += -transform.up * speed * Time.fixedDeltaTime;
-            m_RigidBody.MovePosition(pos);
+            m_InternalSpeed = speed;
         }
+        
+        Vector3 pos = m_RigidBody.position;
+        m_RigidBody.position += -transform.up * m_InternalSpeed * Time.fixedDeltaTime;
+        m_RigidBody.MovePosition(pos);
+    }
 
-        public void StartAuthoring()
-        {
-            enabled = false;
-            Debug.Log($"Setting transform [{transform.position}] to [{m_OriginalPositionState}]");
-            transform.position = m_OriginalPositionState;
-            transform.rotation = m_OriginalRotationState;
-        }
+    public void StartAuthoring()
+    {
+        enabled = false;
+        Debug.Log($"Setting transform [{transform.position}] to [{m_OriginalPositionState}]");
+        transform.position = m_OriginalPositionState;
+        transform.rotation = m_OriginalRotationState;
+    }
 
-        public void StartSimulating()
-        {
-            enabled = true;
-            SaveState();
-        }
+    public void StartSimulating()
+    {
+        enabled = true;
+        SaveState();
+    }
 
-        public void SaveState()
-        {
-            m_OriginalPositionState = transform.position;
-            m_OriginalRotationState = transform.rotation;
-        }
+    public void SaveState()
+    {
+        m_OriginalPositionState = transform.position;
+        m_OriginalRotationState = transform.rotation;
     }
 }
+
