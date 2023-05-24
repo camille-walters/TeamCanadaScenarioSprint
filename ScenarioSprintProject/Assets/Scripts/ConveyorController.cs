@@ -4,10 +4,13 @@ using UnityEngine;
 public class ConveyorController : MonoBehaviour
 {
     public float speed = 0.4f;
+    public float stopTime = 5;
     public bool stop = false;
+    public bool stopForTime = false;
     
-    List<ConveyorBeltBehavior> m_ChildConveyorBelts = new List<ConveyorBeltBehavior>();
+    List<ConveyorBeltBehavior> m_ChildConveyorBelts = new();
     bool m_InMotion = true;
+    float m_StopTimeValue; 
     void Start()
     {
         foreach (Transform child in gameObject.transform)
@@ -32,6 +35,18 @@ public class ConveyorController : MonoBehaviour
                 m_InMotion = true;
                 break;
         }
+        
+        if (stopForTime && m_InMotion)
+        {
+            if (m_StopTimeValue == 0)
+            {
+                m_StopTimeValue = stopTime;
+            }
+            
+            ApplyMotionToAllBelts(true);
+            m_InMotion = false;
+            StopCountdown();
+        }
     }
 
     void ApplyMotionToAllBelts(bool stopBelts)
@@ -39,6 +54,22 @@ public class ConveyorController : MonoBehaviour
         foreach (var belt in m_ChildConveyorBelts)
         {
             belt.stop = stopBelts;
+        }
+    }
+
+    void StopCountdown()
+    {
+        if (stopTime > 0)
+        {
+            stopTime -= Time.deltaTime;
+        }
+        else
+        {
+            stopTime = m_StopTimeValue;
+            m_StopTimeValue = 0;
+            ApplyMotionToAllBelts(false);
+            stopForTime = false;
+            m_InMotion = true;
         }
     }
 }
