@@ -41,7 +41,10 @@
     "com.unity.modules.video": "1.0.0",
     "com.unity.modules.vr": "1.0.0",
     "com.unity.modules.wind": "1.0.0",
-    "com.unity.modules.xr": "1.0.0"
+    "com.unity.modules.xr": "1.0.0",
+    "com.unity.simulation.foundation": "file:com.unity.simulation.foundation.tgz",
+    "com.unity.simulation.urdf-importer": "file:com.unity.simulation.urdf-importer.tgz",
+    "com.unity.simulation.sensors": "file:com.unity.simulation.sensors.tgz"
   },
   "scopedRegistries": [
     {
