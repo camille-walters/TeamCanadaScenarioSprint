@@ -151,7 +151,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 595599}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -0.11000061, z: 0.06073268}
+  m_LocalPosition: {x: 0.00018331737, y: -0.8852368, z: 0.06073268}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -184,7 +184,7 @@ MonoBehaviour:
   m_AffectSpecular: 1
   m_NonLightmappedOnly: 0
   m_ShapeWidth: 3
-  m_ShapeHeight: 0.2
+  m_ShapeHeight: 0.1
   m_AspectRatio: 1
   m_ShapeRadius: 0.025
   m_SoftnessScale: 1
@@ -292,7 +292,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 477464.8
+  m_Intensity: 954929.6
   m_Range: 5
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -333,7 +333,7 @@ Light:
   m_RenderingLayerMask: 1
   m_Lightmapping: 4
   m_LightShadowCasterMode: 2
-  m_AreaSize: {x: 3, y: 0.2}
+  m_AreaSize: {x: 3, y: 0.1}
   m_BounceIntensity: 10.1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 1
@@ -368,7 +368,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 11631258}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -0.11000061, z: -0.12146536}
+  m_LocalPosition: {x: 0, y: -0.8852368, z: -0.12146536}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -570,7 +570,7 @@ GameObject:
   - component: {fileID: 26956617}
   - component: {fileID: 26956618}
   m_Layer: 0
-  m_Name: OutsidePaintingRoom
+  m_Name: BeforePaintingRoom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -673,7 +673,7 @@ PrefabInstance:
     - target: {fileID: 4404492558182833482, guid: f94240f51132e1c4c97df2374d54eb00,
         type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4404492558182833482, guid: f94240f51132e1c4c97df2374d54eb00,
         type: 3}
@@ -688,7 +688,7 @@ PrefabInstance:
     - target: {fileID: 4404492558182833482, guid: f94240f51132e1c4c97df2374d54eb00,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -37.459995
+      value: -32.159996
       objectReference: {fileID: 0}
     - target: {fileID: 4404492558182833482, guid: f94240f51132e1c4c97df2374d54eb00,
         type: 3}
@@ -832,7 +832,7 @@ PrefabInstance:
     - target: {fileID: 4404492558182833482, guid: f94240f51132e1c4c97df2374d54eb00,
         type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4404492558182833482, guid: f94240f51132e1c4c97df2374d54eb00,
         type: 3}
@@ -847,7 +847,7 @@ PrefabInstance:
     - target: {fileID: 4404492558182833482, guid: f94240f51132e1c4c97df2374d54eb00,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -50.09
+      value: -44.79
       objectReference: {fileID: 0}
     - target: {fileID: 4404492558182833482, guid: f94240f51132e1c4c97df2374d54eb00,
         type: 3}
@@ -1233,7 +1233,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 80460894}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -0.11000061, z: 0.18219805}
+  m_LocalPosition: {x: 0.00018331737, y: -0.8852368, z: 0.18219805}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1266,7 +1266,7 @@ MonoBehaviour:
   m_AffectSpecular: 1
   m_NonLightmappedOnly: 0
   m_ShapeWidth: 3
-  m_ShapeHeight: 0.2
+  m_ShapeHeight: 0.1
   m_AspectRatio: 1
   m_ShapeRadius: 0.025
   m_SoftnessScale: 1
@@ -1374,7 +1374,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 477464.8
+  m_Intensity: 954929.6
   m_Range: 5
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -1415,7 +1415,7 @@ Light:
   m_RenderingLayerMask: 1
   m_Lightmapping: 4
   m_LightShadowCasterMode: 2
-  m_AreaSize: {x: 3, y: 0.2}
+  m_AreaSize: {x: 3, y: 0.1}
   m_BounceIntensity: 10.1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 1
@@ -1547,7 +1547,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 99420096}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -0.11000061, z: -0.24293073}
+  m_LocalPosition: {x: 0, y: -0.8852368, z: -0.24293073}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1761,8 +1761,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 107581459}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 4.41, z: -11.24}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 4.41, z: 31.210001}
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1797,7 +1797,7 @@ PrefabInstance:
     - target: {fileID: 7232395013810954089, guid: d978d6d3f6781db498a023e5fe849a78,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -9.08
+      value: -12.64
       objectReference: {fileID: 0}
     - target: {fileID: 7232395013810954089, guid: d978d6d3f6781db498a023e5fe849a78,
         type: 3}
@@ -2221,7 +2221,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 174276835}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -0.11000061, z: -0.12146536}
+  m_LocalPosition: {x: 0, y: -0.8852368, z: -0.12146536}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2438,7 +2438,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 197233689}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -0.10999966, z: 0.24293073}
+  m_LocalPosition: {x: 0.00018331737, y: -0.88523585, z: 0.24293073}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2471,7 +2471,7 @@ MonoBehaviour:
   m_AffectSpecular: 1
   m_NonLightmappedOnly: 0
   m_ShapeWidth: 3
-  m_ShapeHeight: 0.2
+  m_ShapeHeight: 0.1
   m_AspectRatio: 1
   m_ShapeRadius: 0.025
   m_SoftnessScale: 1
@@ -2579,7 +2579,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 477464.8
+  m_Intensity: 954929.6
   m_Range: 5
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -2620,7 +2620,7 @@ Light:
   m_RenderingLayerMask: 1
   m_Lightmapping: 4
   m_LightShadowCasterMode: 2
-  m_AreaSize: {x: 3, y: 0.2}
+  m_AreaSize: {x: 3, y: 0.1}
   m_BounceIntensity: 10.1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 1
@@ -2655,7 +2655,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 240858239}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -0.11000061, z: -0.24293073}
+  m_LocalPosition: {x: 0.00018331737, y: -0.8852368, z: -0.24293073}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2688,7 +2688,7 @@ MonoBehaviour:
   m_AffectSpecular: 1
   m_NonLightmappedOnly: 0
   m_ShapeWidth: 3
-  m_ShapeHeight: 0.2
+  m_ShapeHeight: 0.1
   m_AspectRatio: 1
   m_ShapeRadius: 0.025
   m_SoftnessScale: 1
@@ -2796,7 +2796,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 477464.8
+  m_Intensity: 954929.6
   m_Range: 5
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -2837,7 +2837,7 @@ Light:
   m_RenderingLayerMask: 1
   m_Lightmapping: 4
   m_LightShadowCasterMode: 2
-  m_AreaSize: {x: 3, y: 0.2}
+  m_AreaSize: {x: 3, y: 0.1}
   m_BounceIntensity: 10.1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 1
@@ -2969,7 +2969,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 274681982}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -0.11000061, z: 0.3036634}
+  m_LocalPosition: {x: 0.00018331737, y: -0.8852368, z: 0.3036634}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3002,7 +3002,7 @@ MonoBehaviour:
   m_AffectSpecular: 1
   m_NonLightmappedOnly: 0
   m_ShapeWidth: 3
-  m_ShapeHeight: 0.2
+  m_ShapeHeight: 0.1
   m_AspectRatio: 1
   m_ShapeRadius: 0.025
   m_SoftnessScale: 1
@@ -3110,7 +3110,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 477464.8
+  m_Intensity: 954929.6
   m_Range: 5
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -3151,7 +3151,7 @@ Light:
   m_RenderingLayerMask: 1
   m_Lightmapping: 4
   m_LightShadowCasterMode: 2
-  m_AreaSize: {x: 3, y: 0.2}
+  m_AreaSize: {x: 3, y: 0.1}
   m_BounceIntensity: 10.1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 1
@@ -3222,7 +3222,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 337142268}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -0.11000061, z: 0.3643961}
+  m_LocalPosition: {x: -0.038, y: -0.78, z: 0.3643961}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3254,8 +3254,8 @@ MonoBehaviour:
   m_AffectDiffuse: 1
   m_AffectSpecular: 1
   m_NonLightmappedOnly: 0
-  m_ShapeWidth: 3
-  m_ShapeHeight: 0.2
+  m_ShapeWidth: 2.5
+  m_ShapeHeight: 0.1
   m_AspectRatio: 1
   m_ShapeRadius: 0.025
   m_SoftnessScale: 1
@@ -3363,7 +3363,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 477464.8
+  m_Intensity: 1145915.5
   m_Range: 5
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -3404,7 +3404,7 @@ Light:
   m_RenderingLayerMask: 1
   m_Lightmapping: 4
   m_LightShadowCasterMode: 2
-  m_AreaSize: {x: 3, y: 0.2}
+  m_AreaSize: {x: 2.5, y: 0.1}
   m_BounceIntensity: 10.1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 1
@@ -3439,7 +3439,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 355583387}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -0.11000061, z: 0.3643961}
+  m_LocalPosition: {x: 0.039, y: -0.78, z: 0.3643961}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3471,8 +3471,8 @@ MonoBehaviour:
   m_AffectDiffuse: 1
   m_AffectSpecular: 1
   m_NonLightmappedOnly: 0
-  m_ShapeWidth: 3
-  m_ShapeHeight: 0.2
+  m_ShapeWidth: 2.5
+  m_ShapeHeight: 0.1
   m_AspectRatio: 1
   m_ShapeRadius: 0.025
   m_SoftnessScale: 1
@@ -3580,7 +3580,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 477464.8
+  m_Intensity: 1145915.5
   m_Range: 5
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -3621,7 +3621,7 @@ Light:
   m_RenderingLayerMask: 1
   m_Lightmapping: 4
   m_LightShadowCasterMode: 2
-  m_AreaSize: {x: 3, y: 0.2}
+  m_AreaSize: {x: 2.5, y: 0.1}
   m_BounceIntensity: 10.1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 1
@@ -3986,7 +3986,7 @@ PrefabInstance:
     - target: {fileID: 4404492558182833482, guid: f94240f51132e1c4c97df2374d54eb00,
         type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4404492558182833482, guid: f94240f51132e1c4c97df2374d54eb00,
         type: 3}
@@ -4001,7 +4001,7 @@ PrefabInstance:
     - target: {fileID: 4404492558182833482, guid: f94240f51132e1c4c97df2374d54eb00,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -24.819996
+      value: -19.519997
       objectReference: {fileID: 0}
     - target: {fileID: 4404492558182833482, guid: f94240f51132e1c4c97df2374d54eb00,
         type: 3}
@@ -4066,7 +4066,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 402237404}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -0.11000061, z: 0.42512876}
+  m_LocalPosition: {x: 0.00018331737, y: -0.8852368, z: 0.42512876}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4099,7 +4099,7 @@ MonoBehaviour:
   m_AffectSpecular: 1
   m_NonLightmappedOnly: 0
   m_ShapeWidth: 3
-  m_ShapeHeight: 0.2
+  m_ShapeHeight: 0.1
   m_AspectRatio: 1
   m_ShapeRadius: 0.025
   m_SoftnessScale: 1
@@ -4207,7 +4207,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 477464.8
+  m_Intensity: 954929.6
   m_Range: 5
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -4248,7 +4248,7 @@ Light:
   m_RenderingLayerMask: 1
   m_Lightmapping: 4
   m_LightShadowCasterMode: 2
-  m_AreaSize: {x: 3, y: 0.2}
+  m_AreaSize: {x: 3, y: 0.1}
   m_BounceIntensity: 10.1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 1
@@ -4283,7 +4283,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 412484516}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -0.11000061, z: -0.48586145}
+  m_LocalPosition: {x: 0.00018331737, y: -0.8852368, z: -0.48586145}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4316,7 +4316,7 @@ MonoBehaviour:
   m_AffectSpecular: 1
   m_NonLightmappedOnly: 0
   m_ShapeWidth: 3
-  m_ShapeHeight: 0.2
+  m_ShapeHeight: 0.1
   m_AspectRatio: 1
   m_ShapeRadius: 0.025
   m_SoftnessScale: 1
@@ -4424,7 +4424,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 477464.8
+  m_Intensity: 954929.6
   m_Range: 5
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -4465,7 +4465,7 @@ Light:
   m_RenderingLayerMask: 1
   m_Lightmapping: 4
   m_LightShadowCasterMode: 2
-  m_AreaSize: {x: 3, y: 0.2}
+  m_AreaSize: {x: 3, y: 0.1}
   m_BounceIntensity: 10.1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 1
@@ -4598,7 +4598,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 428875952}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -0.11000061, z: -0.3643961}
+  m_LocalPosition: {x: 0, y: -0.8852368, z: -0.3643961}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4815,7 +4815,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 429370334}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -0.11000061, z: 0.18219805}
+  m_LocalPosition: {x: 0.039, y: -0.78, z: 0.18219805}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4847,8 +4847,8 @@ MonoBehaviour:
   m_AffectDiffuse: 1
   m_AffectSpecular: 1
   m_NonLightmappedOnly: 0
-  m_ShapeWidth: 3
-  m_ShapeHeight: 0.2
+  m_ShapeWidth: 2.5
+  m_ShapeHeight: 0.1
   m_AspectRatio: 1
   m_ShapeRadius: 0.025
   m_SoftnessScale: 1
@@ -4956,7 +4956,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 477464.8
+  m_Intensity: 1145915.5
   m_Range: 5
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -4997,7 +4997,7 @@ Light:
   m_RenderingLayerMask: 1
   m_Lightmapping: 4
   m_LightShadowCasterMode: 2
-  m_AreaSize: {x: 3, y: 0.2}
+  m_AreaSize: {x: 2.5, y: 0.1}
   m_BounceIntensity: 10.1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 1
@@ -5038,7 +5038,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 474593069}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -0.11000061, z: -0.3643961}
+  m_LocalPosition: {x: 0, y: -0.8852368, z: -0.3643961}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5472,7 +5472,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 481335088}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -0.11000061, z: 0}
+  m_LocalPosition: {x: 0.00018331737, y: -0.8852368, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5505,7 +5505,7 @@ MonoBehaviour:
   m_AffectSpecular: 1
   m_NonLightmappedOnly: 0
   m_ShapeWidth: 3
-  m_ShapeHeight: 0.2
+  m_ShapeHeight: 0.1
   m_AspectRatio: 1
   m_ShapeRadius: 0.025
   m_SoftnessScale: 1
@@ -5613,7 +5613,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 477464.8
+  m_Intensity: 954929.6
   m_Range: 5
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -5654,7 +5654,7 @@ Light:
   m_RenderingLayerMask: 1
   m_Lightmapping: 4
   m_LightShadowCasterMode: 2
-  m_AreaSize: {x: 3, y: 0.2}
+  m_AreaSize: {x: 3, y: 0.1}
   m_BounceIntensity: 10.1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 1
@@ -6088,13 +6088,10 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 530912696}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -44.7}
+  m_LocalPosition: {x: 0, y: 0, z: -50}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 375431621}
-  - {fileID: 1980704049}
-  - {fileID: 947872213}
   - {fileID: 880921481}
   - {fileID: 1529910003}
   - {fileID: 1170068850}
@@ -6103,7 +6100,7 @@ Transform:
   - {fileID: 565258775}
   - {fileID: 2078046076}
   m_Father: {fileID: 1145995945}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &530912698
 MonoBehaviour:
@@ -6147,7 +6144,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 533169191}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -0.11000061, z: -0.42512876}
+  m_LocalPosition: {x: -0.038, y: -0.78, z: -0.42512876}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6179,8 +6176,8 @@ MonoBehaviour:
   m_AffectDiffuse: 1
   m_AffectSpecular: 1
   m_NonLightmappedOnly: 0
-  m_ShapeWidth: 3
-  m_ShapeHeight: 0.2
+  m_ShapeWidth: 2.5
+  m_ShapeHeight: 0.1
   m_AspectRatio: 1
   m_ShapeRadius: 0.025
   m_SoftnessScale: 1
@@ -6288,7 +6285,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 477464.8
+  m_Intensity: 1145915.5
   m_Range: 5
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -6329,7 +6326,7 @@ Light:
   m_RenderingLayerMask: 1
   m_Lightmapping: 4
   m_LightShadowCasterMode: 2
-  m_AreaSize: {x: 3, y: 0.2}
+  m_AreaSize: {x: 2.5, y: 0.1}
   m_BounceIntensity: 10.1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 1
@@ -6364,7 +6361,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 561735270}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -0.11000061, z: -0.24293073}
+  m_LocalPosition: {x: 0, y: -0.8852368, z: -0.24293073}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6620,7 +6617,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 570026025}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -0.11000061, z: 0.48586145}
+  m_LocalPosition: {x: -0.038, y: -0.78, z: 0.48586145}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6652,8 +6649,8 @@ MonoBehaviour:
   m_AffectDiffuse: 1
   m_AffectSpecular: 1
   m_NonLightmappedOnly: 0
-  m_ShapeWidth: 3
-  m_ShapeHeight: 0.2
+  m_ShapeWidth: 2.5
+  m_ShapeHeight: 0.1
   m_AspectRatio: 1
   m_ShapeRadius: 0.025
   m_SoftnessScale: 1
@@ -6761,7 +6758,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 477464.8
+  m_Intensity: 1145915.5
   m_Range: 5
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -6802,7 +6799,7 @@ Light:
   m_RenderingLayerMask: 1
   m_Lightmapping: 4
   m_LightShadowCasterMode: 2
-  m_AreaSize: {x: 3, y: 0.2}
+  m_AreaSize: {x: 2.5, y: 0.1}
   m_BounceIntensity: 10.1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 1
@@ -6816,7 +6813,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 530912697}
+    m_TransformParent: {fileID: 1269836496}
     m_Modifications:
     - target: {fileID: 3914813391879178224, guid: f94240f51132e1c4c97df2374d54eb00,
         type: 3}
@@ -6841,7 +6838,7 @@ PrefabInstance:
     - target: {fileID: 4404492558182833482, guid: f94240f51132e1c4c97df2374d54eb00,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 50.96
+      value: 6.2599983
       objectReference: {fileID: 0}
     - target: {fileID: 4404492558182833482, guid: f94240f51132e1c4c97df2374d54eb00,
         type: 3}
@@ -7123,7 +7120,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 612879552}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -0.11000061, z: -0.18219805}
+  m_LocalPosition: {x: 0.039, y: -0.78, z: -0.18219805}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7155,8 +7152,8 @@ MonoBehaviour:
   m_AffectDiffuse: 1
   m_AffectSpecular: 1
   m_NonLightmappedOnly: 0
-  m_ShapeWidth: 3
-  m_ShapeHeight: 0.2
+  m_ShapeWidth: 2.5
+  m_ShapeHeight: 0.1
   m_AspectRatio: 1
   m_ShapeRadius: 0.025
   m_SoftnessScale: 1
@@ -7264,7 +7261,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 477464.8
+  m_Intensity: 1145915.5
   m_Range: 5
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -7305,7 +7302,7 @@ Light:
   m_RenderingLayerMask: 1
   m_Lightmapping: 4
   m_LightShadowCasterMode: 2
-  m_AreaSize: {x: 3, y: 0.2}
+  m_AreaSize: {x: 2.5, y: 0.1}
   m_BounceIntensity: 10.1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 1
@@ -7346,7 +7343,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 615873207}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -0.11000061, z: -0.12146536}
+  m_LocalPosition: {x: 0.039, y: -0.78, z: -0.12146536}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7378,8 +7375,8 @@ MonoBehaviour:
   m_AffectDiffuse: 1
   m_AffectSpecular: 1
   m_NonLightmappedOnly: 0
-  m_ShapeWidth: 3
-  m_ShapeHeight: 0.2
+  m_ShapeWidth: 2.5
+  m_ShapeHeight: 0.1
   m_AspectRatio: 1
   m_ShapeRadius: 0.025
   m_SoftnessScale: 1
@@ -7487,7 +7484,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 477464.8
+  m_Intensity: 1145915.5
   m_Range: 5
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -7528,7 +7525,7 @@ Light:
   m_RenderingLayerMask: 1
   m_Lightmapping: 4
   m_LightShadowCasterMode: 2
-  m_AreaSize: {x: 3, y: 0.2}
+  m_AreaSize: {x: 2.5, y: 0.1}
   m_BounceIntensity: 10.1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 1
@@ -7563,7 +7560,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 649483989}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -0.11000061, z: 0.3643961}
+  m_LocalPosition: {x: 0.00018331737, y: -0.8852368, z: 0.3643961}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7596,7 +7593,7 @@ MonoBehaviour:
   m_AffectSpecular: 1
   m_NonLightmappedOnly: 0
   m_ShapeWidth: 3
-  m_ShapeHeight: 0.2
+  m_ShapeHeight: 0.1
   m_AspectRatio: 1
   m_ShapeRadius: 0.025
   m_SoftnessScale: 1
@@ -7704,7 +7701,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 477464.8
+  m_Intensity: 954929.6
   m_Range: 5
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -7745,7 +7742,7 @@ Light:
   m_RenderingLayerMask: 1
   m_Lightmapping: 4
   m_LightShadowCasterMode: 2
-  m_AreaSize: {x: 3, y: 0.2}
+  m_AreaSize: {x: 3, y: 0.1}
   m_BounceIntensity: 10.1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 1
@@ -7780,7 +7777,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 682536950}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -0.11000061, z: 0.12146536}
+  m_LocalPosition: {x: 0, y: -0.8852368, z: 0.12146536}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7997,7 +7994,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 695548135}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -0.11000061, z: -0.3643961}
+  m_LocalPosition: {x: 0.039, y: -0.78, z: -0.3643961}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -8029,8 +8026,8 @@ MonoBehaviour:
   m_AffectDiffuse: 1
   m_AffectSpecular: 1
   m_NonLightmappedOnly: 0
-  m_ShapeWidth: 3
-  m_ShapeHeight: 0.2
+  m_ShapeWidth: 2.5
+  m_ShapeHeight: 0.1
   m_AspectRatio: 1
   m_ShapeRadius: 0.025
   m_SoftnessScale: 1
@@ -8138,7 +8135,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 477464.8
+  m_Intensity: 1145915.5
   m_Range: 5
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -8179,7 +8176,7 @@ Light:
   m_RenderingLayerMask: 1
   m_Lightmapping: 4
   m_LightShadowCasterMode: 2
-  m_AreaSize: {x: 3, y: 0.2}
+  m_AreaSize: {x: 2.5, y: 0.1}
   m_BounceIntensity: 10.1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 1
@@ -8431,7 +8428,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 702025783}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -0.11000061, z: 0.48586145}
+  m_LocalPosition: {x: 0, y: -0.8852368, z: 0.48586145}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -8693,7 +8690,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 530912697}
+    m_TransformParent: {fileID: 1269836496}
     m_Modifications:
     - target: {fileID: 3914813391879178224, guid: f94240f51132e1c4c97df2374d54eb00,
         type: 3}
@@ -8718,7 +8715,7 @@ PrefabInstance:
     - target: {fileID: 4404492558182833482, guid: f94240f51132e1c4c97df2374d54eb00,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 63.579994
+      value: 18.879993
       objectReference: {fileID: 0}
     - target: {fileID: 4404492558182833482, guid: f94240f51132e1c4c97df2374d54eb00,
         type: 3}
@@ -8780,8 +8777,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 726522792}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 4.41, z: -23.599998}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 4.41, z: 18.850002}
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -9032,7 +9029,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 742254449}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -0.11000061, z: -0.18219805}
+  m_LocalPosition: {x: 0.00018331737, y: -0.8852368, z: -0.18219805}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -9065,7 +9062,7 @@ MonoBehaviour:
   m_AffectSpecular: 1
   m_NonLightmappedOnly: 0
   m_ShapeWidth: 3
-  m_ShapeHeight: 0.2
+  m_ShapeHeight: 0.1
   m_AspectRatio: 1
   m_ShapeRadius: 0.025
   m_SoftnessScale: 1
@@ -9173,7 +9170,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 477464.8
+  m_Intensity: 954929.6
   m_Range: 5
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -9214,7 +9211,7 @@ Light:
   m_RenderingLayerMask: 1
   m_Lightmapping: 4
   m_LightShadowCasterMode: 2
-  m_AreaSize: {x: 3, y: 0.2}
+  m_AreaSize: {x: 3, y: 0.1}
   m_BounceIntensity: 10.1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 1
@@ -10354,7 +10351,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 831317301}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -54.9}
+  m_LocalPosition: {x: 0, y: 0, z: -50}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -10421,8 +10418,8 @@ MonoBehaviour:
   m_AffectDiffuse: 1
   m_AffectSpecular: 1
   m_NonLightmappedOnly: 0
-  m_ShapeWidth: 3
-  m_ShapeHeight: 0.2
+  m_ShapeWidth: 2.5
+  m_ShapeHeight: 0.1
   m_AspectRatio: 1
   m_ShapeRadius: 0.025
   m_SoftnessScale: 1
@@ -10530,7 +10527,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 477464.8
+  m_Intensity: 1145915.5
   m_Range: 5
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -10571,7 +10568,7 @@ Light:
   m_RenderingLayerMask: 1
   m_Lightmapping: 4
   m_LightShadowCasterMode: 2
-  m_AreaSize: {x: 3, y: 0.2}
+  m_AreaSize: {x: 2.5, y: 0.1}
   m_BounceIntensity: 10.1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 1
@@ -10606,7 +10603,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 836519352}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -0.11000061, z: 0.42512876}
+  m_LocalPosition: {x: 0.039, y: -0.78, z: 0.42512876}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -10638,8 +10635,8 @@ MonoBehaviour:
   m_AffectDiffuse: 1
   m_AffectSpecular: 1
   m_NonLightmappedOnly: 0
-  m_ShapeWidth: 3
-  m_ShapeHeight: 0.2
+  m_ShapeWidth: 2.5
+  m_ShapeHeight: 0.1
   m_AspectRatio: 1
   m_ShapeRadius: 0.025
   m_SoftnessScale: 1
@@ -10747,7 +10744,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 477464.8
+  m_Intensity: 1145915.5
   m_Range: 5
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -10788,7 +10785,7 @@ Light:
   m_RenderingLayerMask: 1
   m_Lightmapping: 4
   m_LightShadowCasterMode: 2
-  m_AreaSize: {x: 3, y: 0.2}
+  m_AreaSize: {x: 2.5, y: 0.1}
   m_BounceIntensity: 10.1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 1
@@ -11040,7 +11037,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 873670965}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -0.11000061, z: -0.12146536}
+  m_LocalPosition: {x: 0.00018331737, y: -0.8852368, z: -0.12146536}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -11073,7 +11070,7 @@ MonoBehaviour:
   m_AffectSpecular: 1
   m_NonLightmappedOnly: 0
   m_ShapeWidth: 3
-  m_ShapeHeight: 0.2
+  m_ShapeHeight: 0.1
   m_AspectRatio: 1
   m_ShapeRadius: 0.025
   m_SoftnessScale: 1
@@ -11181,7 +11178,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 477464.8
+  m_Intensity: 954929.6
   m_Range: 5
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -11222,7 +11219,7 @@ Light:
   m_RenderingLayerMask: 1
   m_Lightmapping: 4
   m_LightShadowCasterMode: 2
-  m_AreaSize: {x: 3, y: 0.2}
+  m_AreaSize: {x: 3, y: 0.1}
   m_BounceIntensity: 10.1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 1
@@ -11263,7 +11260,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 883650597}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -0.11000061, z: -0.48586145}
+  m_LocalPosition: {x: 0, y: -0.8852368, z: -0.48586145}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -11532,7 +11529,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 893802255}
   m_LocalRotation: {x: 0.06530181, y: 0.83411115, z: -0.101189084, w: 0.53828895}
-  m_LocalPosition: {x: -13.06, y: 5.4, z: -5.2}
+  m_LocalPosition: {x: -13.06, y: 5.4, z: -9.99}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -11558,14 +11555,14 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1
   volumeAnchorOverride: {fileID: 0}
-  antialiasing: 0
+  antialiasing: 2
   SMAAQuality: 2
   dithering: 0
   stopNaNs: 0
   taaSharpenStrength: 0.5
   TAAQuality: 1
   taaHistorySharpening: 0.35
-  taaAntiFlicker: 0.5
+  taaAntiFlicker: 0.644
   taaMotionVectorRejection: 0
   taaAntiHistoryRinging: 0
   taaBaseBlendFactor: 0.875
@@ -11713,7 +11710,7 @@ PrefabInstance:
     - target: {fileID: 4404492558182833482, guid: f94240f51132e1c4c97df2374d54eb00,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4404492558182833482, guid: f94240f51132e1c4c97df2374d54eb00,
         type: 3}
@@ -11728,7 +11725,7 @@ PrefabInstance:
     - target: {fileID: 4404492558182833482, guid: f94240f51132e1c4c97df2374d54eb00,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 13.060001
+      value: 18.36
       objectReference: {fileID: 0}
     - target: {fileID: 4404492558182833482, guid: f94240f51132e1c4c97df2374d54eb00,
         type: 3}
@@ -11793,7 +11790,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 910268015}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -0.11000061, z: -0.42512876}
+  m_LocalPosition: {x: 0.00018331737, y: -0.8852368, z: -0.42512876}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -11826,7 +11823,7 @@ MonoBehaviour:
   m_AffectSpecular: 1
   m_NonLightmappedOnly: 0
   m_ShapeWidth: 3
-  m_ShapeHeight: 0.2
+  m_ShapeHeight: 0.1
   m_AspectRatio: 1
   m_ShapeRadius: 0.025
   m_SoftnessScale: 1
@@ -11934,7 +11931,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 477464.8
+  m_Intensity: 954929.6
   m_Range: 5
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -11975,7 +11972,7 @@ Light:
   m_RenderingLayerMask: 1
   m_Lightmapping: 4
   m_LightShadowCasterMode: 2
-  m_AreaSize: {x: 3, y: 0.2}
+  m_AreaSize: {x: 3, y: 0.1}
   m_BounceIntensity: 10.1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 1
@@ -12266,7 +12263,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 951404665}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -0.11000061, z: -0.3036634}
+  m_LocalPosition: {x: -0.038, y: -0.78, z: -0.3036634}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -12298,8 +12295,8 @@ MonoBehaviour:
   m_AffectDiffuse: 1
   m_AffectSpecular: 1
   m_NonLightmappedOnly: 0
-  m_ShapeWidth: 3
-  m_ShapeHeight: 0.2
+  m_ShapeWidth: 2.5
+  m_ShapeHeight: 0.1
   m_AspectRatio: 1
   m_ShapeRadius: 0.025
   m_SoftnessScale: 1
@@ -12407,7 +12404,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 477464.8
+  m_Intensity: 1145915.5
   m_Range: 5
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -12448,7 +12445,7 @@ Light:
   m_RenderingLayerMask: 1
   m_Lightmapping: 4
   m_LightShadowCasterMode: 2
-  m_AreaSize: {x: 3, y: 0.2}
+  m_AreaSize: {x: 2.5, y: 0.1}
   m_BounceIntensity: 10.1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 1
@@ -12607,7 +12604,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1019349165}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -0.11000061, z: -0.48586145}
+  m_LocalPosition: {x: 0.039, y: -0.78, z: -0.48586145}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -12639,8 +12636,8 @@ MonoBehaviour:
   m_AffectDiffuse: 1
   m_AffectSpecular: 1
   m_NonLightmappedOnly: 0
-  m_ShapeWidth: 3
-  m_ShapeHeight: 0.2
+  m_ShapeWidth: 2.5
+  m_ShapeHeight: 0.1
   m_AspectRatio: 1
   m_ShapeRadius: 0.025
   m_SoftnessScale: 1
@@ -12748,7 +12745,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 477464.8
+  m_Intensity: 1145915.5
   m_Range: 5
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -12789,7 +12786,7 @@ Light:
   m_RenderingLayerMask: 1
   m_Lightmapping: 4
   m_LightShadowCasterMode: 2
-  m_AreaSize: {x: 3, y: 0.2}
+  m_AreaSize: {x: 2.5, y: 0.1}
   m_BounceIntensity: 10.1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 1
@@ -13142,7 +13139,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1051151396}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -0.11000061, z: 0.48586145}
+  m_LocalPosition: {x: 0.00018331737, y: -0.8852368, z: 0.48586145}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -13175,7 +13172,7 @@ MonoBehaviour:
   m_AffectSpecular: 1
   m_NonLightmappedOnly: 0
   m_ShapeWidth: 3
-  m_ShapeHeight: 0.2
+  m_ShapeHeight: 0.1
   m_AspectRatio: 1
   m_ShapeRadius: 0.025
   m_SoftnessScale: 1
@@ -13283,7 +13280,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 477464.8
+  m_Intensity: 954929.6
   m_Range: 5
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -13324,7 +13321,7 @@ Light:
   m_RenderingLayerMask: 1
   m_Lightmapping: 4
   m_LightShadowCasterMode: 2
-  m_AreaSize: {x: 3, y: 0.2}
+  m_AreaSize: {x: 3, y: 0.1}
   m_BounceIntensity: 10.1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 1
@@ -13576,7 +13573,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1073283083}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -0.11000061, z: 0.12146536}
+  m_LocalPosition: {x: 0, y: -0.8852368, z: 0.12146536}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -13926,7 +13923,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1116848103}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -0.11000061, z: 0.12146536}
+  m_LocalPosition: {x: 0.039, y: -0.78, z: 0.12146536}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -13958,8 +13955,8 @@ MonoBehaviour:
   m_AffectDiffuse: 1
   m_AffectSpecular: 1
   m_NonLightmappedOnly: 0
-  m_ShapeWidth: 3
-  m_ShapeHeight: 0.2
+  m_ShapeWidth: 2.5
+  m_ShapeHeight: 0.1
   m_AspectRatio: 1
   m_ShapeRadius: 0.025
   m_SoftnessScale: 1
@@ -14067,7 +14064,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 477464.8
+  m_Intensity: 1145915.5
   m_Range: 5
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -14108,7 +14105,7 @@ Light:
   m_RenderingLayerMask: 1
   m_Lightmapping: 4
   m_LightShadowCasterMode: 2
-  m_AreaSize: {x: 3, y: 0.2}
+  m_AreaSize: {x: 2.5, y: 0.1}
   m_BounceIntensity: 10.1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 1
@@ -14271,6 +14268,7 @@ Transform:
   m_Children:
   - {fileID: 26956617}
   - {fileID: 1083458669}
+  - {fileID: 1269836496}
   - {fileID: 530912697}
   m_Father: {fileID: 0}
   m_RootOrder: 5
@@ -14399,7 +14397,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1167093284}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -0.10999966, z: 0.24293073}
+  m_LocalPosition: {x: 0, y: -0.8852368, z: 0.24293073}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -14622,7 +14620,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1176062269}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -0.11000061, z: 0.48586145}
+  m_LocalPosition: {x: 0.039, y: -0.78, z: 0.48586145}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -14654,8 +14652,8 @@ MonoBehaviour:
   m_AffectDiffuse: 1
   m_AffectSpecular: 1
   m_NonLightmappedOnly: 0
-  m_ShapeWidth: 3
-  m_ShapeHeight: 0.2
+  m_ShapeWidth: 2.5
+  m_ShapeHeight: 0.1
   m_AspectRatio: 1
   m_ShapeRadius: 0.025
   m_SoftnessScale: 1
@@ -14763,7 +14761,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 477464.8
+  m_Intensity: 1145915.5
   m_Range: 5
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -14804,7 +14802,7 @@ Light:
   m_RenderingLayerMask: 1
   m_Lightmapping: 4
   m_LightShadowCasterMode: 2
-  m_AreaSize: {x: 3, y: 0.2}
+  m_AreaSize: {x: 2.5, y: 0.1}
   m_BounceIntensity: 10.1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 1
@@ -14936,7 +14934,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1184365067}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -0.11000061, z: -0.48586145}
+  m_LocalPosition: {x: 0, y: -0.8852368, z: -0.48586145}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -15243,7 +15241,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1193490570}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -0.11000061, z: -0.42512876}
+  m_LocalPosition: {x: 0.039, y: -0.78, z: -0.42512876}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -15275,8 +15273,8 @@ MonoBehaviour:
   m_AffectDiffuse: 1
   m_AffectSpecular: 1
   m_NonLightmappedOnly: 0
-  m_ShapeWidth: 3
-  m_ShapeHeight: 0.2
+  m_ShapeWidth: 2.5
+  m_ShapeHeight: 0.1
   m_AspectRatio: 1
   m_ShapeRadius: 0.025
   m_SoftnessScale: 1
@@ -15384,7 +15382,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 477464.8
+  m_Intensity: 1145915.5
   m_Range: 5
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -15425,7 +15423,7 @@ Light:
   m_RenderingLayerMask: 1
   m_Lightmapping: 4
   m_LightShadowCasterMode: 2
-  m_AreaSize: {x: 3, y: 0.2}
+  m_AreaSize: {x: 2.5, y: 0.1}
   m_BounceIntensity: 10.1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 1
@@ -15460,7 +15458,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1194439736}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -0.11000061, z: 0.12146536}
+  m_LocalPosition: {x: -0.038, y: -0.78, z: 0.12146536}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -15492,8 +15490,8 @@ MonoBehaviour:
   m_AffectDiffuse: 1
   m_AffectSpecular: 1
   m_NonLightmappedOnly: 0
-  m_ShapeWidth: 3
-  m_ShapeHeight: 0.2
+  m_ShapeWidth: 2.5
+  m_ShapeHeight: 0.1
   m_AspectRatio: 1
   m_ShapeRadius: 0.025
   m_SoftnessScale: 1
@@ -15601,7 +15599,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 477464.8
+  m_Intensity: 1145915.5
   m_Range: 5
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -15642,7 +15640,7 @@ Light:
   m_RenderingLayerMask: 1
   m_Lightmapping: 4
   m_LightShadowCasterMode: 2
-  m_AreaSize: {x: 3, y: 0.2}
+  m_AreaSize: {x: 2.5, y: 0.1}
   m_BounceIntensity: 10.1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 1
@@ -15858,7 +15856,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1259205115}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -0.11000061, z: 0.48586145}
+  m_LocalPosition: {x: 0, y: -0.8852368, z: 0.48586145}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -16049,6 +16047,57 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!1 &1269836495
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1269836496}
+  - component: {fileID: 1269836497}
+  m_Layer: 0
+  m_Name: BeforeQARoom
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1269836496
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1269836495}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 375431621}
+  - {fileID: 1980704049}
+  - {fileID: 947872213}
+  m_Father: {fileID: 1145995945}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1269836497
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1269836495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e017eede985307d4394a071e912aa48b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 0.4
+  stopTime: 5
+  stop: 0
+  stopForTime: 0
 --- !u!1 &1296613998 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3477433822040162434, guid: a9d056fdda5609e4daa7b80bee3ca932,
@@ -16140,7 +16189,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1308496941}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -0.11000061, z: 0.06073268}
+  m_LocalPosition: {x: 0.039, y: -0.78, z: 0.06073268}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -16172,8 +16221,8 @@ MonoBehaviour:
   m_AffectDiffuse: 1
   m_AffectSpecular: 1
   m_NonLightmappedOnly: 0
-  m_ShapeWidth: 3
-  m_ShapeHeight: 0.2
+  m_ShapeWidth: 2.5
+  m_ShapeHeight: 0.1
   m_AspectRatio: 1
   m_ShapeRadius: 0.025
   m_SoftnessScale: 1
@@ -16281,7 +16330,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 477464.8
+  m_Intensity: 1145915.5
   m_Range: 5
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -16322,7 +16371,7 @@ Light:
   m_RenderingLayerMask: 1
   m_Lightmapping: 4
   m_LightShadowCasterMode: 2
-  m_AreaSize: {x: 3, y: 0.2}
+  m_AreaSize: {x: 2.5, y: 0.1}
   m_BounceIntensity: 10.1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 1
@@ -16357,7 +16406,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1316923814}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -0.11000061, z: 0.3643961}
+  m_LocalPosition: {x: 0, y: -0.8852368, z: 0.3643961}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -16574,7 +16623,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1321166015}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -0.11000061, z: 0}
+  m_LocalPosition: {x: 0, y: -0.8852368, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -16791,7 +16840,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1324256432}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -0.11000061, z: -0.24293073}
+  m_LocalPosition: {x: -0.038, y: -0.78, z: -0.24293073}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -16823,8 +16872,8 @@ MonoBehaviour:
   m_AffectDiffuse: 1
   m_AffectSpecular: 1
   m_NonLightmappedOnly: 0
-  m_ShapeWidth: 3
-  m_ShapeHeight: 0.2
+  m_ShapeWidth: 2.5
+  m_ShapeHeight: 0.1
   m_AspectRatio: 1
   m_ShapeRadius: 0.025
   m_SoftnessScale: 1
@@ -16932,7 +16981,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 477464.8
+  m_Intensity: 1145915.5
   m_Range: 5
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -16973,7 +17022,7 @@ Light:
   m_RenderingLayerMask: 1
   m_Lightmapping: 4
   m_LightShadowCasterMode: 2
-  m_AreaSize: {x: 3, y: 0.2}
+  m_AreaSize: {x: 2.5, y: 0.1}
   m_BounceIntensity: 10.1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 1
@@ -17008,7 +17057,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1335596318}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -0.11000061, z: -0.3643961}
+  m_LocalPosition: {x: -0.038, y: -0.78, z: -0.3643961}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -17040,8 +17089,8 @@ MonoBehaviour:
   m_AffectDiffuse: 1
   m_AffectSpecular: 1
   m_NonLightmappedOnly: 0
-  m_ShapeWidth: 3
-  m_ShapeHeight: 0.2
+  m_ShapeWidth: 2.5
+  m_ShapeHeight: 0.1
   m_AspectRatio: 1
   m_ShapeRadius: 0.025
   m_SoftnessScale: 1
@@ -17149,7 +17198,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 477464.8
+  m_Intensity: 1145915.5
   m_Range: 5
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -17190,7 +17239,7 @@ Light:
   m_RenderingLayerMask: 1
   m_Lightmapping: 4
   m_LightShadowCasterMode: 2
-  m_AreaSize: {x: 3, y: 0.2}
+  m_AreaSize: {x: 2.5, y: 0.1}
   m_BounceIntensity: 10.1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 1
@@ -17222,8 +17271,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1344703449}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 4.41, z: -31.3}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 4.41, z: 11.150002}
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -17351,7 +17400,7 @@ PrefabInstance:
     - target: {fileID: 4254075425993677368, guid: a9d056fdda5609e4daa7b80bee3ca932,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 29.4
+      value: 19.699999
       objectReference: {fileID: 0}
     - target: {fileID: 4254075425993677368, guid: a9d056fdda5609e4daa7b80bee3ca932,
         type: 3}
@@ -17361,7 +17410,7 @@ PrefabInstance:
     - target: {fileID: 4254075425993677368, guid: a9d056fdda5609e4daa7b80bee3ca932,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4254075425993677368, guid: a9d056fdda5609e4daa7b80bee3ca932,
         type: 3}
@@ -17371,7 +17420,7 @@ PrefabInstance:
     - target: {fileID: 4254075425993677368, guid: a9d056fdda5609e4daa7b80bee3ca932,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4254075425993677368, guid: a9d056fdda5609e4daa7b80bee3ca932,
         type: 3}
@@ -17529,7 +17578,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1411761827}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -0.11000061, z: 0.18219805}
+  m_LocalPosition: {x: -0.038, y: -0.78, z: 0.18219805}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -17561,8 +17610,8 @@ MonoBehaviour:
   m_AffectDiffuse: 1
   m_AffectSpecular: 1
   m_NonLightmappedOnly: 0
-  m_ShapeWidth: 3
-  m_ShapeHeight: 0.2
+  m_ShapeWidth: 2.5
+  m_ShapeHeight: 0.1
   m_AspectRatio: 1
   m_ShapeRadius: 0.025
   m_SoftnessScale: 1
@@ -17670,7 +17719,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 477464.8
+  m_Intensity: 1145915.5
   m_Range: 5
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -17711,7 +17760,7 @@ Light:
   m_RenderingLayerMask: 1
   m_Lightmapping: 4
   m_LightShadowCasterMode: 2
-  m_AreaSize: {x: 3, y: 0.2}
+  m_AreaSize: {x: 2.5, y: 0.1}
   m_BounceIntensity: 10.1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 1
@@ -17779,7 +17828,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1417690022}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -0.11000061, z: -0.3036634}
+  m_LocalPosition: {x: 0.00018331737, y: -0.8852368, z: -0.3036634}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -17812,7 +17861,7 @@ MonoBehaviour:
   m_AffectSpecular: 1
   m_NonLightmappedOnly: 0
   m_ShapeWidth: 3
-  m_ShapeHeight: 0.2
+  m_ShapeHeight: 0.1
   m_AspectRatio: 1
   m_ShapeRadius: 0.025
   m_SoftnessScale: 1
@@ -17920,7 +17969,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 477464.8
+  m_Intensity: 954929.6
   m_Range: 5
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -17961,7 +18010,7 @@ Light:
   m_RenderingLayerMask: 1
   m_Lightmapping: 4
   m_LightShadowCasterMode: 2
-  m_AreaSize: {x: 3, y: 0.2}
+  m_AreaSize: {x: 3, y: 0.1}
   m_BounceIntensity: 10.1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 1
@@ -18091,7 +18140,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1439425763}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -50}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -18127,7 +18176,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1441066076}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -0.10999966, z: 0.24293073}
+  m_LocalPosition: {x: 0, y: -0.8852368, z: 0.24293073}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -18377,7 +18426,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1449027361}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -0.11000061, z: 0}
+  m_LocalPosition: {x: -0.038, y: -0.78, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -18409,8 +18458,8 @@ MonoBehaviour:
   m_AffectDiffuse: 1
   m_AffectSpecular: 1
   m_NonLightmappedOnly: 0
-  m_ShapeWidth: 3
-  m_ShapeHeight: 0.2
+  m_ShapeWidth: 2.5
+  m_ShapeHeight: 0.1
   m_AspectRatio: 1
   m_ShapeRadius: 0.025
   m_SoftnessScale: 1
@@ -18518,7 +18567,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 477464.8
+  m_Intensity: 1145915.5
   m_Range: 5
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -18559,7 +18608,7 @@ Light:
   m_RenderingLayerMask: 1
   m_Lightmapping: 4
   m_LightShadowCasterMode: 2
-  m_AreaSize: {x: 3, y: 0.2}
+  m_AreaSize: {x: 2.5, y: 0.1}
   m_BounceIntensity: 10.1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 1
@@ -18594,7 +18643,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1452650858}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -0.11000061, z: -0.3036634}
+  m_LocalPosition: {x: 0.039, y: -0.78, z: -0.3036634}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -18626,8 +18675,8 @@ MonoBehaviour:
   m_AffectDiffuse: 1
   m_AffectSpecular: 1
   m_NonLightmappedOnly: 0
-  m_ShapeWidth: 3
-  m_ShapeHeight: 0.2
+  m_ShapeWidth: 2.5
+  m_ShapeHeight: 0.1
   m_AspectRatio: 1
   m_ShapeRadius: 0.025
   m_SoftnessScale: 1
@@ -18735,7 +18784,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 477464.8
+  m_Intensity: 1145915.5
   m_Range: 5
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -18776,7 +18825,7 @@ Light:
   m_RenderingLayerMask: 1
   m_Lightmapping: 4
   m_LightShadowCasterMode: 2
-  m_AreaSize: {x: 3, y: 0.2}
+  m_AreaSize: {x: 2.5, y: 0.1}
   m_BounceIntensity: 10.1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 1
@@ -18811,7 +18860,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1459958721}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -0.11000061, z: 0}
+  m_LocalPosition: {x: 0.039, y: -0.78, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -18843,8 +18892,8 @@ MonoBehaviour:
   m_AffectDiffuse: 1
   m_AffectSpecular: 1
   m_NonLightmappedOnly: 0
-  m_ShapeWidth: 3
-  m_ShapeHeight: 0.2
+  m_ShapeWidth: 2.5
+  m_ShapeHeight: 0.1
   m_AspectRatio: 1
   m_ShapeRadius: 0.025
   m_SoftnessScale: 1
@@ -18952,7 +19001,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 477464.8
+  m_Intensity: 1145915.5
   m_Range: 5
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -18993,7 +19042,7 @@ Light:
   m_RenderingLayerMask: 1
   m_Lightmapping: 4
   m_LightShadowCasterMode: 2
-  m_AreaSize: {x: 3, y: 0.2}
+  m_AreaSize: {x: 2.5, y: 0.1}
   m_BounceIntensity: 10.1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 1
@@ -19474,7 +19523,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1519396777}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -0.11000061, z: 0.3036634}
+  m_LocalPosition: {x: 0.039, y: -0.78, z: 0.3036634}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -19506,8 +19555,8 @@ MonoBehaviour:
   m_AffectDiffuse: 1
   m_AffectSpecular: 1
   m_NonLightmappedOnly: 0
-  m_ShapeWidth: 3
-  m_ShapeHeight: 0.2
+  m_ShapeWidth: 2.5
+  m_ShapeHeight: 0.1
   m_AspectRatio: 1
   m_ShapeRadius: 0.025
   m_SoftnessScale: 1
@@ -19615,7 +19664,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 477464.8
+  m_Intensity: 1145915.5
   m_Range: 5
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -19656,7 +19705,7 @@ Light:
   m_RenderingLayerMask: 1
   m_Lightmapping: 4
   m_LightShadowCasterMode: 2
-  m_AreaSize: {x: 3, y: 0.2}
+  m_AreaSize: {x: 2.5, y: 0.1}
   m_BounceIntensity: 10.1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 1
@@ -19880,7 +19929,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1540585896}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -0.11000061, z: -0.3643961}
+  m_LocalPosition: {x: 0.00018331737, y: -0.8852368, z: -0.3643961}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -19913,7 +19962,7 @@ MonoBehaviour:
   m_AffectSpecular: 1
   m_NonLightmappedOnly: 0
   m_ShapeWidth: 3
-  m_ShapeHeight: 0.2
+  m_ShapeHeight: 0.1
   m_AspectRatio: 1
   m_ShapeRadius: 0.025
   m_SoftnessScale: 1
@@ -20021,7 +20070,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 477464.8
+  m_Intensity: 954929.6
   m_Range: 5
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -20062,7 +20111,7 @@ Light:
   m_RenderingLayerMask: 1
   m_Lightmapping: 4
   m_LightShadowCasterMode: 2
-  m_AreaSize: {x: 3, y: 0.2}
+  m_AreaSize: {x: 3, y: 0.1}
   m_BounceIntensity: 10.1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 1
@@ -20076,7 +20125,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 530912697}
+    m_TransformParent: {fileID: 1269836496}
     m_Modifications:
     - target: {fileID: 3914813391879178224, guid: f94240f51132e1c4c97df2374d54eb00,
         type: 3}
@@ -20101,7 +20150,7 @@ PrefabInstance:
     - target: {fileID: 4404492558182833482, guid: f94240f51132e1c4c97df2374d54eb00,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 38.35
+      value: -6.3500023
       objectReference: {fileID: 0}
     - target: {fileID: 4404492558182833482, guid: f94240f51132e1c4c97df2374d54eb00,
         type: 3}
@@ -20263,7 +20312,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1559143223}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -0.11000061, z: 0.12146536}
+  m_LocalPosition: {x: 0.00018331737, y: -0.8852368, z: 0.12146536}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -20296,7 +20345,7 @@ MonoBehaviour:
   m_AffectSpecular: 1
   m_NonLightmappedOnly: 0
   m_ShapeWidth: 3
-  m_ShapeHeight: 0.2
+  m_ShapeHeight: 0.1
   m_AspectRatio: 1
   m_ShapeRadius: 0.025
   m_SoftnessScale: 1
@@ -20404,7 +20453,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 477464.8
+  m_Intensity: 954929.6
   m_Range: 5
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -20445,7 +20494,7 @@ Light:
   m_RenderingLayerMask: 1
   m_Lightmapping: 4
   m_LightShadowCasterMode: 2
-  m_AreaSize: {x: 3, y: 0.2}
+  m_AreaSize: {x: 3, y: 0.1}
   m_BounceIntensity: 10.1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 1
@@ -20577,7 +20626,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1589808744}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -0.11000061, z: 0.3036634}
+  m_LocalPosition: {x: -0.038, y: -0.78, z: 0.3036634}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -20609,8 +20658,8 @@ MonoBehaviour:
   m_AffectDiffuse: 1
   m_AffectSpecular: 1
   m_NonLightmappedOnly: 0
-  m_ShapeWidth: 3
-  m_ShapeHeight: 0.2
+  m_ShapeWidth: 2.5
+  m_ShapeHeight: 0.1
   m_AspectRatio: 1
   m_ShapeRadius: 0.025
   m_SoftnessScale: 1
@@ -20718,7 +20767,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 477464.8
+  m_Intensity: 1145915.5
   m_Range: 5
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -20759,7 +20808,7 @@ Light:
   m_RenderingLayerMask: 1
   m_Lightmapping: 4
   m_LightShadowCasterMode: 2
-  m_AreaSize: {x: 3, y: 0.2}
+  m_AreaSize: {x: 2.5, y: 0.1}
   m_BounceIntensity: 10.1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 1
@@ -21011,7 +21060,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1599115690}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -0.11000061, z: -0.06073268}
+  m_LocalPosition: {x: 0.039, y: -0.78, z: -0.06073268}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -21043,8 +21092,8 @@ MonoBehaviour:
   m_AffectDiffuse: 1
   m_AffectSpecular: 1
   m_NonLightmappedOnly: 0
-  m_ShapeWidth: 3
-  m_ShapeHeight: 0.2
+  m_ShapeWidth: 2.5
+  m_ShapeHeight: 0.1
   m_AspectRatio: 1
   m_ShapeRadius: 0.025
   m_SoftnessScale: 1
@@ -21152,7 +21201,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 477464.8
+  m_Intensity: 1145915.5
   m_Range: 5
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -21193,7 +21242,7 @@ Light:
   m_RenderingLayerMask: 1
   m_Lightmapping: 4
   m_LightShadowCasterMode: 2
-  m_AreaSize: {x: 3, y: 0.2}
+  m_AreaSize: {x: 2.5, y: 0.1}
   m_BounceIntensity: 10.1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 1
@@ -21546,7 +21595,7 @@ PrefabInstance:
     - target: {fileID: 4254075425993677368, guid: a9d056fdda5609e4daa7b80bee3ca932,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 29.34
+      value: 19.64
       objectReference: {fileID: 0}
     - target: {fileID: 4254075425993677368, guid: a9d056fdda5609e4daa7b80bee3ca932,
         type: 3}
@@ -21556,17 +21605,17 @@ PrefabInstance:
     - target: {fileID: 4254075425993677368, guid: a9d056fdda5609e4daa7b80bee3ca932,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4254075425993677368, guid: a9d056fdda5609e4daa7b80bee3ca932,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4254075425993677368, guid: a9d056fdda5609e4daa7b80bee3ca932,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4254075425993677368, guid: a9d056fdda5609e4daa7b80bee3ca932,
         type: 3}
@@ -21896,7 +21945,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1693135679}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -0.11000061, z: 0.3643961}
+  m_LocalPosition: {x: 0, y: -0.8852368, z: 0.3643961}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -22113,7 +22162,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1706645091}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -0.11000061, z: 0.06073268}
+  m_LocalPosition: {x: -0.038, y: -0.78, z: 0.06073268}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -22145,8 +22194,8 @@ MonoBehaviour:
   m_AffectDiffuse: 1
   m_AffectSpecular: 1
   m_NonLightmappedOnly: 0
-  m_ShapeWidth: 3
-  m_ShapeHeight: 0.2
+  m_ShapeWidth: 2.174783
+  m_ShapeHeight: 0.1
   m_AspectRatio: 1
   m_ShapeRadius: 0.025
   m_SoftnessScale: 1
@@ -22254,7 +22303,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 477464.8
+  m_Intensity: 1317275.8
   m_Range: 5
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -22295,7 +22344,7 @@ Light:
   m_RenderingLayerMask: 1
   m_Lightmapping: 4
   m_LightShadowCasterMode: 2
-  m_AreaSize: {x: 3, y: 0.2}
+  m_AreaSize: {x: 2.174783, y: 0.1}
   m_BounceIntensity: 10.1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 1
@@ -22336,7 +22385,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1735530518}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -0.10999966, z: 0.24293073}
+  m_LocalPosition: {x: 0.039, y: -0.78, z: 0.24293073}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -22368,8 +22417,8 @@ MonoBehaviour:
   m_AffectDiffuse: 1
   m_AffectSpecular: 1
   m_NonLightmappedOnly: 0
-  m_ShapeWidth: 3
-  m_ShapeHeight: 0.2
+  m_ShapeWidth: 2.5
+  m_ShapeHeight: 0.1
   m_AspectRatio: 1
   m_ShapeRadius: 0.025
   m_SoftnessScale: 1
@@ -22477,7 +22526,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 477464.8
+  m_Intensity: 1145915.5
   m_Range: 5
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -22518,7 +22567,7 @@ Light:
   m_RenderingLayerMask: 1
   m_Lightmapping: 4
   m_LightShadowCasterMode: 2
-  m_AreaSize: {x: 3, y: 0.2}
+  m_AreaSize: {x: 2.5, y: 0.1}
   m_BounceIntensity: 10.1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 1
@@ -23100,7 +23149,7 @@ PrefabInstance:
     - target: {fileID: 4404492558182833482, guid: f94240f51132e1c4c97df2374d54eb00,
         type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4404492558182833482, guid: f94240f51132e1c4c97df2374d54eb00,
         type: 3}
@@ -23115,7 +23164,7 @@ PrefabInstance:
     - target: {fileID: 4404492558182833482, guid: f94240f51132e1c4c97df2374d54eb00,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -12.2
+      value: -6.9000015
       objectReference: {fileID: 0}
     - target: {fileID: 4404492558182833482, guid: f94240f51132e1c4c97df2374d54eb00,
         type: 3}
@@ -23270,7 +23319,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1819274512}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -0.11000061, z: -0.06073268}
+  m_LocalPosition: {x: -0.038, y: -0.78, z: -0.06073268}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -23302,8 +23351,8 @@ MonoBehaviour:
   m_AffectDiffuse: 1
   m_AffectSpecular: 1
   m_NonLightmappedOnly: 0
-  m_ShapeWidth: 3
-  m_ShapeHeight: 0.2
+  m_ShapeWidth: 2.5
+  m_ShapeHeight: 0.1
   m_AspectRatio: 1
   m_ShapeRadius: 0.025
   m_SoftnessScale: 1
@@ -23411,7 +23460,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 477464.8
+  m_Intensity: 1145915.5
   m_Range: 5
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -23452,7 +23501,7 @@ Light:
   m_RenderingLayerMask: 1
   m_Lightmapping: 4
   m_LightShadowCasterMode: 2
-  m_AreaSize: {x: 3, y: 0.2}
+  m_AreaSize: {x: 2.5, y: 0.1}
   m_BounceIntensity: 10.1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 1
@@ -23740,7 +23789,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1831587830}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -0.11000061, z: -0.18219805}
+  m_LocalPosition: {x: -0.038, y: -0.78, z: -0.18219805}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -23772,8 +23821,8 @@ MonoBehaviour:
   m_AffectDiffuse: 1
   m_AffectSpecular: 1
   m_NonLightmappedOnly: 0
-  m_ShapeWidth: 3
-  m_ShapeHeight: 0.2
+  m_ShapeWidth: 2.5
+  m_ShapeHeight: 0.1
   m_AspectRatio: 1
   m_ShapeRadius: 0.025
   m_SoftnessScale: 1
@@ -23881,7 +23930,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 477464.8
+  m_Intensity: 1145915.5
   m_Range: 5
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -23922,7 +23971,7 @@ Light:
   m_RenderingLayerMask: 1
   m_Lightmapping: 4
   m_LightShadowCasterMode: 2
-  m_AreaSize: {x: 3, y: 0.2}
+  m_AreaSize: {x: 2.5, y: 0.1}
   m_BounceIntensity: 10.1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 1
@@ -24087,7 +24136,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1861397762}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -0.11000061, z: 0.42512876}
+  m_LocalPosition: {x: -0.038, y: -0.78, z: 0.42512876}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -24119,8 +24168,8 @@ MonoBehaviour:
   m_AffectDiffuse: 1
   m_AffectSpecular: 1
   m_NonLightmappedOnly: 0
-  m_ShapeWidth: 3
-  m_ShapeHeight: 0.2
+  m_ShapeWidth: 2.5
+  m_ShapeHeight: 0.1
   m_AspectRatio: 1
   m_ShapeRadius: 0.025
   m_SoftnessScale: 1
@@ -24228,7 +24277,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 477464.8
+  m_Intensity: 1145915.5
   m_Range: 5
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -24269,7 +24318,7 @@ Light:
   m_RenderingLayerMask: 1
   m_Lightmapping: 4
   m_LightShadowCasterMode: 2
-  m_AreaSize: {x: 3, y: 0.2}
+  m_AreaSize: {x: 2.5, y: 0.1}
   m_BounceIntensity: 10.1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 1
@@ -24664,7 +24713,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1902629993}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -0.10999966, z: 0.24293073}
+  m_LocalPosition: {x: -0.038, y: -0.78, z: 0.24293073}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -24696,8 +24745,8 @@ MonoBehaviour:
   m_AffectDiffuse: 1
   m_AffectSpecular: 1
   m_NonLightmappedOnly: 0
-  m_ShapeWidth: 3
-  m_ShapeHeight: 0.2
+  m_ShapeWidth: 2.5
+  m_ShapeHeight: 0.1
   m_AspectRatio: 1
   m_ShapeRadius: 0.025
   m_SoftnessScale: 1
@@ -24805,7 +24854,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 477464.8
+  m_Intensity: 1145915.5
   m_Range: 5
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -24846,7 +24895,7 @@ Light:
   m_RenderingLayerMask: 1
   m_Lightmapping: 4
   m_LightShadowCasterMode: 2
-  m_AreaSize: {x: 3, y: 0.2}
+  m_AreaSize: {x: 2.5, y: 0.1}
   m_BounceIntensity: 10.1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 1
@@ -25217,7 +25266,7 @@ PrefabInstance:
     - target: {fileID: 4404492558182833482, guid: f94240f51132e1c4c97df2374d54eb00,
         type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4404492558182833482, guid: f94240f51132e1c4c97df2374d54eb00,
         type: 3}
@@ -25232,7 +25281,7 @@ PrefabInstance:
     - target: {fileID: 4404492558182833482, guid: f94240f51132e1c4c97df2374d54eb00,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.42000198
+      value: 5.720001
       objectReference: {fileID: 0}
     - target: {fileID: 4404492558182833482, guid: f94240f51132e1c4c97df2374d54eb00,
         type: 3}
@@ -25286,7 +25335,7 @@ PrefabInstance:
     - target: {fileID: 4404492558182833482, guid: f94240f51132e1c4c97df2374d54eb00,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4404492558182833482, guid: f94240f51132e1c4c97df2374d54eb00,
         type: 3}
@@ -25301,7 +25350,7 @@ PrefabInstance:
     - target: {fileID: 4404492558182833482, guid: f94240f51132e1c4c97df2374d54eb00,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 25.720001
+      value: 31.02
       objectReference: {fileID: 0}
     - target: {fileID: 4404492558182833482, guid: f94240f51132e1c4c97df2374d54eb00,
         type: 3}
@@ -25692,7 +25741,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2031066917}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -0.11000061, z: 0}
+  m_LocalPosition: {x: 0, y: -0.8852368, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -26006,7 +26055,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2059295861}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -0.11000061, z: -0.24293073}
+  m_LocalPosition: {x: 0.039, y: -0.78, z: -0.24293073}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -26038,8 +26087,8 @@ MonoBehaviour:
   m_AffectDiffuse: 1
   m_AffectSpecular: 1
   m_NonLightmappedOnly: 0
-  m_ShapeWidth: 3
-  m_ShapeHeight: 0.2
+  m_ShapeWidth: 2.5
+  m_ShapeHeight: 0.1
   m_AspectRatio: 1
   m_ShapeRadius: 0.025
   m_SoftnessScale: 1
@@ -26147,7 +26196,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 477464.8
+  m_Intensity: 1145915.5
   m_Range: 5
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -26188,7 +26237,7 @@ Light:
   m_RenderingLayerMask: 1
   m_Lightmapping: 4
   m_LightShadowCasterMode: 2
-  m_AreaSize: {x: 3, y: 0.2}
+  m_AreaSize: {x: 2.5, y: 0.1}
   m_BounceIntensity: 10.1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 1
@@ -26508,7 +26557,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2070590073}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -0.11000061, z: -0.06073268}
+  m_LocalPosition: {x: 0.00018331737, y: -0.8852368, z: -0.06073268}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -26541,7 +26590,7 @@ MonoBehaviour:
   m_AffectSpecular: 1
   m_NonLightmappedOnly: 0
   m_ShapeWidth: 3
-  m_ShapeHeight: 0.2
+  m_ShapeHeight: 0.1
   m_AspectRatio: 1
   m_ShapeRadius: 0.025
   m_SoftnessScale: 1
@@ -26649,7 +26698,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 477464.8
+  m_Intensity: 954929.6
   m_Range: 5
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -26690,7 +26739,7 @@ Light:
   m_RenderingLayerMask: 1
   m_Lightmapping: 4
   m_LightShadowCasterMode: 2
-  m_AreaSize: {x: 3, y: 0.2}
+  m_AreaSize: {x: 3, y: 0.1}
   m_BounceIntensity: 10.1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 1
@@ -26834,7 +26883,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2114683944}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -0.11000061, z: -0.12146536}
+  m_LocalPosition: {x: -0.038, y: -0.78, z: -0.12146536}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -26866,8 +26915,8 @@ MonoBehaviour:
   m_AffectDiffuse: 1
   m_AffectSpecular: 1
   m_NonLightmappedOnly: 0
-  m_ShapeWidth: 3
-  m_ShapeHeight: 0.2
+  m_ShapeWidth: 2.5
+  m_ShapeHeight: 0.1
   m_AspectRatio: 1
   m_ShapeRadius: 0.025
   m_SoftnessScale: 1
@@ -26975,7 +27024,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 477464.8
+  m_Intensity: 1145915.5
   m_Range: 5
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -27016,7 +27065,7 @@ Light:
   m_RenderingLayerMask: 1
   m_Lightmapping: 4
   m_LightShadowCasterMode: 2
-  m_AreaSize: {x: 3, y: 0.2}
+  m_AreaSize: {x: 2.5, y: 0.1}
   m_BounceIntensity: 10.1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 1
