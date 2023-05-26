@@ -1,7 +1,5 @@
 using System.IO;
 using UnityEngine;
-using ImageProcessor;
-using SixLabors.ImageSharp;
 
 public class AnalyzeImage : MonoBehaviour
 {
@@ -29,7 +27,9 @@ public class AnalyzeImage : MonoBehaviour
                 Debug.Log(file.Name);
             }
             
-            var baseImage = File.ReadAllBytes(m_CaptureLocation + "base.png");
+            // var baseImage = File.ReadAllBytes(m_CaptureLocation + "base.png");
+            
+            Debug.Log("done");
 
         }
     }
