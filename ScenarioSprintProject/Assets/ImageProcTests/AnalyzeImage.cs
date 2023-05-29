@@ -1,5 +1,4 @@
 using System;
-using System.Diagnostics;
 using System.IO;
 using UnityEngine;
 using System.Net;
@@ -10,25 +9,17 @@ using Debug = UnityEngine.Debug;
 
 public class AnalyzeImage : MonoBehaviour
 {
-    string m_CaptureLocation;
-    DirectoryInfo m_Directory;
+    // string m_CaptureLocation;
+    // DirectoryInfo m_Directory;
     
-    
-
-    Thread receiveThread;
-    UdpClient client;
-    int port;
-
-    string lastReceivedUDPPacket = "";
-    string allReceivedUDPPackets = "";
-
-    Vector3 up;
-    bool jump;
+    Thread m_ReceiveThread;
+    UdpClient m_Client;
+    int m_Port;
     
     void Start()
     {
-        m_CaptureLocation = Application.dataPath + "/ImageProcTests/Screenshots";
-        m_Directory = new DirectoryInfo(m_CaptureLocation);
+        // m_CaptureLocation = Application.dataPath + "/ImageProcTests/Images";
+        // m_Directory = new DirectoryInfo(m_CaptureLocation);
 
         InitializeUDP();
     }
@@ -36,30 +27,30 @@ public class AnalyzeImage : MonoBehaviour
     void InitializeUDP()
     {
         print ("UPDSend.init()");
-        port = 5065;
+        m_Port = 5065;
 
-        print ("Sending to 127.0.0.1 : " + port);
+        print ("Sending to 127.0.0.1 : " + m_Port);
 
-        receiveThread = new Thread (new ThreadStart(ReceiveData));
-        receiveThread.IsBackground = true;
-        receiveThread.Start ();
+        m_ReceiveThread = new Thread (new ThreadStart(ReceiveData))
+        {
+            IsBackground = true
+        };
+        m_ReceiveThread.Start ();
 
     }
 
     void ReceiveData()
     {
-        client = new UdpClient (port);
+        m_Client = new UdpClient (m_Port);
         while (true) 
         {
             try
             {
-                IPEndPoint anyIP = new IPEndPoint(IPAddress.Parse("0.0.0.0"), port);
-                var data = client.Receive(ref anyIP);
+                var anyIP = new IPEndPoint(IPAddress.Parse("0.0.0.0"), m_Port);
+                var data = m_Client.Receive(ref anyIP);
 
                 var text = Encoding.UTF8.GetString(data);
                 Debug.Log("Received: " + text);
-                lastReceivedUDPPacket=text;
-                allReceivedUDPPackets=allReceivedUDPPackets+text;
 
                 break;
 
@@ -75,15 +66,18 @@ public class AnalyzeImage : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.P))
         {
-            // Processing images
+            /*
+            // Processing images by executing Python code
             
             Debug.Log("processing images");
+            var strCmdText= "/C C:/Users/priyanka.cs/anaconda3/python " + "Assets/ImageProcTests/image-analyzer-test.py & pause";   //This command to open a new notepad
+            Process.Start("CMD.exe",strCmdText); //Start cmd process
+            */
         }
     }
 
-	void OnApplicationQuit(){
-		if (receiveThread != null) {
-			receiveThread.Abort();
-		}
-	}
+	void OnApplicationQuit()
+    {
+        m_ReceiveThread?.Abort();
+    }
 }
