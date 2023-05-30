@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class RobotArmController : MonoBehaviour
 {
-    public GameObject targetObject;
+    public GameObject T0;
+    public GameObject T1;
 
     public TargetNode[] targetNodes;
+
+    public Transform target0;
     
     [Tooltip("Delay between each node in seconds")]
     public float delay = 1f;
@@ -28,7 +31,10 @@ public class RobotArmController : MonoBehaviour
         int currentNode = 0;
         while (true)
         {
-            SetGlobalTransformation(targetObject, targetNodes[currentNode].transform);
+            Transform targetTransform1 = targetNodes[currentNode].transform;
+            target0.position = targetTransform1.position + targetTransform1.up;
+            SetGlobalTransformation(T1, targetTransform1);
+            SetGlobalTransformation(T0, target0);
             yield return new WaitForSeconds(delay);
             currentNode = (currentNode + 1) % targetNodes.Length;
         }
