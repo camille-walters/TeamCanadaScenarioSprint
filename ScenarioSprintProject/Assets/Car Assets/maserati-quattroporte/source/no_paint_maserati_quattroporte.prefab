@@ -20225,7 +20225,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7075038009189425161}
   m_Layer: 0
-  m_Name: no_paint_maserati_quattroporte (1)
+  m_Name: no_paint_maserati_quattroporte
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
