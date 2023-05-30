@@ -570,8 +570,8 @@ ArticulationBody:
   m_Enabled: 1
   serializedVersion: 3
   m_Mass: 0.000001
-  m_ParentAnchorPosition: {x: -0.09219996, y: -0.000000007450581, z: 0.000000059604645}
-  m_ParentAnchorRotation: {x: -0.70710695, y: 0, z: 0.7071067, w: -0.000000029802322}
+  m_ParentAnchorPosition: {x: -0.09220008, y: 0.000000029802322, z: 0.000000059604645}
+  m_ParentAnchorRotation: {x: -0.70710707, y: 0, z: 0.7071069, w: -0.000000029802326}
   m_AnchorPosition: {x: 0, y: 0, z: 0}
   m_AnchorRotation: {x: 0, y: 0, z: 0, w: 1}
   m_MatchAnchors: 1
@@ -3667,8 +3667,8 @@ ArticulationBody:
   m_Enabled: 1
   serializedVersion: 3
   m_Mass: 0.000001
-  m_ParentAnchorPosition: {x: -0.00000005960464, y: 0.0000000074316837, z: -0.000000044703494}
-  m_ParentAnchorRotation: {x: 0.5000001, y: -0.5000001, z: -0.5, w: 0.5}
+  m_ParentAnchorPosition: {x: -0.00000005960465, y: -0.00000002982124, z: 0.000000074505806}
+  m_ParentAnchorRotation: {x: 0.5000002, y: -0.5000002, z: -0.5000002, w: 0.5000002}
   m_AnchorPosition: {x: 0, y: 0, z: 0}
   m_AnchorRotation: {x: 0, y: 0, z: 0, w: 1}
   m_MatchAnchors: 1
@@ -3828,7 +3828,7 @@ MonoBehaviour:
     maxAngularMotionVelocity: 30
     angularMotionAcceleration: 5
   - jointTransform: {fileID: 8714531327459243294}
-    initialRotation: {x: 0, y: 0, z: -0.70710677, w: 0.70710677}
+    initialRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
     initialPosition: {x: -0, y: 0, z: 0}
     initialPositionWorld: {x: 0, y: 0.1273, z: 0}
     previousPositionWorld: {x: 0, y: 0.1273, z: 0}
@@ -3868,9 +3868,9 @@ MonoBehaviour:
     keyedRotations: []
     keyedPositions: []
     keyedLocalPositions: []
-    zeroRotation: {x: 0, y: 0, z: -0.70710677, w: 0.70710677}
+    zeroRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
     zeroPosition: {x: -0, y: 0, z: 0}
-    lastFrameRotation: {x: 0, y: 0, z: -0.70710677, w: 0.70710677}
+    lastFrameRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
     lastFramePosition: {x: 0, y: 0, z: 0}
     currentAngularVelocity: 0
     currentStretchVelocity: 0
@@ -3958,11 +3958,11 @@ MonoBehaviour:
   - jointTransform: {fileID: 8852457875593536084}
     initialRotation: {x: 0, y: 0, z: 0, w: 1}
     initialPosition: {x: -0, y: 0.163941, z: -0.5723}
-    initialPositionWorld: {x: -0.16394109, y: 0.12730001, z: 1.1843}
-    previousPositionWorld: {x: -0.16394109, y: 0.12730001, z: 1.1843}
+    initialPositionWorld: {x: -0.16394112, y: 0.12729998, z: 1.1843}
+    previousPositionWorld: {x: -0.16394112, y: 0.12729998, z: 1.1843}
     cachedInitialRotation: {x: 0, y: 0, z: 0, w: 0}
     cachedLocalPosition: {x: 0, y: 0, z: 0}
-    targetPosition: {x: -0.16394109, y: 0.12730001, z: 1.1843}
+    targetPosition: {x: -0.16394112, y: 0.12729998, z: 1.1843}
     targetLocalPosition: {x: 0, y: 0, z: 0}
     stretchedTargetPosition: {x: 0, y: 0, z: 0}
     isStretchNode: 0
@@ -4022,18 +4022,18 @@ MonoBehaviour:
   - jointTransform: {fileID: 3934921112759151895}
     initialRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
     initialPosition: {x: 0.1157, y: -2.3730467e-11, z: 0}
-    initialPositionWorld: {x: -0.1639411, y: 0.011600018, z: 1.1843}
-    previousPositionWorld: {x: -0.1639411, y: 0.011600018, z: 1.1843}
+    initialPositionWorld: {x: -0.1639411, y: 0.011599965, z: 1.1843}
+    previousPositionWorld: {x: -0.1639411, y: 0.011599965, z: 1.1843}
     cachedInitialRotation: {x: 0, y: 0, z: 0, w: 0}
     cachedLocalPosition: {x: 0, y: 0, z: 0}
-    targetPosition: {x: -0.1639411, y: 0.011600018, z: 1.1843}
+    targetPosition: {x: -0.1639411, y: 0.011599965, z: 1.1843}
     targetLocalPosition: {x: 0, y: 0, z: 0}
     stretchedTargetPosition: {x: 0, y: 0, z: 0}
     isStretchNode: 0
     IsEndNode: 0
     childIndex: 5
     parentIndex: 3
-    boneLength: 0.11569999
+    boneLength: 0.115700014
     toParent: {x: 0, y: 0, z: 0}
     oldVecInitialized: 0
     oldVec: {x: 0, y: 1, z: 0}
@@ -4083,84 +4083,20 @@ MonoBehaviour:
     overrideAngularMotion: 0
     maxAngularMotionVelocity: 30
     angularMotionAcceleration: 5
-  - jointTransform: {fileID: 7301092408983798363}
-    initialRotation: {x: -0.000000061817246, y: 0, z: 0.7071068, w: 0.7071068}
-    initialPosition: {x: -0.0922, y: -1.8910536e-11, z: 0}
-    initialPositionWorld: {x: -0.25614107, y: 0.011600018, z: 1.1843}
-    previousPositionWorld: {x: -0.25614107, y: 0.011600018, z: 1.1843}
-    cachedInitialRotation: {x: 0, y: 0, z: 0, w: 0}
-    cachedLocalPosition: {x: 0, y: 0, z: 0}
-    targetPosition: {x: -0.25614107, y: 0.011600018, z: 1.1843}
-    targetLocalPosition: {x: 0, y: 0, z: 0}
-    stretchedTargetPosition: {x: 0, y: 0, z: 0}
-    isStretchNode: 0
-    IsEndNode: 0
-    childIndex: 6
-    parentIndex: 4
-    boneLength: 0.09219997
-    toParent: {x: 0, y: 0, z: 0}
-    oldVecInitialized: 0
-    oldVec: {x: 0, y: 1, z: 0}
-    rotationIK: {x: 0, y: 0, z: 0, w: 0}
-    jointRadius: 0.5
-    jointLimit: {fileID: 4312977477495971369}
-    isPositionConstrained: 0
-    isRotationConstrained: 0
-    overrideConstraint: 0
-    constraint:
-      jointTransform: {fileID: 0}
-      targetTransform: {fileID: 0}
-      targetPosition: {x: 0, y: 0, z: 0}
-      targetLocalPosition: {x: 0, y: 0, z: 0}
-      targetRotation: {x: 0, y: 0, z: 0, w: 1}
-      constrainPosition: 1
-      constrainRotation: 0
-      positionKeys: []
-    targetIKSpace: {fileID: 0}
-    enableKeyframeConstraints: 1
-    cachedPosition: {x: 0, y: 0, z: 0}
-    cachedRotation: {x: 0, y: 0, z: 0, w: 1}
-    targetRotation: {x: 0, y: 0, z: 0, w: 1}
-    keyedRotations: []
-    keyedPositions: []
-    keyedLocalPositions: []
-    zeroRotation: {x: -0.000000061817246, y: 0, z: 0.7071068, w: 0.7071068}
-    zeroPosition: {x: -0.0922, y: -1.8910536e-11, z: 0}
-    lastFrameRotation: {x: -0.000000061817246, y: 0, z: 0.7071068, w: 0.7071068}
-    lastFramePosition: {x: 0, y: 0, z: 0}
-    currentAngularVelocity: 0
-    currentStretchVelocity: 0
-    enableStretch: 0
-    inwardsStretch: 0
-    outwardsStretch: 0
-    stretchAxis: {x: 0, y: 0, z: 1}
-    stretchLimits:
-      targetSpace: {fileID: 0}
-      minStretchLimits: {x: 0, y: 0, z: 0}
-      maxStretchLimits: {x: 0, y: 0, z: 0}
-      maxForward: 0
-      maxBackward: 0
-      maxLeft: 0
-      maxRight: 0
-      maxDown: 0
-      maxUp: 0
-    overrideAngularMotion: 0
-    maxAngularMotionVelocity: 30
-    angularMotionAcceleration: 5
   - jointTransform: {fileID: 7106735955682418622}
     initialRotation: {x: -0, y: -0, z: -0, w: 1}
     initialPosition: {x: 0, y: 0, z: 0}
-    initialPositionWorld: {x: -0.25614107, y: 0.011600018, z: 1.1843}
-    previousPositionWorld: {x: -0.25614107, y: 0.011600018, z: 1.1843}
+    initialPositionWorld: {x: -0.1639411, y: 0.011599965, z: 1.1843}
+    previousPositionWorld: {x: -0.1639411, y: 0.011599965, z: 1.1843}
     cachedInitialRotation: {x: 0, y: 0, z: 0, w: 0}
     cachedLocalPosition: {x: 0, y: 0, z: 0}
-    targetPosition: {x: -0.25614107, y: 0.011600018, z: 1.1843}
+    targetPosition: {x: -0.1639411, y: 0.011599965, z: 1.1843}
     targetLocalPosition: {x: 0, y: 0, z: 0}
     stretchedTargetPosition: {x: 0, y: 0, z: 0}
     isStretchNode: 0
     IsEndNode: 1
     childIndex: -1
-    parentIndex: 5
+    parentIndex: 4
     boneLength: 0
     toParent: {x: 0, y: 0, z: 0}
     oldVecInitialized: 0
@@ -4280,8 +4216,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7106735955682418623}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0.000000061817246, y: -0, z: -0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: -0.09219998, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
