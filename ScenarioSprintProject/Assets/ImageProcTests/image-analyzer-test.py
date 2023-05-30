@@ -6,7 +6,7 @@ import socket
 import numpy as np
 from skimage.metrics import structural_similarity as compare_ssim
 
-DIRECTORY = 'Images/Lighter/'
+DIRECTORY = 'Images/'
 
 
 def flaw_analysis(base, flawed, image_number):
