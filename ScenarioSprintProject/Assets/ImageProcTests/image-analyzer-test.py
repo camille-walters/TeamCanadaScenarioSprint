@@ -37,8 +37,10 @@ def flaw_analysis(base, flawed, image_number):
     return score
 
 
-def color_consistency_analysis(base, flawed, image_number):
+def color_consistency_analysis(base, flawed):
     # Source: https://stackoverflow.com/a/57227800
+    # TODO: Maybe switch this to go over specific pixels with differences and highlight those?
+
     # Crop base and flawed to get just the colored cross-section of size (115, 590, 3)
     x = 95
     y = 160
@@ -53,25 +55,42 @@ def color_consistency_analysis(base, flawed, image_number):
     delta_e = colour.delta_E(base, flawed)
     delta_e = np.mean(delta_e)
 
-    '''
-    # cv2.imwrite(f'{DIRECTORY}crop{image_number}.png', flawed)
-    # cv2.imwrite(f'{DIRECTORY}cropbase{image_number}.png', base)
-
-    # gray_a = cv2.cvtColor(base, cv2.COLOR_BGR2GRAY)
-    # gray_b = cv2.cvtColor(flawed, cv2.COLOR_BGR2GRAY)
-
-    (score, diff) = compare_ssim(base[:, :, 0], flawed[:, :, 0], full=True)
-    diff = (diff * 255).astype("uint8")
-    print(score)
-    # Checking for an overall color change
-    rev = 255-diff
-    gray_sum = np.sum(rev)
-    score = gray_sum/(rev.shape[0]*rev.shape[1])
-    
-    cv2.imwrite(f'{DIRECTORY}rev{image_number}.png', diff)
-    '''
-
     return delta_e
+
+
+def edge_detection(base, flawed, image_number):
+    # Source: https://learnopencv.com/edge-detection-using-opencv/
+    base = cv2.cvtColor(base, cv2.COLOR_BGR2GRAY)
+    flawed = cv2.cvtColor(flawed, cv2.COLOR_BGR2GRAY)
+
+    base_blur = cv2.GaussianBlur(base, (3, 3), sigmaX=0, sigmaY=0)
+    flawed_blur = cv2.GaussianBlur(flawed, (3, 3), sigmaX=0, sigmaY=0)
+
+    '''
+    # Sobel Edge Detection
+    base_sobel_xy = cv2.Sobel(src=base_blur, ddepth=cv2.CV_64F, dx=1, dy=1, ksize=5)  # Combined X and Y Sobel
+    sobel_xy = cv2.Sobel(src=flawed_blur, ddepth=cv2.CV_64F, dx=1, dy=1, ksize=5)  # Combined X and Y Sobel
+    '''
+
+    # Canny Edge Detection
+    base_edges = cv2.Canny(image=base_blur, threshold1=100, threshold2=200)
+    edges = cv2.Canny(image=flawed_blur, threshold1=100, threshold2=200)
+
+    (score, diff) = compare_ssim(base_edges, edges, full=True)
+    diff = (diff * 255).astype("uint8")
+
+    thresh = cv2.threshold(diff, 0, 255, cv2.THRESH_BINARY_INV | cv2.THRESH_OTSU)[1]
+    contours = cv2.findContours(thresh.copy(), cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+    contours = imutils.grab_contours(contours)
+
+    for c in contours:
+        (x, y, w, h) = cv2.boundingRect(c)
+        cv2.rectangle(flawed, (x, y), (x + w, y + h), (0, 0, 255), 2)
+
+    cv2.imwrite(f'{DIRECTORY}edge_contours{image_number}.png', flawed)
+    cv2.imwrite(f'{DIRECTORY}edge_diff{image_number}.png', diff)
+
+    return score
 
 
 UDP_IP = "127.0.0.1"
@@ -98,8 +117,10 @@ for i in range(0, total_images):
 
     # Do color analysis only for left and right view, not top
     if i != 1:
-        color_change_metric = color_consistency_analysis(np.copy(base_image), np.copy(flawed_image), i)
+        color_change_metric = color_consistency_analysis(np.copy(base_image), np.copy(flawed_image))
         total_color_score += color_change_metric
+
+    # edge_detection(np.copy(base_image), np.copy(flawed_image), i)
 
 print("SSIM: {}, Color inconsistency:{}".format(total_ssim_score / total_images, total_color_score / total_image_for_color_analysis))
 sock.sendto(("SSIM: {}, Color inconsistency:{}".format(total_ssim_score / total_images, total_color_score / total_image_for_color_analysis)).encode(), (UDP_IP, UDP_PORT))
