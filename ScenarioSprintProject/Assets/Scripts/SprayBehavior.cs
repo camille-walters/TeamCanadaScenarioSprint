@@ -13,8 +13,10 @@ public class SprayBehavior : MonoBehaviour
         if (ps == null)
         {
             Debug.Log("Can't find particle system for " + gameObject.name);
-        }        
-        
+        }
+
+        //comment/uncomment for testing purposes
+        Play();
     }
 
     private void OnEnable()
