@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.Rendering.HighDefinition;
 
 public class SimulationManager : MonoBehaviour
 {
@@ -18,7 +17,8 @@ public class SimulationManager : MonoBehaviour
     
     GameObject m_CarsGameObject;
     List<GameObject> m_Cars = new();
-
+    List<Room> m_CarCurrentRooms = new();
+        
     // List<float> m_RoomBordersZ = new List<float> {99.73f, 83.42f, 25.6f, -12.89f, -25.39f};
     void Start()
     {
@@ -58,13 +58,6 @@ public class SimulationManager : MonoBehaviour
             
             m_Views[currentView].enabled = true;
         }
-        /*
-        // Instantiate car
-        if (Input.GetKeyDown(KeyCode.I))
-        {
-            SpawnCar();
-        }
-        */
         
         ManageCarSpawn();
     }
@@ -77,14 +70,11 @@ public class SimulationManager : MonoBehaviour
             SpawnCar();
             return;
         }
-        
-        // Only one car in scene
-        if (m_Cars.Count == 1)
+
+        var lastIndex = m_Cars.FindIndex(c => c == m_Cars.Last());
+        if (m_CarCurrentRooms[lastIndex] == Room.SpawnRoom && m_Cars[lastIndex].GetComponent<Car>().currentRoom == Room.PaintingRoom)
         {
-            if (m_Cars[0].GetComponent<Car>().currentRoom == Room.PaintingRoom)
-            {
-                SpawnCar();
-            }
+            SpawnCar();
         }
     }
 
@@ -94,5 +84,6 @@ public class SimulationManager : MonoBehaviour
         newCar.transform.parent = m_CarsGameObject.transform;
         newCar.AddComponent<Car>();
         m_Cars.Add(newCar);
+        m_CarCurrentRooms.Add(Room.SpawnRoom);
     }
 }
