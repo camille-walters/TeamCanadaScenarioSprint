@@ -6,27 +6,37 @@ public class SprayBehavior : MonoBehaviour
 {
     ParticleSystem ps;
     //TODO in later PR: Expose parameters as needed here
+
     void Start()
     {
         ps = GetComponentInChildren<ParticleSystem>();
-        if(ps == null)
+        if (ps == null)
         {
-            Debug.Log("Can't find particle system");
-        }
-
-        //comment/uncomment this for testing purposes (will just start spraying when scene starts)
-        Play();
+            Debug.Log("Can't find particle system for " + gameObject.name);
+        }        
         
     }
 
-    void Play()
+    private void OnEnable()
     {
-        ps?.Play();
+        //comment/uncomment this for testing purposes (will just start spraying when enabled)
+        Play();
     }
 
-    private void Stop()
+    public void Play()
     {
-        ps?.Stop();
+        if (ps != null)
+        {
+            ps.Play();
+        }
+    }
+
+    public void Stop()
+    {
+        if (ps != null)
+        {
+            ps.Stop();
+        }            
     }
 
 }
