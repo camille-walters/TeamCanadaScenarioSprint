@@ -569,6 +569,7 @@ GameObject:
   m_Component:
   - component: {fileID: 26956617}
   - component: {fileID: 26956618}
+  - component: {fileID: 26956619}
   m_Layer: 0
   m_Name: BeforePaintingRoom
   m_TagString: Untagged
@@ -584,7 +585,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 26956616}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 92.2}
+  m_LocalPosition: {x: 0, y: 0, z: 91.59}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -609,6 +610,19 @@ MonoBehaviour:
   stopTime: 5
   stop: 0
   stopForTime: 0
+--- !u!65 &26956619
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 26956616}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Size: {x: 8, y: 5, z: 15.522293}
+  m_Center: {x: 0.053512573, y: 1.56, z: -1.3324738}
 --- !u!1 &27305836
 GameObject:
   m_ObjectHideFlags: 0
@@ -1782,7 +1796,7 @@ PrefabInstance:
     - target: {fileID: 7232395013810954089, guid: d978d6d3f6781db498a023e5fe849a78,
         type: 3}
       propertyPath: m_RootOrder
-      value: 11
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7232395013810954089, guid: d978d6d3f6781db498a023e5fe849a78,
         type: 3}
@@ -1843,6 +1857,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8004427464488142291, guid: d978d6d3f6781db498a023e5fe849a78,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d978d6d3f6781db498a023e5fe849a78, type: 3}
@@ -6283,6 +6302,7 @@ GameObject:
   m_Component:
   - component: {fileID: 530912697}
   - component: {fileID: 530912698}
+  - component: {fileID: 530912699}
   m_Layer: 0
   m_Name: CVRoom
   m_TagString: Untagged
@@ -6298,7 +6318,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 530912696}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -50}
+  m_LocalPosition: {x: 0, y: 0, z: -18.98}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -6322,6 +6342,19 @@ MonoBehaviour:
   stopTime: 5
   stop: 0
   stopForTime: 0
+--- !u!65 &530912699
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 530912696}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Size: {x: 8, y: 5, z: 12.603724}
+  m_Center: {x: 0, y: 1.56, z: 0.016352654}
 --- !u!1 &533169191
 GameObject:
   m_ObjectHideFlags: 0
@@ -10772,7 +10805,7 @@ Transform:
   - {fileID: 1296613999}
   - {fileID: 706440503}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &832104113
 GameObject:
@@ -14223,6 +14256,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1083458669}
   - component: {fileID: 1083458670}
+  - component: {fileID: 1083458671}
   m_Layer: 0
   m_Name: PaintingRoom
   m_TagString: Untagged
@@ -14266,6 +14300,19 @@ MonoBehaviour:
   stopTime: 5
   stop: 0
   stopForTime: 0
+--- !u!65 &1083458671
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1083458668}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Size: {x: 8, y: 5, z: 56.644302}
+  m_Center: {x: 0, y: 1.56, z: 4.0210342}
 --- !u!4 &1099367403 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4404492558182833482, guid: f94240f51132e1c4c97df2374d54eb00,
@@ -14931,7 +14978,7 @@ Transform:
   - {fileID: 530912697}
   - {fileID: 1950266320}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1148563464
 GameObject:
@@ -16385,10 +16432,20 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7193402607150798630, guid: d978d6d3f6781db498a023e5fe849a78,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7193402607150798631, guid: d978d6d3f6781db498a023e5fe849a78,
+        type: 3}
+      propertyPath: m_IsKinematic
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7232395013810954089, guid: d978d6d3f6781db498a023e5fe849a78,
         type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 7232395013810954089, guid: d978d6d3f6781db498a023e5fe849a78,
         type: 3}
@@ -16403,7 +16460,7 @@ PrefabInstance:
     - target: {fileID: 7232395013810954089, guid: d978d6d3f6781db498a023e5fe849a78,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 57.42
+      value: 56.39
       objectReference: {fileID: 0}
     - target: {fileID: 7232395013810954089, guid: d978d6d3f6781db498a023e5fe849a78,
         type: 3}
@@ -16449,6 +16506,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8004427464488142291, guid: d978d6d3f6781db498a023e5fe849a78,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d978d6d3f6781db498a023e5fe849a78, type: 3}
@@ -16717,6 +16779,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1269836496}
   - component: {fileID: 1269836497}
+  - component: {fileID: 1269836498}
   m_Layer: 0
   m_Name: BeforeQARoom
   m_TagString: Untagged
@@ -16758,6 +16821,19 @@ MonoBehaviour:
   stopTime: 5
   stop: 0
   stopForTime: 0
+--- !u!65 &1269836498
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1269836495}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Size: {x: 8, y: 5, z: 38.241646}
+  m_Center: {x: 0, y: 1.56, z: 6.565774}
 --- !u!1 &1296613998 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3477433822040162434, guid: a9d056fdda5609e4daa7b80bee3ca932,
@@ -18143,8 +18219,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e617c20f8ef71b9408ff23b711e305cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  paintingRoomDoors: {fileID: 387898704}
+  car: {fileID: 8004427464488142291, guid: d978d6d3f6781db498a023e5fe849a78, type: 3}
   simulationViews: {fileID: 1027041334}
+  paintingRoomDoors: {fileID: 387898704}
+  centralConveyor: {fileID: 1145995944}
   paintingInProgress: 0
   currentView: 0
 --- !u!1 &1377870913
@@ -18212,7 +18290,7 @@ Transform:
   - {fileID: 2066065521}
   - {fileID: 776408499}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1411761827
 GameObject:
@@ -25227,7 +25305,7 @@ PrefabInstance:
     - target: {fileID: 4404492558182833482, guid: f94240f51132e1c4c97df2374d54eb00,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 27.080002
+      value: 26.53
       objectReference: {fileID: 0}
     - target: {fileID: 4404492558182833482, guid: f94240f51132e1c4c97df2374d54eb00,
         type: 3}
@@ -26220,7 +26298,7 @@ PrefabInstance:
     - target: {fileID: 4404492558182833482, guid: f94240f51132e1c4c97df2374d54eb00,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 31.02
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4404492558182833482, guid: f94240f51132e1c4c97df2374d54eb00,
         type: 3}
@@ -26485,6 +26563,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1950266320}
+  - component: {fileID: 1950266321}
   m_Layer: 0
   m_Name: QARoom
   m_TagString: Untagged
@@ -26513,6 +26592,19 @@ Transform:
   m_Father: {fileID: 1145995945}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1950266321
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1950266319}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Size: {x: 8, y: 5, z: 74.55751}
+  m_Center: {x: 0, y: 1.56, z: -4.300476}
 --- !u!4 &1980704049 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4404492558182833482, guid: f94240f51132e1c4c97df2374d54eb00,

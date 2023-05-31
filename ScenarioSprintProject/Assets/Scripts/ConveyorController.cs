@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -46,6 +47,17 @@ public class ConveyorController : MonoBehaviour
             ApplyMotionToAllBelts(true);
             m_InMotion = false;
             StopCountdown();
+        }
+        
+        // Update speed if changed
+        if (Math.Abs(gameObject.transform.GetChild(0).GetComponent<ConveyorBeltBehavior>().speed - speed) > 0.1f)
+        {
+            foreach (Transform child in gameObject.transform)
+            {
+                var childBeltBehavior = child.gameObject.GetComponent<ConveyorBeltBehavior>();
+                childBeltBehavior.speed = speed;
+            }
+            
         }
     }
 
