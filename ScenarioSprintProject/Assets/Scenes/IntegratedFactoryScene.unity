@@ -1811,7 +1811,7 @@ PrefabInstance:
     - target: {fileID: 7232395013810954089, guid: d978d6d3f6781db498a023e5fe849a78,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -12.64
+      value: -8.81
       objectReference: {fileID: 0}
     - target: {fileID: 7232395013810954089, guid: d978d6d3f6781db498a023e5fe849a78,
         type: 3}
@@ -6338,7 +6338,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e017eede985307d4394a071e912aa48b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.4
+  speed: 3
   stopTime: 5
   stop: 0
   stopForTime: 0
@@ -18224,6 +18224,7 @@ MonoBehaviour:
   paintingRoomDoors: {fileID: 387898704}
   centralConveyor: {fileID: 1145995944}
   paintingInProgress: 0
+  cvDone: 0
   currentView: 0
 --- !u!1 &1377870913
 GameObject:

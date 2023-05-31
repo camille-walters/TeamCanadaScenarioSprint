@@ -10,15 +10,24 @@ public class SimulationManager : MonoBehaviour
     public GameObject paintingRoomDoors;
     public GameObject centralConveyor;
     public bool paintingInProgress;
+    public bool cvDone;
     public int currentView;
 
     Vector3 m_DoorPosition;
     List<Camera> m_Views = new();
     
     GameObject m_CarsGameObject;
-    List<GameObject> m_Cars = new();
+    List<Car> m_Cars = new();
     List<Room> m_CarCurrentRooms = new();
-        
+    Dictionary<Room, List<int>> m_CarTracker = new Dictionary<Room, List<int>>
+    {
+        {Room.SpawnRoom, new List<int>()},
+        {Room.PaintingRoom, new List<int>()},
+        {Room.BufferRoom, new List<int>()},
+        {Room.CVRoom, new List<int>()},
+        {Room.QARoom, new List<int>()}
+    };
+
     // List<float> m_RoomBordersZ = new List<float> {99.73f, 83.42f, 25.6f, -12.89f, -25.39f};
     void Start()
     {
@@ -46,7 +55,8 @@ public class SimulationManager : MonoBehaviour
     {
         paintingRoomDoors.transform.localPosition = paintingInProgress ? new Vector3(m_DoorPosition.x, -10, m_DoorPosition.z) : m_DoorPosition;
 
-        // Switch camera view 
+        // Switch camera view when C key is pressed
+        // TODO: Connect with UI
         if (Input.GetKeyDown(KeyCode.C) && simulationViews != null)
         {
             m_Views[currentView].enabled = false;
@@ -60,6 +70,10 @@ public class SimulationManager : MonoBehaviour
         }
         
         ManageCarSpawn();
+        UpdateCarRooms();
+        ManageAnalysisRoomOccupancy();
+        
+        // Debug.Log($"{m_CarTracker[Room.SpawnRoom].Count} and {m_CarTracker[Room.PaintingRoom].Count}");
     }
 
     void ManageCarSpawn()
@@ -72,7 +86,7 @@ public class SimulationManager : MonoBehaviour
         }
 
         var lastIndex = m_Cars.FindIndex(c => c == m_Cars.Last());
-        if (m_CarCurrentRooms[lastIndex] == Room.SpawnRoom && m_Cars[lastIndex].GetComponent<Car>().currentRoom == Room.PaintingRoom)
+        if (m_CarCurrentRooms[lastIndex] == Room.SpawnRoom && m_Cars[lastIndex].currentRoom == Room.PaintingRoom)
         {
             SpawnCar();
         }
@@ -82,8 +96,30 @@ public class SimulationManager : MonoBehaviour
     {
         var newCar = Instantiate(car, new Vector3(0, 0.6f, 90), Quaternion.Euler(0, 180, 0));
         newCar.transform.parent = m_CarsGameObject.transform;
-        newCar.AddComponent<Car>();
-        m_Cars.Add(newCar);
+        var carComponent = newCar.AddComponent<Car>();
+        
+        m_Cars.Add(carComponent);
         m_CarCurrentRooms.Add(Room.SpawnRoom);
+        m_CarTracker[Room.SpawnRoom].Add(m_Cars.FindIndex(c => c == carComponent));
+    }
+
+    void UpdateCarRooms()
+    {
+        for (var i = 0; i < m_Cars.Count; ++i)
+        {
+            if (m_CarCurrentRooms[i] != m_Cars[i].currentRoom)
+            {
+                m_CarTracker[m_CarCurrentRooms[i]].Remove(i);
+                m_CarTracker[m_Cars[i].currentRoom].Add(i);
+                m_CarCurrentRooms[i] = m_Cars[i].currentRoom;
+            }
+        }
+    }
+
+    void ManageAnalysisRoomOccupancy()
+    {
+        // Only one car allowed in the CV room at one time
+        if (m_CarTracker[Room.CVRoom].Count == 1)
+            Debug.Log("stop now");
     }
 }
