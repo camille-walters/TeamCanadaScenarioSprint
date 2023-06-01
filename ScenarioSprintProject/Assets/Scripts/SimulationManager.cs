@@ -13,7 +13,6 @@ public class SimulationManager : MonoBehaviour
     public GameObject centralConveyor;
     public GameObject cvCapturePositions;
     public bool paintingInProgress;
-    public bool cvDone;
     public int currentView;
     
     Vector3 m_DoorPosition; // For painting room door close
