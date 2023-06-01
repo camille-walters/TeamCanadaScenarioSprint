@@ -5,7 +5,8 @@ using UnityEngine;
 public class SprayBehavior : MonoBehaviour
 {
     ParticleSystem ps;
-    //TODO in later PR: Expose parameters as needed here
+    public bool playOnStart = false;
+    public bool playOnEnable = false;
 
     void Start()
     {
@@ -15,14 +16,14 @@ public class SprayBehavior : MonoBehaviour
             Debug.Log("Can't find particle system for " + gameObject.name);
         }
 
-        //comment/uncomment for testing purposes
-        Play();
+        if (playOnStart)
+            Play();
     }
 
     private void OnEnable()
     {
-        //comment/uncomment this for testing purposes (will just start spraying when enabled)
-        Play();
+        if (playOnEnable)
+            Play();
     }
 
     public void Play()

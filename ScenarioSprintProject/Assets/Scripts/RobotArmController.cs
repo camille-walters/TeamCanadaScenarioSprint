@@ -21,12 +21,20 @@ public class RobotArmController : MonoBehaviour
 
     [Tooltip("Distance of target node from surface of path node")]
     public float distanceFromSurface = 0;
+    
+    [Tooltip("Spray behavior")]
+    public SprayBehavior sprayBehavior;
 
     // Current path node index
     int currentPathNodeIndex = -1;
     
     void Start()
     {
+        if (sprayBehavior != null)
+        {
+            sprayBehavior.Stop();
+        }
+        
         if (robotPath != null)
         {// for testing, initialize path in inspector
             SetNewRobotPath(robotPath);
@@ -46,6 +54,7 @@ public class RobotArmController : MonoBehaviour
             currentPathNodeIndex = 0;
         }
     }
+
     /// <summary>
     /// Update robot target to follow path
     /// </summary>
@@ -62,6 +71,18 @@ public class RobotArmController : MonoBehaviour
             if (Vector3.Distance(pos1, robotEndNode.position) < minDistToTarget)
             {
                 currentPathNodeIndex = (currentPathNodeIndex < robotPath.pathNodes.Length - 1) ? currentPathNodeIndex + 1 : -1;
+
+                if (sprayBehavior != null)
+                {
+                    if (currentPathNodeIndex != -1)
+                    {
+                        sprayBehavior.Play();
+                    }
+                    else
+                    {
+                        sprayBehavior.Stop();
+                    }
+                }
             }
         }
     }
