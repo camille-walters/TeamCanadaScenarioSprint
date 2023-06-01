@@ -81,9 +81,12 @@ public class SimulationManager : MonoBehaviour
             
             m_Views[currentView].enabled = true;
         }
-        
-        ManageCarSpawn();
         UpdateCarRooms();
+    }
+
+    void LateUpdate()
+    {
+        ManageCarSpawn();
     }
 
     void ManageCarSpawn()
@@ -140,9 +143,9 @@ public class SimulationManager : MonoBehaviour
         
         // Reposition the car
         // m_Cars[carIndex].gameObject.transform.localPosition = new Vector3(0.005738411f, 0.5836744f, -18.99335f);
-        m_Cars[carIndex].gameObject.transform.localPosition = new Vector3(0, 0.59f, -19f);
-        m_Cars[carIndex].gameObject.transform.rotation = Quaternion.Euler(0, 180f, 0);
-        
+        m_Cars[carIndex].gameObject.GetComponent<Rigidbody>().position = new Vector3(0, 0.59f, -19f);
+        m_Cars[carIndex].gameObject.GetComponent<Rigidbody>().rotation = Quaternion.Euler(0, 180f, 0);
+
         // Capture images 
         StartCoroutine(CaptureFromAllPositions(carIndex));
     }

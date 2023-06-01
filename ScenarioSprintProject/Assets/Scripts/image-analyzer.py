@@ -133,8 +133,6 @@ UDP_PORT = 5065
 
 sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 
-# number_of_flawed_images = [filename for filename in os.listdir(DIRECTORY) if filename.startswith("flawed") & filename.endswith(".png")]
-
 prev_number_of_flawed_images = 0
 number_of_flawed_images = 0
 car_counter = 0
@@ -147,7 +145,7 @@ try:
         if number_of_flawed_images != prev_number_of_flawed_images:
             # 3 new images incoming
             print(f'{number_of_flawed_images} and {prev_number_of_flawed_images}')
-            time.sleep(0.1)
+            time.sleep(0.3)
             analyze_one_car(car_counter)
             car_counter += 1
             number_of_flawed_images = prev_number_of_flawed_images + 3
