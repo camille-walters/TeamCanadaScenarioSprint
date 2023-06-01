@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using UnityEngine;
 
@@ -12,6 +13,7 @@ public class SimulationManager : MonoBehaviour
     public GameObject paintingRoomDoors;
     public GameObject centralConveyor;
     public GameObject cvCapturePositions;
+    public Material panelMaterial;
     public bool paintingInProgress;
     public int currentView;
     
@@ -35,6 +37,7 @@ public class SimulationManager : MonoBehaviour
     const int k_ResWidth = 782;
     const int k_ResHeight = 440;
 
+    Texture2D m_Texture2D;
     void Start()
     {
         m_DoorPosition = paintingRoomDoors.transform.localPosition;
@@ -62,6 +65,7 @@ public class SimulationManager : MonoBehaviour
         }
 
         m_CarsGameObject = new GameObject("Cars");
+        m_Texture2D = new Texture2D(782, 440);
     }
 
     void Update()
@@ -81,12 +85,13 @@ public class SimulationManager : MonoBehaviour
             
             m_Views[currentView].enabled = true;
         }
+        ManageCarSpawn();
         UpdateCarRooms();
     }
 
     void LateUpdate()
     {
-        ManageCarSpawn();
+        // ManageCarSpawn();
     }
 
     void ManageCarSpawn()
@@ -128,6 +133,9 @@ public class SimulationManager : MonoBehaviour
 
                 if (m_CarCurrentRooms[i] == Room.CVRoom)
                     ManageAnalysisRoomOccupancy(i);
+
+                if (m_CarCurrentRooms[i] == Room.QARoom)
+                    DisplayDefectsOnPanel(i);
             }
         }
     }
@@ -135,7 +143,6 @@ public class SimulationManager : MonoBehaviour
     void ManageAnalysisRoomOccupancy(int carIndex)
     {
         // Only one car allowed in the CV room at one time
-        
         // Stop the car
         var cvRoomConveyor = centralConveyor.transform.GetChild(3).GetComponent<ConveyorController>();
         cvRoomConveyor.stopTime = 2;
@@ -177,5 +184,13 @@ public class SimulationManager : MonoBehaviour
         var bytes = screenShot.EncodeToPNG();
         var filename = $"{Application.dataPath}/CVCaptures/flawed{carIndex}_{viewIndex}.png";
         System.IO.File.WriteAllBytes(filename, bytes);
+    }
+
+    void DisplayDefectsOnPanel(int carNumber)
+    {
+        var fileData = File.ReadAllBytes($"{Application.dataPath}/CVCaptures/Contours/contours{carNumber}_0.png");
+        m_Texture2D.LoadImage(fileData);
+        panelMaterial.mainTexture = m_Texture2D;
+        
     }
 }

@@ -9,6 +9,7 @@ import numpy as np
 from skimage.metrics import structural_similarity as compare_ssim
 
 DIRECTORY = '../CVCaptures/'
+SAVE_DIRECTORY = '../CVCaptures/Contours/'
 
 
 def flaw_analysis(base, flawed, image_number, car_number):
@@ -35,7 +36,7 @@ def flaw_analysis(base, flawed, image_number, car_number):
             print("Very large contour detected. Color consistency may be off")
         '''
 
-    cv2.imwrite(f'{DIRECTORY}contours{car_number}_{image_number}.png', flawed)
+    cv2.imwrite(f'{SAVE_DIRECTORY}contours{car_number}_{image_number}.png', flawed)
     # cv2.imwrite(f'{DIRECTORY}diff{image_number}.png', diff)
     # cv2.imwrite(f'{DIRECTORY}thresh{car_number}_{image_number}.png', thresh)
 
