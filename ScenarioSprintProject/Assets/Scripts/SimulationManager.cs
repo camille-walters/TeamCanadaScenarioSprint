@@ -137,7 +137,12 @@ public class SimulationManager : MonoBehaviour
         var cvRoomConveyor = centralConveyor.transform.GetChild(3).GetComponent<ConveyorController>();
         cvRoomConveyor.stopTime = 2;
         cvRoomConveyor.stopForTime = true;
-
+        
+        // Reposition the car
+        // m_Cars[carIndex].gameObject.transform.localPosition = new Vector3(0.005738411f, 0.5836744f, -18.99335f);
+        m_Cars[carIndex].gameObject.transform.localPosition = new Vector3(0, 0.59f, -19f);
+        m_Cars[carIndex].gameObject.transform.rotation = Quaternion.Euler(0, 180f, 0);
+        
         // Capture images 
         StartCoroutine(CaptureFromAllPositions(carIndex));
     }
@@ -147,7 +152,7 @@ public class SimulationManager : MonoBehaviour
         var cameraViewCounter = 0;
         foreach (var cvCamera in m_CVCaptureCameras)
         {
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(0.2f);
             CaptureImageFromOnePosition(cvCamera, carIndex, cameraViewCounter);
             cameraViewCounter += 1;
         }

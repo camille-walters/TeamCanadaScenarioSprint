@@ -16,6 +16,9 @@ def flaw_analysis(base, flawed, image_number, car_number):
     gray_a = cv2.cvtColor(base, cv2.COLOR_BGR2GRAY)
     gray_b = cv2.cvtColor(flawed, cv2.COLOR_BGR2GRAY)
 
+    gray_a = cv2.GaussianBlur(gray_a, (3, 3), sigmaX=0, sigmaY=0)
+    gray_b = cv2.GaussianBlur(gray_b, (3, 3), sigmaX=0, sigmaY=0)
+
     (score, diff) = compare_ssim(gray_a, gray_b, full=True)
     diff = (diff * 255).astype("uint8")
 
@@ -33,8 +36,8 @@ def flaw_analysis(base, flawed, image_number, car_number):
         '''
 
     cv2.imwrite(f'{DIRECTORY}contours{car_number}_{image_number}.png', flawed)
-    #cv2.imwrite(f'{DIRECTORY}diff{image_number}.png', diff)
-    #cv2.imwrite(f'{DIRECTORY}thresh{i}.png', thresh)
+    # cv2.imwrite(f'{DIRECTORY}diff{image_number}.png', diff)
+    # cv2.imwrite(f'{DIRECTORY}thresh{car_number}_{image_number}.png', thresh)
 
     return score
 
@@ -60,25 +63,23 @@ def color_consistency_analysis(base, flawed):
     return delta_e
 
 
-def edge_detection(base, flawed, image_number):
+def edge_detection(base, flawed, image_number, car_number):
     # Source: https://learnopencv.com/edge-detection-using-opencv/
-    base = cv2.cvtColor(base, cv2.COLOR_BGR2GRAY)
-    flawed = cv2.cvtColor(flawed, cv2.COLOR_BGR2GRAY)
+    base_gray = cv2.cvtColor(base, cv2.COLOR_BGR2GRAY)
+    flawed_gray = cv2.cvtColor(flawed, cv2.COLOR_BGR2GRAY)
 
-    base_blur = cv2.GaussianBlur(base, (3, 3), sigmaX=0, sigmaY=0)
-    flawed_blur = cv2.GaussianBlur(flawed, (3, 3), sigmaX=0, sigmaY=0)
-
-    '''
+    base_blur = cv2.GaussianBlur(base_gray, (3, 3), sigmaX=0, sigmaY=0)
+    flawed_blur = cv2.GaussianBlur(flawed_gray, (3, 3), sigmaX=0, sigmaY=0)
     # Sobel Edge Detection
     base_sobel_xy = cv2.Sobel(src=base_blur, ddepth=cv2.CV_64F, dx=1, dy=1, ksize=5)  # Combined X and Y Sobel
     sobel_xy = cv2.Sobel(src=flawed_blur, ddepth=cv2.CV_64F, dx=1, dy=1, ksize=5)  # Combined X and Y Sobel
     '''
-
     # Canny Edge Detection
     base_edges = cv2.Canny(image=base_blur, threshold1=100, threshold2=200)
     edges = cv2.Canny(image=flawed_blur, threshold1=100, threshold2=200)
+    '''
 
-    (score, diff) = compare_ssim(base_edges, edges, full=True)
+    (score, diff) = compare_ssim(base_sobel_xy, sobel_xy, data_range=sobel_xy.max() - sobel_xy.min(), full=True)
     diff = (diff * 255).astype("uint8")
 
     thresh = cv2.threshold(diff, 0, 255, cv2.THRESH_BINARY_INV | cv2.THRESH_OTSU)[1]
@@ -89,8 +90,9 @@ def edge_detection(base, flawed, image_number):
         (x, y, w, h) = cv2.boundingRect(c)
         cv2.rectangle(flawed, (x, y), (x + w, y + h), (0, 0, 255), 2)
 
-    cv2.imwrite(f'{DIRECTORY}edge_contours{image_number}.png', flawed)
-    cv2.imwrite(f'{DIRECTORY}edge_diff{image_number}.png', diff)
+    # print(len(contours))
+    cv2.imwrite(f'{DIRECTORY}edge_contours{car_number}_{image_number}.png', flawed)
+    cv2.imwrite(f'{DIRECTORY}edge_diff{car_number}_{image_number}.png', diff)
 
     return score
 
@@ -117,7 +119,7 @@ def analyze_one_car(car_number):
             color_change_metric = color_consistency_analysis(np.copy(base_image), np.copy(flawed_image))
             total_color_score += color_change_metric
 
-        # edge_detection(np.copy(base_image), np.copy(flawed_image), i)
+        # edge_detection(np.copy(base_image), np.copy(flawed_image), i, car_number)
 
     print("SSIM: {}, Color inconsistency:{}".format(total_ssim_score / total_images,
                                                     total_color_score / total_image_for_color_analysis))

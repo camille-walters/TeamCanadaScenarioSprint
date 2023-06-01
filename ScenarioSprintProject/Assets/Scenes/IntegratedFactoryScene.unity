@@ -508,7 +508,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2448947}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!20 &2448951
 Camera:
   m_ObjectHideFlags: 0
@@ -816,7 +816,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e017eede985307d4394a071e912aa48b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.6
+  speed: 1.2
   stopTime: 5
   stop: 0
   stopForTime: 0
@@ -6548,7 +6548,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e017eede985307d4394a071e912aa48b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
+  speed: 2.1
   stopTime: 5
   stop: 0
   stopForTime: 0
@@ -7158,7 +7158,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 558923588}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!20 &558923592
 Camera:
   m_ObjectHideFlags: 0
@@ -10879,7 +10879,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 809146252}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!20 &809146256
 Camera:
   m_ObjectHideFlags: 0
@@ -14926,7 +14926,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e017eede985307d4394a071e912aa48b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.6
+  speed: 1.2
   stopTime: 5
   stop: 0
   stopForTime: 0
@@ -17447,7 +17447,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e017eede985307d4394a071e912aa48b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1.2
+  speed: 1.6
   stopTime: 5
   stop: 0
   stopForTime: 0
@@ -17479,7 +17479,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1291003313
 Transform:
   m_ObjectHideFlags: 0
@@ -18849,6 +18849,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1369853158}
   - component: {fileID: 1369853159}
+  - component: {fileID: 1369853160}
   m_Layer: 0
   m_Name: SimulationManager
   m_TagString: Untagged
@@ -18887,9 +18888,21 @@ MonoBehaviour:
   simulationViews: {fileID: 1027041334}
   paintingRoomDoors: {fileID: 387898704}
   centralConveyor: {fileID: 1145995944}
+  cvCapturePositions: {fileID: 1291003312}
   paintingInProgress: 0
-  cvDone: 0
   currentView: 0
+--- !u!114 &1369853160
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1369853157}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 729d404032a5d21488bfb7ae095fe178, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1377870913
 GameObject:
   m_ObjectHideFlags: 0
@@ -27076,7 +27089,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e017eede985307d4394a071e912aa48b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.6
+  speed: 0.8
   stopTime: 5
   stop: 0
   stopForTime: 0
