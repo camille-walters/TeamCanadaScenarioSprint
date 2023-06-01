@@ -1,25 +1,29 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
 public class SimulationManager : MonoBehaviour
 {
+    // Public fields
     public GameObject car;
     public GameObject simulationViews;
     public GameObject paintingRoomDoors;
     public GameObject centralConveyor;
+    public GameObject cvCapturePositions;
     public bool paintingInProgress;
     public bool cvDone;
     public int currentView;
-
-    Vector3 m_DoorPosition;
-    List<Camera> m_Views = new();
     
-    GameObject m_CarsGameObject;
-    List<Car> m_Cars = new();
-    List<Room> m_CarCurrentRooms = new();
-    Dictionary<Room, List<int>> m_CarTracker = new Dictionary<Room, List<int>>
+    Vector3 m_DoorPosition; // For painting room door close
+    List<Camera> m_Views = new(); // Camera views
+    List<Camera> m_CVCaptureCameras = new(); // CV Cameras: Left, Top and Right
+    
+    GameObject m_CarsGameObject; // Cars GameObject spawned in scene
+    List<Car> m_Cars = new(); // List of all cars in the scene
+    List<Room> m_CarCurrentRooms = new(); // List of the rooms each corresponding car is in
+    Dictionary<Room, List<int>> m_CarTracker = new Dictionary<Room, List<int>> // List indices of cars in each room
     {
         {Room.SpawnRoom, new List<int>()},
         {Room.PaintingRoom, new List<int>()},
@@ -27,8 +31,11 @@ public class SimulationManager : MonoBehaviour
         {Room.CVRoom, new List<int>()},
         {Room.QARoom, new List<int>()}
     };
+    
+    // CV capture resolution (16:9 aspect)
+    const int k_ResWidth = 782;
+    const int k_ResHeight = 440;
 
-    // List<float> m_RoomBordersZ = new List<float> {99.73f, 83.42f, 25.6f, -12.89f, -25.39f};
     void Start()
     {
         m_DoorPosition = paintingRoomDoors.transform.localPosition;
@@ -46,6 +53,13 @@ public class SimulationManager : MonoBehaviour
             m_Views[1].enabled = false;
             m_Views[2].enabled = false;
             m_Views[3].enabled = false;
+        }
+
+        if (cvCapturePositions != null)
+        {
+            m_CVCaptureCameras.Add(cvCapturePositions.transform.GetChild(0).gameObject.GetComponent<Camera>());
+            m_CVCaptureCameras.Add(cvCapturePositions.transform.GetChild(1).gameObject.GetComponent<Camera>());
+            m_CVCaptureCameras.Add(cvCapturePositions.transform.GetChild(2).gameObject.GetComponent<Camera>());
         }
 
         m_CarsGameObject = new GameObject("Cars");
@@ -71,9 +85,6 @@ public class SimulationManager : MonoBehaviour
         
         ManageCarSpawn();
         UpdateCarRooms();
-        // ManageAnalysisRoomOccupancy();
-        
-        // Debug.Log($"{m_CarTracker[Room.SpawnRoom].Count} and {m_CarTracker[Room.PaintingRoom].Count}");
     }
 
     void ManageCarSpawn()
@@ -119,17 +130,45 @@ public class SimulationManager : MonoBehaviour
         }
     }
 
-    void ManageAnalysisRoomOccupancy(int carNumber)
+    void ManageAnalysisRoomOccupancy(int carIndex)
     {
         // Only one car allowed in the CV room at one time
-        /*
-        if (m_CarTracker[Room.CVRoom].Count == 1)
-            Debug.Log("stop now");
-        */
         
+        // Stop the car
         var cvRoomConveyor = centralConveyor.transform.GetChild(3).GetComponent<ConveyorController>();
-        cvRoomConveyor.stopTime = 3;
+        cvRoomConveyor.stopTime = 2;
         cvRoomConveyor.stopForTime = true;
 
+        // Capture images 
+        StartCoroutine(CaptureFromAllPositions(carIndex));
+    }
+
+    IEnumerator CaptureFromAllPositions(int carIndex)
+    {
+        var cameraViewCounter = 0;
+        foreach (var cvCamera in m_CVCaptureCameras)
+        {
+            yield return new WaitForSeconds(0.1f);
+            CaptureImageFromOnePosition(cvCamera, carIndex, cameraViewCounter);
+            cameraViewCounter += 1;
+        }
+        Debug.Log($"{cameraViewCounter} screenshots were taken for car {carIndex}!");
+    }
+
+    static void CaptureImageFromOnePosition(Camera currentCamera, int carIndex, int viewIndex)
+    {
+        var rt = new RenderTexture(k_ResWidth, k_ResHeight, 24);
+        currentCamera.targetTexture = rt;
+        var screenShot = new Texture2D(k_ResWidth, k_ResHeight, TextureFormat.RGB24, false);
+        currentCamera.Render();
+        RenderTexture.active = rt;
+        screenShot.ReadPixels(new Rect(0, 0, k_ResWidth, k_ResHeight), 0, 0);
+        currentCamera.targetTexture = null;
+        RenderTexture.active = null; 
+        Destroy(rt);
+        
+        var bytes = screenShot.EncodeToPNG();
+        var filename = $"{Application.dataPath}/CVCaptures/flawed{carIndex}_{viewIndex}.png";
+        System.IO.File.WriteAllBytes(filename, bytes);
     }
 }
