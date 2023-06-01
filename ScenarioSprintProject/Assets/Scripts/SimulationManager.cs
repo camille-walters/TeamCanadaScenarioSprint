@@ -89,11 +89,6 @@ public class SimulationManager : MonoBehaviour
         UpdateCarRooms();
     }
 
-    void LateUpdate()
-    {
-        // ManageCarSpawn();
-    }
-
     void ManageCarSpawn()
     {
         // Zero cars in scene
