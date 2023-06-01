@@ -1,4 +1,6 @@
 import os
+import time
+
 import cv2
 import colour
 import imutils
@@ -9,7 +11,7 @@ from skimage.metrics import structural_similarity as compare_ssim
 DIRECTORY = '../CVCaptures/'
 
 
-def flaw_analysis(base, flawed, image_number):
+def flaw_analysis(base, flawed, image_number, car_number):
     # Source: https://pyimagesearch.com/2017/06/19/image-difference-with-opencv-and-python/
     gray_a = cv2.cvtColor(base, cv2.COLOR_BGR2GRAY)
     gray_b = cv2.cvtColor(flawed, cv2.COLOR_BGR2GRAY)
@@ -30,7 +32,7 @@ def flaw_analysis(base, flawed, image_number):
             print("Very large contour detected. Color consistency may be off")
         '''
 
-    cv2.imwrite(f'{DIRECTORY}contours{image_number}.png', flawed)
+    cv2.imwrite(f'{DIRECTORY}contours{car_number}_{image_number}.png', flawed)
     #cv2.imwrite(f'{DIRECTORY}diff{image_number}.png', diff)
     #cv2.imwrite(f'{DIRECTORY}thresh{i}.png', thresh)
 
@@ -93,34 +95,62 @@ def edge_detection(base, flawed, image_number):
     return score
 
 
+def analyze_one_car(car_number):
+    total_images = 3
+    total_image_for_color_analysis = total_images - 1
+    total_ssim_score = 0
+    total_color_score = 0
+
+    for i in range(0, total_images):
+        base_image = cv2.imread(f'{DIRECTORY}base_{i}.png')
+        flawed_image = cv2.imread(f'{DIRECTORY}flawed{car_number}_{i}.png')
+
+        # Resize the flawed image to match the base
+        if flawed_image.shape != base_image.shape:
+            flawed_image = cv2.resize(flawed_image, (base_image.shape[1], base_image.shape[0]))
+
+        ssim_score = flaw_analysis(np.copy(base_image), np.copy(flawed_image), i, car_number)
+        total_ssim_score += ssim_score
+
+        # Do color analysis only for left and right view, not top
+        if i != 1:
+            color_change_metric = color_consistency_analysis(np.copy(base_image), np.copy(flawed_image))
+            total_color_score += color_change_metric
+
+        # edge_detection(np.copy(base_image), np.copy(flawed_image), i)
+
+    print("SSIM: {}, Color inconsistency:{}".format(total_ssim_score / total_images,
+                                                    total_color_score / total_image_for_color_analysis))
+    sock.sendto(("SSIM: {}, Color inconsistency:{}".format(total_ssim_score / total_images,
+                                                           total_color_score / total_image_for_color_analysis)).encode(),
+                (UDP_IP, UDP_PORT))
+
+
 UDP_IP = "127.0.0.1"
 UDP_PORT = 5065
 
 sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 
-prefixed = [filename for filename in os.listdir(DIRECTORY) if filename.startswith("base") & filename.endswith(".png")]
-total_images = len(prefixed)
-total_image_for_color_analysis = total_images - 1
-total_ssim_score = 0
-total_color_score = 0
+# number_of_flawed_images = [filename for filename in os.listdir(DIRECTORY) if filename.startswith("flawed") & filename.endswith(".png")]
 
-for i in range(0, total_images):
-    base_image = cv2.imread(f'{DIRECTORY}base_{i}.png')
-    flawed_image = cv2.imread(f'{DIRECTORY}flawed1_{i}.png')
+prev_number_of_flawed_images = 0
+number_of_flawed_images = 0
+car_counter = 0
 
-    # Resize the flawed image to match the base
-    if flawed_image.shape != base_image.shape:
-        flawed_image = cv2.resize(flawed_image, (base_image.shape[1], base_image.shape[0]))
+try:
+    while True:
+        number_of_flawed_images = len([filename for filename in os.listdir(DIRECTORY) if
+                                   filename.startswith("flawed") & filename.endswith(".png")])
 
-    ssim_score = flaw_analysis(np.copy(base_image), np.copy(flawed_image), i)
-    total_ssim_score += ssim_score
+        if number_of_flawed_images != prev_number_of_flawed_images:
+            # 3 new images incoming
+            print(f'{number_of_flawed_images} and {prev_number_of_flawed_images}')
+            time.sleep(0.1)
+            analyze_one_car(car_counter)
+            car_counter += 1
+            number_of_flawed_images = prev_number_of_flawed_images + 3
 
-    # Do color analysis only for left and right view, not top
-    if i != 1:
-        color_change_metric = color_consistency_analysis(np.copy(base_image), np.copy(flawed_image))
-        total_color_score += color_change_metric
+        prev_number_of_flawed_images = number_of_flawed_images
 
-    # edge_detection(np.copy(base_image), np.copy(flawed_image), i)
-
-print("SSIM: {}, Color inconsistency:{}".format(total_ssim_score / total_images, total_color_score / total_image_for_color_analysis))
-sock.sendto(("SSIM: {}, Color inconsistency:{}".format(total_ssim_score / total_images, total_color_score / total_image_for_color_analysis)).encode(), (UDP_IP, UDP_PORT))
+except KeyboardInterrupt:
+    pass
