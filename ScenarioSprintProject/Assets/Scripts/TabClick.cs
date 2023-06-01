@@ -26,7 +26,7 @@ public class TabClick : MonoBehaviour, IPointerEnterHandler, IPointerClickHandle
     }
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         background = GetComponent<Image>();
         tabGroup.Subscribe(this);
