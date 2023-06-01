@@ -12,6 +12,7 @@ public class TabClick : MonoBehaviour, IPointerEnterHandler, IPointerClickHandle
 
     public void OnPointerClick(PointerEventData eventData)
     {
+        Debug.Log("clicked" + gameObject.name);
         tabGroup.OnTabSelected(this);
     }
 
@@ -26,7 +27,7 @@ public class TabClick : MonoBehaviour, IPointerEnterHandler, IPointerClickHandle
     }
 
     // Start is called before the first frame update
-    void Awake()
+    void Start()
     {
         background = GetComponent<Image>();
         tabGroup.Subscribe(this);

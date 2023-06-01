@@ -8,6 +8,8 @@ public class TabGroup : MonoBehaviour
     public Color tabIdle;
     public Color tabHover;
     public Color tabActive;
+
+    public List<GameObject> objectsToSwap;
     // Start is called before the first frame update
     public void Subscribe(TabClick button)
     {
@@ -36,10 +38,23 @@ public class TabGroup : MonoBehaviour
     {
         ResetTabs();
         button.background.color = tabActive;
+        int index = button.transform.GetSiblingIndex();
+        for (int i =0; i<objectsToSwap.Count; i++)
+        {
+            if (i == index)
+            {
+                objectsToSwap[i].SetActive(true);
+            }
+            else
+            {
+                objectsToSwap[i].SetActive(false);
+            }
+        }
     }
 
     public void ResetTabs()
     {
+        Debug.Log("resetting");
         foreach(TabClick button in tabButtons)
         {
             button.background.color = tabIdle;
