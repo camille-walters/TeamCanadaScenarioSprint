@@ -71,7 +71,7 @@ public class SimulationManager : MonoBehaviour
         
         ManageCarSpawn();
         UpdateCarRooms();
-        ManageAnalysisRoomOccupancy();
+        // ManageAnalysisRoomOccupancy();
         
         // Debug.Log($"{m_CarTracker[Room.SpawnRoom].Count} and {m_CarTracker[Room.PaintingRoom].Count}");
     }
@@ -112,14 +112,24 @@ public class SimulationManager : MonoBehaviour
                 m_CarTracker[m_CarCurrentRooms[i]].Remove(i);
                 m_CarTracker[m_Cars[i].currentRoom].Add(i);
                 m_CarCurrentRooms[i] = m_Cars[i].currentRoom;
+
+                if (m_CarCurrentRooms[i] == Room.CVRoom)
+                    ManageAnalysisRoomOccupancy(i);
             }
         }
     }
 
-    void ManageAnalysisRoomOccupancy()
+    void ManageAnalysisRoomOccupancy(int carNumber)
     {
         // Only one car allowed in the CV room at one time
+        /*
         if (m_CarTracker[Room.CVRoom].Count == 1)
             Debug.Log("stop now");
+        */
+        
+        var cvRoomConveyor = centralConveyor.transform.GetChild(3).GetComponent<ConveyorController>();
+        cvRoomConveyor.stopTime = 3;
+        cvRoomConveyor.stopForTime = true;
+
     }
 }
