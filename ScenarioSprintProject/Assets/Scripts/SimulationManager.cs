@@ -14,8 +14,12 @@ public class SimulationManager : MonoBehaviour
     public GameObject centralConveyor;
     public GameObject cvCapturePositions;
     public Material panelMaterial;
+    public float conveyorSpeedFactor = 1;
     public bool paintingInProgress;
     public int currentView;
+
+    List<ConveyorController> m_ConveyorControllers = new();
+    float m_PrevConveyorSpeedFactor;
     
     Vector3 m_DoorPosition; // For painting room door close
     List<Camera> m_Views = new(); // Camera views
@@ -42,6 +46,11 @@ public class SimulationManager : MonoBehaviour
     {
         m_DoorPosition = paintingRoomDoors.transform.localPosition;
 
+        for (var i = 0; i < centralConveyor.transform.childCount; ++i)
+        {
+            m_ConveyorControllers.Add(centralConveyor.transform.GetChild(i).GetComponent<ConveyorController>());
+        }
+
         if (simulationViews != null)
         {
             m_Views.Add(simulationViews.transform.GetChild(0).gameObject.GetComponent<Camera>());
@@ -66,11 +75,20 @@ public class SimulationManager : MonoBehaviour
 
         m_CarsGameObject = new GameObject("Cars");
         m_Texture2D = new Texture2D(782, 440);
+        
+        // Conveyor speeds
+        UpdateConveyorSpeeds();
+        m_PrevConveyorSpeedFactor = conveyorSpeedFactor;
     }
 
     void Update()
     {
         paintingRoomDoors.transform.localPosition = paintingInProgress ? new Vector3(m_DoorPosition.x, -10, m_DoorPosition.z) : m_DoorPosition;
+        
+        // Update Conveyor speeds
+        if (Math.Abs(conveyorSpeedFactor - m_PrevConveyorSpeedFactor) > 0.001f) 
+            UpdateConveyorSpeeds();
+        m_PrevConveyorSpeedFactor = conveyorSpeedFactor;
 
         // Switch camera view when C key is pressed
         // TODO: Connect with UI
@@ -87,6 +105,14 @@ public class SimulationManager : MonoBehaviour
         }
         ManageCarSpawn();
         UpdateCarRooms();
+    }
+
+    void UpdateConveyorSpeeds()
+    {
+        foreach (var conveyorController in m_ConveyorControllers)
+        {
+            conveyorController.speed = conveyorController.speed * conveyorSpeedFactor;
+        }
     }
 
     void ManageCarSpawn()
