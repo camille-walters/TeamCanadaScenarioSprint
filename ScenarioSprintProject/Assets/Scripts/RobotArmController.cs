@@ -67,7 +67,6 @@ public class RobotArmController : MonoBehaviour
             var pos0 = currNode.transform.position + currNode.transform.up * (distanceFromSurface + 0.5f);
             robotIKTarget0.localPosition = robotIKTarget0.transform.parent.InverseTransformPoint(pos0);
             robotIKTarget1.localPosition = robotIKTarget1.transform.parent.InverseTransformPoint(pos1);
-            Debug.Log(Vector3.Distance(pos1, robotEndNode.position));
             if (Vector3.Distance(pos1, robotEndNode.position) < minDistToTarget)
             {
                 currentPathNodeIndex = (currentPathNodeIndex < robotPath.pathNodes.Length - 1) ? currentPathNodeIndex + 1 : -1;

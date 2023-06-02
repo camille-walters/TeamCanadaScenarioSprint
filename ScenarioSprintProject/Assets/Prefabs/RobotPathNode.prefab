@@ -96,3 +96,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76a898b16ed764ce09b297b78c956c89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  actionIndex: 0
+  pauseDuration: 0
