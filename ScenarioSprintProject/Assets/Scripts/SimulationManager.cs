@@ -107,7 +107,7 @@ public class SimulationManager : MonoBehaviour
 
     void SpawnCar()
     {
-        var newCar = Instantiate(car, new Vector3(0, 0.6f, 90), Quaternion.Euler(0, 180, 0));
+        var newCar = Instantiate(car, new Vector3(0, 0.6f, 92), Quaternion.Euler(0, 180, 0));
         newCar.transform.parent = m_CarsGameObject.transform;
         var carComponent = newCar.AddComponent<Car>();
         
@@ -144,9 +144,11 @@ public class SimulationManager : MonoBehaviour
         cvRoomConveyor.stopForTime = true;
         
         // Reposition the car
-        // m_Cars[carIndex].gameObject.transform.localPosition = new Vector3(0.005738411f, 0.5836744f, -18.99335f);
-        m_Cars[carIndex].gameObject.GetComponent<Rigidbody>().position = new Vector3(0, 0.59f, -19f);
-        m_Cars[carIndex].gameObject.GetComponent<Rigidbody>().rotation = Quaternion.Euler(0, 180f, 0);
+        var carRigidBody = m_Cars[carIndex].gameObject.GetComponent<Rigidbody>();
+        carRigidBody.isKinematic = true;
+        carRigidBody.position = new Vector3(0, 0.59f, -19f);
+        carRigidBody.rotation = Quaternion.Euler(0, 180f, 0);
+        carRigidBody.isKinematic = false;
 
         // Capture images 
         StartCoroutine(CaptureFromAllPositions(carIndex));
