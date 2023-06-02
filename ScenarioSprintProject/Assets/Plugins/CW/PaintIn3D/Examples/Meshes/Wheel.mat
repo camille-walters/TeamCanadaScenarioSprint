@@ -10,8 +10,10 @@ Material:
   m_Name: Wheel
   m_Shader: {fileID: 4800000, guid: d2862e538ed34704297d434d0ab8c398, type: 3}
   m_ValidKeywords:
-  - _ENABLE_FOG_ON_TRANSPARENT
-  - _TRANSPARENT_WRITES_MOTION_VEC
+  - _ADD_PRECOMPUTED_VELOCITY
+  - _DISABLE_DECALS
+  - _DISABLE_SSR
+  - _DISABLE_SSR_TRANSPARENT
   m_InvalidKeywords:
   - _CW_REFRACTION_OFF
   - _USE_UV2
@@ -115,13 +117,13 @@ Material:
     - _AlphaToMaskInspectorValue: 0
     - _BlendMode: 0
     - _BumpScale: 1
-    - _CW_AddPrecomputedVelocity: 0
-    - _CW_DisableDecals: 0
+    - _CW_AddPrecomputedVelocity: 1
+    - _CW_DisableDecals: 1
     - _CW_DisableFog: 0
-    - _CW_DisableSSR: 0
-    - _CW_DisableSSRTransparent: 0
-    - _CW_DisableTransparentFog: 0
-    - _CW_DisableTransparentMV: 0
+    - _CW_DisableSSR: 1
+    - _CW_DisableSSRTransparent: 1
+    - _CW_DisableTransparentFog: 1
+    - _CW_DisableTransparentMV: 1
     - _CW_Refraction: 0
     - _Cutoff: 0.5
     - _DepthOffsetEnable: 0
