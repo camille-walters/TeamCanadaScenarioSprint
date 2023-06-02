@@ -47,12 +47,12 @@ public class ControlPanel : MonoBehaviour
     #region Workers
     public void OnNumberOfWorkersChange()
     {
-        Debug.Log("Test");
+        Debug.Log("workerchange");
     }
 
     public void OnTimeToInspectChange()
     {
-        Debug.Log("Test");
+        Debug.Log("inspect change");
     }
 
     public void OnTimeToFixChange()
