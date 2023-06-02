@@ -12,7 +12,6 @@ public class TabClick : MonoBehaviour, IPointerEnterHandler, IPointerClickHandle
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        Debug.Log("clicked" + gameObject.name);
         tabGroup.OnTabSelected(this);
     }
 
@@ -31,11 +30,5 @@ public class TabClick : MonoBehaviour, IPointerEnterHandler, IPointerClickHandle
     {
         background = GetComponent<Image>();
         tabGroup.Subscribe(this);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

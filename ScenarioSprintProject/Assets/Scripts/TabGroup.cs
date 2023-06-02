@@ -23,7 +23,6 @@ public class TabGroup : MonoBehaviour
 
     public void OnTabEnter(TabClick button)
     {
-        Debug.Log("here");
         ResetTabs();
         button.background.color = tabHover;
     }
@@ -54,7 +53,6 @@ public class TabGroup : MonoBehaviour
 
     public void ResetTabs()
     {
-        Debug.Log("resetting");
         foreach(TabClick button in tabButtons)
         {
             button.background.color = tabIdle;
