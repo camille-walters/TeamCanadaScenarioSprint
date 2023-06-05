@@ -4,6 +4,7 @@ import cv2
 import colour
 import imutils
 import socket
+import glob
 import numpy as np
 from imutils import contours
 from skimage.metrics import structural_similarity as compare_ssim
@@ -185,6 +186,18 @@ sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 prev_number_of_flawed_images = 0
 number_of_flawed_images = 0
 car_counter = 0
+
+# Clean up folders before analysis
+# Clean Contours folder
+filelist = glob.glob(os.path.join(SAVE_DIRECTORY, "*"))
+for f in filelist:
+    os.remove(f)
+# Clean CVCaptures folder, but leave base images
+filelist = glob.glob(os.path.join(DIRECTORY, "*"))
+for f in filelist:
+    if f.__contains__("flawed"):
+        os.remove(f)
+print("Cleaned folders, ready to start analysis")
 
 try:
     while True:
