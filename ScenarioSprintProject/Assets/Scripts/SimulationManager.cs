@@ -232,4 +232,9 @@ public class SimulationManager : MonoBehaviour
         panelMaterial.mainTexture = m_Texture2D;
         
     }
+
+    public Car GetCar(int index)
+    {
+        return m_Cars[index];
+    }
 }

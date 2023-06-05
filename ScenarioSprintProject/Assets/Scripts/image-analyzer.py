@@ -11,46 +11,6 @@ from skimage.metrics import structural_similarity as compare_ssim
 DIRECTORY = '../CVCaptures/'
 SAVE_DIRECTORY = '../CVCaptures/Contours/'
 
-'''
-def merge_bounding_boxes_x_axis(boxes):
-    boxes_used = [False] * len(boxes)
-    accepted_boxes_x = []
-
-    x_threshold = 2
-    y_threshold = 2
-
-    for supIdx, supVal in enumerate(boxes):
-        if not boxes_used[supIdx]:
-            curr_x_min = supVal[0]
-            curr_x_max = supVal[0] + supVal[2]
-            curr_y_min = supVal[1]
-            curr_y_max = supVal[1] + supVal[3]
-            boxes_used[supIdx] = True
-
-            for subIdx, subVal in enumerate(boxes[(supIdx + 1):], start=(supIdx + 1)):
-
-                # Initialize merge candidate
-                candidate_x_min = subVal[0]
-                candidate_x_max = subVal[0] + subVal[2]
-                candidate_y_min = subVal[1]
-                candidate_y_max = subVal[1] + subVal[3]
-
-                if (curr_x_max + x_threshold >= candidate_x_min) and (
-                        abs(curr_y_min - candidate_y_min) < y_threshold) and (
-                        abs(curr_y_max - candidate_y_max) < y_threshold):
-                    curr_x_max = candidate_x_max
-                    curr_y_min = min(curr_y_min, candidate_y_min)
-                    curr_y_max = max(curr_y_max, candidate_y_max)
-
-                    boxes_used[subIdx] = True
-                else:
-                    break
-
-            accepted_boxes_x.append([curr_x_min, curr_y_min, curr_x_max - curr_x_min, curr_y_max - curr_y_min])
-
-    return accepted_boxes_x
-'''
-
 
 def merge_overlapping_boxes(boxes):
     boxes_used = [False] * len(boxes)
@@ -72,7 +32,8 @@ def merge_overlapping_boxes(boxes):
                 candidate_y_min = subVal[1]
                 candidate_y_max = subVal[1] + subVal[3]
 
-                if (curr_x_max > candidate_x_max) and (curr_x_min < candidate_x_min) and (curr_y_max > candidate_y_max) and (curr_y_min < candidate_y_min):
+                if (curr_x_max > candidate_x_max) and (curr_x_min < candidate_x_min) and (
+                        curr_y_max > candidate_y_max) and (curr_y_min < candidate_y_min):
                     boxes_used[subIdx] = True
 
             accepted_boxes.append([curr_x_min, curr_y_min, curr_x_max - curr_x_min, curr_y_max - curr_y_min])
@@ -97,19 +58,28 @@ def flaw_analysis(base, flawed, image_number, car_number):
     (contours, bounding_boxes) = imutils.contours.sort_contours(contours, method="left-to-right")
     bounding_boxes = list(bounding_boxes)
     bounding_boxes = merge_overlapping_boxes(bounding_boxes)
-    # bounding_boxes = merge_bounding_boxes_x_axis(bounding_boxes)
     # bounding_boxes = cv2.groupRectangles(bounding_boxes, 1, 0.01)
-    counter = 0
+
+    threshold = 1000
+    ignore_threshold = 20
+    minor_counter = 0
+    major_counter = 0
 
     for (x, y, w, h) in bounding_boxes:
-        cv2.rectangle(flawed, (x, y), (x + w, y + h), (0, 0, 255), 2)
-        counter += 1
+        if w * h > threshold:
+            major_counter += 1
+            cv2.rectangle(flawed, (x, y), (x + w, y + h), (0, 0, 255), 2)  # Red
+        elif w * h > ignore_threshold:
+            minor_counter += 1
+            cv2.rectangle(flawed, (x, y), (x + w, y + h), (0, 255, 0), 2)  # Green
+        else:
+            continue  # ignore
 
     cv2.imwrite(f'{SAVE_DIRECTORY}contours{car_number}_{image_number}.png', flawed)
     # cv2.imwrite(f'{DIRECTORY}diff{image_number}.png', diff)
     # cv2.imwrite(f'{DIRECTORY}thresh{car_number}_{image_number}.png', thresh)
 
-    return score, counter
+    return score, minor_counter, major_counter
 
 
 def color_consistency_analysis(base, flawed):
@@ -173,7 +143,8 @@ def analyze_one_car(car_number):
     total_images = 3
     total_image_for_color_analysis = total_images - 1
     total_ssim_score = 0
-    total_flaws = 0
+    total_minor_flaws = 0
+    total_major_flaws = 0
     total_color_score = 0
 
     for i in range(0, total_images):
@@ -184,22 +155,26 @@ def analyze_one_car(car_number):
         if flawed_image.shape != base_image.shape:
             flawed_image = cv2.resize(flawed_image, (base_image.shape[1], base_image.shape[0]))
 
-        ssim_score, number_of_flaws = flaw_analysis(np.copy(base_image), np.copy(flawed_image), i, car_number)
+        ssim_score, minor_flaws, major_flaws = flaw_analysis(np.copy(base_image), np.copy(flawed_image), i, car_number)
         total_ssim_score += ssim_score
-        total_flaws += number_of_flaws
+        total_minor_flaws += minor_flaws
+        total_major_flaws += major_flaws
 
         # Do color analysis only for left and right view, not top
         if i != 1:
             color_change_metric = color_consistency_analysis(np.copy(base_image), np.copy(flawed_image))
             total_color_score += color_change_metric
 
-    print("SSIM: {}, Flaws: {}, Color inconsistency:{}".format(total_ssim_score / total_images,
-                                                               total_flaws,
-                                                               total_color_score / total_image_for_color_analysis))
-    sock.sendto(("SSIM: {}, Flaws: {}, Color inconsistency:{}".format(total_ssim_score / total_images,
-                                                                      total_flaws,
-                                                                      total_color_score / total_image_for_color_analysis)).encode(),
-                (UDP_IP, UDP_PORT))
+    print("SSIM: {:.3f}, Minor flaws: {}, Major flaws: {}, Color inconsistency:{:.3f}".format(total_ssim_score / total_images,
+                                                                                      total_minor_flaws,
+                                                                                      total_major_flaws,
+                                                                                      total_color_score / total_image_for_color_analysis))
+    sock.sendto(
+        ("SSIM: {:.3f}, Minor flaws: {}, Major flaws: {}, Color inconsistency:{:.3f}".format(total_ssim_score / total_images,
+                                                                                     total_minor_flaws,
+                                                                                     total_major_flaws,
+                                                                                     total_color_score / total_image_for_color_analysis)).encode(),
+        (UDP_IP, UDP_PORT))
 
 
 UDP_IP = "127.0.0.1"
@@ -214,7 +189,7 @@ car_counter = 0
 try:
     while True:
         number_of_flawed_images = len([filename for filename in os.listdir(DIRECTORY) if
-                                   filename.startswith("flawed") & filename.endswith(".png")])
+                                       filename.startswith("flawed") & filename.endswith(".png")])
 
         if number_of_flawed_images != prev_number_of_flawed_images:
             # 3 new images incoming

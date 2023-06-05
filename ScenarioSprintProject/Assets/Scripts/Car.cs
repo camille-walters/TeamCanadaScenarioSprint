@@ -12,10 +12,13 @@ public class Car : MonoBehaviour
     public bool analysisComplete;
     public bool fixingComplete;
 
+    public float minorFlaws = 0;
+    public float majorFlaws = 0;
+
     GameObject m_CentralConveyors;
     List<GameObject> m_Conveyors = new();
     Dictionary<int, string> m_Rooms = new Dictionary<int, string>();
-    
+
     // Note: Ready to exit painting room at 29.68
     // static readonly List<float> k_RoomBordersZ = new List<float> {96.78f, 79.92f, 22.87f, -15.53f, -28.41f};
 
@@ -55,6 +58,12 @@ public class Car : MonoBehaviour
             {
                 Enum.TryParse(m_Rooms[i], out currentRoom);
                 break;
+            }
+
+            if (currentRoom == Room.BufferRoom)
+            {
+                // Painting is complete
+                paintingComplete = true;
             }
         }
     }
