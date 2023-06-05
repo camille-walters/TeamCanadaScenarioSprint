@@ -10,22 +10,22 @@ public class SimulationManager : MonoBehaviour
     // Public fields
     public GameObject car;
     public GameObject simulationViews;
-    public GameObject paintingRoomDoors;
+    // public GameObject paintingRoomDoors;
     public GameObject centralConveyor;
     public GameObject cvCapturePositions;
     public Material panelMaterial;
     public GameObject operatorSpawnPoint;
     public GameObject operatorPrefab;
     public float conveyorSpeedFactor = 1;
-    public bool paintingInProgress;
     public int currentView;
     public int numberOfOperators = 2;
 
     List<ConveyorController> m_ConveyorControllers = new();
     float m_PrevConveyorSpeedFactor;
     
-    Vector3 m_DoorPosition; // For painting room door close
+    // Vector3 m_DoorPosition; // For painting room door close
     List<Camera> m_Views = new(); // Camera views
+    int m_TotalViews;
     List<Camera> m_CVCaptureCameras = new(); // CV Cameras: Left, Top and Right
     
     GameObject m_CarsGameObject; // Cars GameObject spawned in scene
@@ -47,7 +47,7 @@ public class SimulationManager : MonoBehaviour
     Texture2D m_Texture2D;
     void Start()
     {
-        m_DoorPosition = paintingRoomDoors.transform.localPosition;
+        // m_DoorPosition = paintingRoomDoors.transform.localPosition;
 
         for (var i = 0; i < centralConveyor.transform.childCount; ++i)
         {
@@ -56,17 +56,16 @@ public class SimulationManager : MonoBehaviour
 
         if (simulationViews != null)
         {
-            m_Views.Add(simulationViews.transform.GetChild(0).gameObject.GetComponent<Camera>());
-            m_Views.Add(simulationViews.transform.GetChild(1).gameObject.GetComponent<Camera>());
-            m_Views.Add(simulationViews.transform.GetChild(2).gameObject.GetComponent<Camera>());
-            m_Views.Add(simulationViews.transform.GetChild(3).gameObject.GetComponent<Camera>());
+            m_TotalViews = simulationViews.transform.childCount;
+            for (var i = 0; i < m_TotalViews; ++i)
+            {
+                m_Views.Add(simulationViews.transform.GetChild(i).gameObject.GetComponent<Camera>());
+                m_Views[i].enabled = false;
+            }
 
             // Enabling first camera view only
             currentView = 0;
             m_Views[0].enabled = true;
-            m_Views[1].enabled = false;
-            m_Views[2].enabled = false;
-            m_Views[3].enabled = false;
         }
 
         if (cvCapturePositions != null)
@@ -89,7 +88,7 @@ public class SimulationManager : MonoBehaviour
 
     void Update()
     {
-        paintingRoomDoors.transform.localPosition = paintingInProgress ? new Vector3(m_DoorPosition.x, -10, m_DoorPosition.z) : m_DoorPosition;
+        // paintingRoomDoors.transform.localPosition = paintingInProgress ? new Vector3(m_DoorPosition.x, -10, m_DoorPosition.z) : m_DoorPosition;
         
         // Update Conveyor speeds
         if (Math.Abs(conveyorSpeedFactor - m_PrevConveyorSpeedFactor) > 0.001f) 
@@ -102,7 +101,7 @@ public class SimulationManager : MonoBehaviour
         {
             m_Views[currentView].enabled = false;
             
-            if (currentView < 3)
+            if (currentView < simulationViews.transform.childCount - 1)
                 currentView += 1;
             else
                 currentView = 0;
@@ -189,7 +188,6 @@ public class SimulationManager : MonoBehaviour
         carRigidBody.isKinematic = true;
         carRigidBody.position = new Vector3(0, 0.59f, -19f);
         carRigidBody.rotation = Quaternion.Euler(0, 180f, 0);
-        // carRigidBody.isKinematic = false;
 
         // Capture images 
         StartCoroutine(CaptureFromAllPositions(carIndex, carRigidBody));
