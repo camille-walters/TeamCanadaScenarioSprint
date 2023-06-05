@@ -14,9 +14,12 @@ public class SimulationManager : MonoBehaviour
     public GameObject centralConveyor;
     public GameObject cvCapturePositions;
     public Material panelMaterial;
+    public GameObject operatorSpawnPoint;
+    public GameObject operatorPrefab;
     public float conveyorSpeedFactor = 1;
     public bool paintingInProgress;
     public int currentView;
+    public int numberOfOperators = 2;
 
     List<ConveyorController> m_ConveyorControllers = new();
     float m_PrevConveyorSpeedFactor;
@@ -79,6 +82,9 @@ public class SimulationManager : MonoBehaviour
         // Conveyor speeds
         UpdateConveyorSpeeds();
         m_PrevConveyorSpeedFactor = conveyorSpeedFactor;
+        
+        // Spawn Operators
+        SpawnOperators();
     }
 
     void Update()
@@ -105,6 +111,15 @@ public class SimulationManager : MonoBehaviour
         }
         ManageCarSpawn();
         UpdateCarRooms();
+    }
+
+    void SpawnOperators()
+    {
+        for (var i = 0; i < numberOfOperators; ++i)
+        {
+            var newOp = Instantiate(operatorPrefab, new Vector3(-4, 0, -42+i*2), Quaternion.identity);
+            newOp.transform.parent = operatorSpawnPoint.transform;
+        }
     }
 
     void UpdateConveyorSpeeds()
