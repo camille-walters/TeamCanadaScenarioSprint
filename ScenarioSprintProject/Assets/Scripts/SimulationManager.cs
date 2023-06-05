@@ -189,13 +189,13 @@ public class SimulationManager : MonoBehaviour
         carRigidBody.isKinematic = true;
         carRigidBody.position = new Vector3(0, 0.59f, -19f);
         carRigidBody.rotation = Quaternion.Euler(0, 180f, 0);
-        carRigidBody.isKinematic = false;
+        // carRigidBody.isKinematic = false;
 
         // Capture images 
-        StartCoroutine(CaptureFromAllPositions(carIndex));
+        StartCoroutine(CaptureFromAllPositions(carIndex, carRigidBody));
     }
 
-    IEnumerator CaptureFromAllPositions(int carIndex)
+    IEnumerator CaptureFromAllPositions(int carIndex, Rigidbody carRigidBody)
     {
         var cameraViewCounter = 0;
         foreach (var cvCamera in m_CVCaptureCameras)
@@ -205,6 +205,7 @@ public class SimulationManager : MonoBehaviour
             cameraViewCounter += 1;
         }
         Debug.Log($"{cameraViewCounter} screenshots were taken for car {carIndex}!");
+        carRigidBody.isKinematic = false;
     }
 
     static void CaptureImageFromOnePosition(Camera currentCamera, int carIndex, int viewIndex)

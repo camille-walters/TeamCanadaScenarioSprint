@@ -1,15 +1,83 @@
 import os
 import time
-
 import cv2
 import colour
 import imutils
 import socket
 import numpy as np
+from imutils import contours
 from skimage.metrics import structural_similarity as compare_ssim
 
 DIRECTORY = '../CVCaptures/'
 SAVE_DIRECTORY = '../CVCaptures/Contours/'
+
+'''
+def merge_bounding_boxes_x_axis(boxes):
+    boxes_used = [False] * len(boxes)
+    accepted_boxes_x = []
+
+    x_threshold = 2
+    y_threshold = 2
+
+    for supIdx, supVal in enumerate(boxes):
+        if not boxes_used[supIdx]:
+            curr_x_min = supVal[0]
+            curr_x_max = supVal[0] + supVal[2]
+            curr_y_min = supVal[1]
+            curr_y_max = supVal[1] + supVal[3]
+            boxes_used[supIdx] = True
+
+            for subIdx, subVal in enumerate(boxes[(supIdx + 1):], start=(supIdx + 1)):
+
+                # Initialize merge candidate
+                candidate_x_min = subVal[0]
+                candidate_x_max = subVal[0] + subVal[2]
+                candidate_y_min = subVal[1]
+                candidate_y_max = subVal[1] + subVal[3]
+
+                if (curr_x_max + x_threshold >= candidate_x_min) and (
+                        abs(curr_y_min - candidate_y_min) < y_threshold) and (
+                        abs(curr_y_max - candidate_y_max) < y_threshold):
+                    curr_x_max = candidate_x_max
+                    curr_y_min = min(curr_y_min, candidate_y_min)
+                    curr_y_max = max(curr_y_max, candidate_y_max)
+
+                    boxes_used[subIdx] = True
+                else:
+                    break
+
+            accepted_boxes_x.append([curr_x_min, curr_y_min, curr_x_max - curr_x_min, curr_y_max - curr_y_min])
+
+    return accepted_boxes_x
+'''
+
+
+def merge_overlapping_boxes(boxes):
+    boxes_used = [False] * len(boxes)
+    accepted_boxes = []
+
+    for supIdx, supVal in enumerate(boxes):
+        if not boxes_used[supIdx]:
+            curr_x_min = supVal[0]
+            curr_x_max = supVal[0] + supVal[2]
+            curr_y_min = supVal[1]
+            curr_y_max = supVal[1] + supVal[3]
+            boxes_used[supIdx] = True
+
+            for subIdx, subVal in enumerate(boxes[(supIdx + 1):], start=(supIdx + 1)):
+
+                # Initialize merge candidate
+                candidate_x_min = subVal[0]
+                candidate_x_max = subVal[0] + subVal[2]
+                candidate_y_min = subVal[1]
+                candidate_y_max = subVal[1] + subVal[3]
+
+                if (curr_x_max > candidate_x_max) and (curr_x_min < candidate_x_min) and (curr_y_max > candidate_y_max) and (curr_y_min < candidate_y_min):
+                    boxes_used[subIdx] = True
+
+            accepted_boxes.append([curr_x_min, curr_y_min, curr_x_max - curr_x_min, curr_y_max - curr_y_min])
+
+    return accepted_boxes
 
 
 def flaw_analysis(base, flawed, image_number, car_number):
@@ -26,21 +94,22 @@ def flaw_analysis(base, flawed, image_number, car_number):
     thresh = cv2.threshold(diff, 0, 255, cv2.THRESH_BINARY_INV | cv2.THRESH_OTSU)[1]
     contours = cv2.findContours(thresh.copy(), cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
     contours = imutils.grab_contours(contours)
+    (contours, bounding_boxes) = imutils.contours.sort_contours(contours, method="left-to-right")
+    bounding_boxes = list(bounding_boxes)
+    bounding_boxes = merge_overlapping_boxes(bounding_boxes)
+    # bounding_boxes = merge_bounding_boxes_x_axis(bounding_boxes)
+    # bounding_boxes = cv2.groupRectangles(bounding_boxes, 1, 0.01)
+    counter = 0
 
-    for c in contours:
-        (x, y, w, h) = cv2.boundingRect(c)
+    for (x, y, w, h) in bounding_boxes:
         cv2.rectangle(flawed, (x, y), (x + w, y + h), (0, 0, 255), 2)
-        '''
-        # If the contour covers more than 20% of the image, there is a chance there is a color inconsistency
-        if w * h > flawed.shape[0] * flawed.shape[1] * 0.2:
-            print("Very large contour detected. Color consistency may be off")
-        '''
+        counter += 1
 
     cv2.imwrite(f'{SAVE_DIRECTORY}contours{car_number}_{image_number}.png', flawed)
     # cv2.imwrite(f'{DIRECTORY}diff{image_number}.png', diff)
     # cv2.imwrite(f'{DIRECTORY}thresh{car_number}_{image_number}.png', thresh)
 
-    return score
+    return score, counter
 
 
 def color_consistency_analysis(base, flawed):
@@ -64,6 +133,7 @@ def color_consistency_analysis(base, flawed):
     return delta_e
 
 
+'''
 def edge_detection(base, flawed, image_number, car_number):
     # Source: https://learnopencv.com/edge-detection-using-opencv/
     base_gray = cv2.cvtColor(base, cv2.COLOR_BGR2GRAY)
@@ -71,14 +141,14 @@ def edge_detection(base, flawed, image_number, car_number):
 
     base_blur = cv2.GaussianBlur(base_gray, (3, 3), sigmaX=0, sigmaY=0)
     flawed_blur = cv2.GaussianBlur(flawed_gray, (3, 3), sigmaX=0, sigmaY=0)
+    
     # Sobel Edge Detection
     base_sobel_xy = cv2.Sobel(src=base_blur, ddepth=cv2.CV_64F, dx=1, dy=1, ksize=5)  # Combined X and Y Sobel
     sobel_xy = cv2.Sobel(src=flawed_blur, ddepth=cv2.CV_64F, dx=1, dy=1, ksize=5)  # Combined X and Y Sobel
-    '''
+    
     # Canny Edge Detection
     base_edges = cv2.Canny(image=base_blur, threshold1=100, threshold2=200)
     edges = cv2.Canny(image=flawed_blur, threshold1=100, threshold2=200)
-    '''
 
     (score, diff) = compare_ssim(base_sobel_xy, sobel_xy, data_range=sobel_xy.max() - sobel_xy.min(), full=True)
     diff = (diff * 255).astype("uint8")
@@ -96,12 +166,14 @@ def edge_detection(base, flawed, image_number, car_number):
     cv2.imwrite(f'{DIRECTORY}edge_diff{car_number}_{image_number}.png', diff)
 
     return score
+'''
 
 
 def analyze_one_car(car_number):
     total_images = 3
     total_image_for_color_analysis = total_images - 1
     total_ssim_score = 0
+    total_flaws = 0
     total_color_score = 0
 
     for i in range(0, total_images):
@@ -112,20 +184,21 @@ def analyze_one_car(car_number):
         if flawed_image.shape != base_image.shape:
             flawed_image = cv2.resize(flawed_image, (base_image.shape[1], base_image.shape[0]))
 
-        ssim_score = flaw_analysis(np.copy(base_image), np.copy(flawed_image), i, car_number)
+        ssim_score, number_of_flaws = flaw_analysis(np.copy(base_image), np.copy(flawed_image), i, car_number)
         total_ssim_score += ssim_score
+        total_flaws += number_of_flaws
 
         # Do color analysis only for left and right view, not top
         if i != 1:
             color_change_metric = color_consistency_analysis(np.copy(base_image), np.copy(flawed_image))
             total_color_score += color_change_metric
 
-        # edge_detection(np.copy(base_image), np.copy(flawed_image), i, car_number)
-
-    print("SSIM: {}, Color inconsistency:{}".format(total_ssim_score / total_images,
-                                                    total_color_score / total_image_for_color_analysis))
-    sock.sendto(("SSIM: {}, Color inconsistency:{}".format(total_ssim_score / total_images,
-                                                           total_color_score / total_image_for_color_analysis)).encode(),
+    print("SSIM: {}, Flaws: {}, Color inconsistency:{}".format(total_ssim_score / total_images,
+                                                               total_flaws,
+                                                               total_color_score / total_image_for_color_analysis))
+    sock.sendto(("SSIM: {}, Flaws: {}, Color inconsistency:{}".format(total_ssim_score / total_images,
+                                                                      total_flaws,
+                                                                      total_color_score / total_image_for_color_analysis)).encode(),
                 (UDP_IP, UDP_PORT))
 
 
@@ -146,7 +219,7 @@ try:
         if number_of_flawed_images != prev_number_of_flawed_images:
             # 3 new images incoming
             print(f'{number_of_flawed_images} and {prev_number_of_flawed_images}')
-            time.sleep(0.3)
+            time.sleep(0.8)
             analyze_one_car(car_counter)
             car_counter += 1
             number_of_flawed_images = prev_number_of_flawed_images + 3
