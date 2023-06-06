@@ -21,7 +21,11 @@ public class SimulationManager : MonoBehaviour
     public int currentView;
     public int numberOfOperators = 2;
     public int totalCarsProcessed;
-
+    public float throughput;
+    public float fixingTimeForMinorDefects;
+    public float fixingTimeForMajorDefects;
+    
+    SimulationTimeTracker m_SimulationTimeTracker;
     List<ConveyorController> m_ConveyorControllers = new();
     float m_PrevConveyorSpeedFactor;
     
@@ -42,7 +46,7 @@ public class SimulationManager : MonoBehaviour
         {Room.QARoom, new List<int>()},
         {Room.ProcessedRoom, new List<int>()}
     };
-    int carStartIndex = 0;
+    int m_CarStartIndex = 0;
     
     // CV capture resolution (16:9 aspect)
     const int k_ResWidth = 782;
@@ -52,6 +56,7 @@ public class SimulationManager : MonoBehaviour
     void Start()
     {
         // m_DoorPosition = paintingRoomDoors.transform.localPosition;
+        m_SimulationTimeTracker = this.gameObject.GetComponent<SimulationTimeTracker>();
 
         for (var i = 0; i < centralConveyor.transform.childCount; ++i)
         {
@@ -166,7 +171,7 @@ public class SimulationManager : MonoBehaviour
 
     void UpdateCarRooms()
     {
-        for (var i = carStartIndex; i < m_Cars.Count; ++i)
+        for (var i = m_CarStartIndex; i < m_Cars.Count; ++i)
         {
             if (m_CarCurrentRooms[i] != m_Cars[i].currentRoom)
             {
@@ -178,12 +183,19 @@ public class SimulationManager : MonoBehaviour
                     ManageAnalysisRoomOccupancy(i);
 
                 if (m_CarCurrentRooms[i] == Room.QARoom)
+                {
                     DisplayDefectsOnPanel(i);
+                    StartCoroutine(FixCar(i));
+                }
 
                 if (m_CarCurrentRooms[i] == Room.ProcessedRoom)
                 {
                     Debug.Log($"Processed Car {m_Cars[i].carID}. Destroying it now.");
                     totalCarsProcessed += 1;
+                    
+                    // Update throughput
+                    throughput = (float)totalCarsProcessed / m_SimulationTimeTracker.minutesPassed;
+                    
                     DespawnProcessedCar(i);
                 }
             }
@@ -201,7 +213,7 @@ public class SimulationManager : MonoBehaviour
         // Reposition the car
         var carRigidBody = m_Cars[carIndex].gameObject.GetComponent<Rigidbody>();
         carRigidBody.isKinematic = true;
-        carRigidBody.position = new Vector3(0, 0.59f, -19f);
+        carRigidBody.position = new Vector3(0, 0.59f, -22f);
         carRigidBody.rotation = Quaternion.Euler(0, 180f, 0);
 
         // Capture images 
@@ -249,13 +261,36 @@ public class SimulationManager : MonoBehaviour
     void DespawnProcessedCar(int index)
     {
         var carTemp = m_Cars[index];
-        carStartIndex = index + 1;
+        m_CarStartIndex = index + 1;
         m_Cars[index] = null;
         Destroy(carTemp.gameObject);
+    }
+    
+    IEnumerator FixCar(int index)
+    {
+        // Move Car object to the side (consider turning it off its too much)
+        m_Cars[index].gameObject.transform.position = new Vector3(4, 0.6f, -30);
+        
+        // var timeToFix = m_Cars[index].minorFlaws * fixingTimeForMinorDefects + m_Cars[index].majorFlaws * fixingTimeForMajorDefects;
+        var timeToFix = 4;
+        Debug.Log($"Car {m_Cars[index].carID} will take {timeToFix} seconds to be fixed");
+        yield return new WaitForSeconds(timeToFix);
+        Debug.Log(m_Cars[index].gameObject.transform.position);
+        
+        // Move Car object back onto the conveyor 
+        m_Cars[index].gameObject.transform.localPosition = new Vector3(0, 0.6f, -30);
     }
 
     public Car GetCar(int index)
     {
         return m_Cars[index];
+    }
+    
+    public void UpdateThroughputAfterTimeChange()
+    {
+        if (totalCarsProcessed == 0)
+            throughput = 0;
+        else
+            throughput = (float)totalCarsProcessed / m_SimulationTimeTracker.minutesPassed;
     }
 }
