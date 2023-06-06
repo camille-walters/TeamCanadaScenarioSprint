@@ -4,6 +4,7 @@ using System.Globalization;
 using UnityEngine;
 using UnityEngine.UI;
 using System;
+using TMPro;
 
 public class ControlPanel : MonoBehaviour
 {
@@ -20,13 +21,19 @@ public class ControlPanel : MonoBehaviour
     #endregion
 
     #region Paint
-    public InputField sprayRadius;
-    public InputField sprayAngle;
-    public InputField sprayPressure;
+    public TMP_InputField sprayRadius;
+    public TMP_InputField sprayAngle;
+    public TMP_InputField sprayPressure;
     SprayBehavior[] sprayers;
-    public void OnSprayRadiusChange()
+
+    //This assumes that the number/instances of sprayers will not change while in runtime
+    private void Awake()
     {
         sprayers = Resources.FindObjectsOfTypeAll<SprayBehavior>();
+    }
+
+    public void OnSprayRadiusChange()
+    {
         foreach (var sprayer in sprayers)
         {
             ParticleSystem.ShapeModule shape = sprayer.ps.shape;
@@ -36,7 +43,6 @@ public class ControlPanel : MonoBehaviour
 
     public void OnSprayAngleChange()
     {
-        sprayers = Resources.FindObjectsOfTypeAll<SprayBehavior>();
         foreach (var sprayer in sprayers)
         {
             ParticleSystem.ShapeModule shape = sprayer.ps.shape;
@@ -46,7 +52,6 @@ public class ControlPanel : MonoBehaviour
 
     public void OnSprayPressureChange()
     {
-        sprayers = Resources.FindObjectsOfTypeAll<SprayBehavior>();
         foreach (var sprayer in sprayers)
         {
             ParticleSystem.EmissionModule emission = sprayer.ps.emission;
@@ -54,10 +59,14 @@ public class ControlPanel : MonoBehaviour
         }
     }
 
-    float UpdateSprayerInfo(InputField inputField)
+    float UpdateSprayerInfo(TMP_InputField inputField)
     {
-        return float.Parse(inputField.text, CultureInfo.InvariantCulture.NumberFormat);
-
+        float value = 0f;
+        if (float.TryParse(inputField.text, NumberStyles.Float, CultureInfo.InvariantCulture, out value))
+        {
+            return value;
+        }
+        return 0f;
     }
     #endregion
 
