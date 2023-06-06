@@ -1,4 +1,5 @@
 import os
+import sys
 import time
 import cv2
 import colour
@@ -9,8 +10,19 @@ import numpy as np
 from imutils import contours
 from skimage.metrics import structural_similarity as compare_ssim
 
-DIRECTORY = '../CVCaptures/'
-SAVE_DIRECTORY = '../CVCaptures/Contours/'
+if len(sys.argv) >= 2:
+    DIRECTORY = sys.argv[1]
+    if not DIRECTORY.endswith('/'):
+        DIRECTORY = DIRECTORY + '/'
+else:
+    DIRECTORY = '../ScenarioSprintProject/Assets/CVCaptures/'
+
+if len(sys.argv) == 3:
+    SAVE_DIRECTORY = sys.argv[2]
+    if not SAVE_DIRECTORY.endswith('/'):
+        SAVE_DIRECTORY = SAVE_DIRECTORY + '/'
+else:
+    SAVE_DIRECTORY = '../ScenarioSprintProject/Assets/CVCaptures/Contours/'
 
 
 def merge_overlapping_boxes(boxes):

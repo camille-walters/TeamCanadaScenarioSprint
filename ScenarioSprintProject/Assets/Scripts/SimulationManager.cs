@@ -41,6 +41,7 @@ public class SimulationManager : MonoBehaviour
         {Room.QARoom, new List<int>()},
         {Room.ProcessedRoom, new List<int>()}
     };
+    int carStartIndex = 0;
     
     // CV capture resolution (16:9 aspect)
     const int k_ResWidth = 782;
@@ -160,7 +161,7 @@ public class SimulationManager : MonoBehaviour
 
     void UpdateCarRooms()
     {
-        for (var i = 0; i < m_Cars.Count; ++i)
+        for (var i = carStartIndex; i < m_Cars.Count; ++i)
         {
             if (m_CarCurrentRooms[i] != m_Cars[i].currentRoom)
             {
@@ -176,7 +177,9 @@ public class SimulationManager : MonoBehaviour
 
                 if (m_CarCurrentRooms[i] == Room.ProcessedRoom)
                 {
+                    Debug.Log($"Processed Car {m_Cars[i].carID}. Destroying it now.");
                     totalCarsProcessed += 1;
+                    DespawnProcessedCar(i);
                 }
             }
         }
@@ -236,6 +239,14 @@ public class SimulationManager : MonoBehaviour
         m_Texture2D.LoadImage(fileData);
         panelMaterial.mainTexture = m_Texture2D;
         
+    }
+
+    void DespawnProcessedCar(int index)
+    {
+        var carTemp = m_Cars[index];
+        carStartIndex = index + 1;
+        m_Cars[index] = null;
+        Destroy(carTemp.gameObject);
     }
 
     public Car GetCar(int index)
