@@ -37,7 +37,6 @@ public class SimulationManager : MonoBehaviour
     GameObject m_CarsGameObject; // Cars GameObject spawned in scene
     List<Car> m_Cars = new(); // List of all cars in the scene
     List<Room> m_CarCurrentRooms = new(); // List of the rooms each corresponding car is in
-    List<Car> m_FixingVirtualBuffer = new();
     Dictionary<Room, List<int>> m_CarTracker = new Dictionary<Room, List<int>> // List indices of cars in each room
     {
         {Room.SpawnRoom, new List<int>()},
@@ -54,6 +53,9 @@ public class SimulationManager : MonoBehaviour
     const int k_ResHeight = 440;
 
     Texture2D m_Texture2D;
+    
+    List<Car> m_FixingVirtualBuffer = new();
+    List<bool> m_OperatorOccupied = new();
     void Start()
     {
         // m_DoorPosition = paintingRoomDoors.transform.localPosition;
@@ -96,12 +98,11 @@ public class SimulationManager : MonoBehaviour
         
         // Spawn Operators
         SpawnOperators();
+        m_OperatorOccupied = Enumerable.Repeat(false, numberOfOperators).ToList();
     }
 
     void Update()
     {
-        // paintingRoomDoors.transform.localPosition = paintingInProgress ? new Vector3(m_DoorPosition.x, -10, m_DoorPosition.z) : m_DoorPosition;
-        
         // Update Conveyor speeds
         if (Math.Abs(conveyorSpeedFactor - m_PrevConveyorSpeedFactor) > 0.001f) 
             UpdateConveyorSpeeds();
@@ -274,20 +275,45 @@ public class SimulationManager : MonoBehaviour
     
     IEnumerator FixCar(int index)
     {
+        /*
+         * Works under the assumption that each car is fixed by only one operator at a time as of now
+         * So if the buffer is under utilized, only one operator will be occupied most of the time
+         * If the buffer is over utilized, some cars may need to wait longer for an operator 
+         */
+        
         var carToFix = m_Cars[index];
         
         // Move Car object to the side (consider turning it off its too much?)
         m_FixingVirtualBuffer.Add(carToFix);
-        carToFix.gameObject.transform.position = new Vector3(4, 0.6f, -30 - (m_FixingVirtualBuffer.Count - 1) * 5);
+        carToFix.gameObject.transform.position = new Vector3(4, 0.6f, -30 - (m_FixingVirtualBuffer.Count - 1) * 8);
         
         // var timeToFix = m_Cars[index].minorFlaws * fixingTimeForMinorDefects + m_Cars[index].majorFlaws * fixingTimeForMajorDefects;
         var timeToFix = 3;
-        Debug.Log($"Car {carToFix.carID} will take {timeToFix} seconds to be fixed");
-        yield return new WaitForSeconds(timeToFix);
+        carToFix.timeTakenToFix = timeToFix;
+        Debug.Log($"Car {carToFix.carID} will take {timeToFix} seconds to be fixed. Trying to acquire an operator...");
         
-        // Move Car object back onto the conveyor 
-        carToFix.gameObject.transform.position = new Vector3(0, 0.6f, -30);
-        m_FixingVirtualBuffer.Remove(carToFix);
+        var unoccupiedOperatorIndex = 0;
+        if (m_OperatorOccupied.Contains(false))
+        {
+            Debug.Log("Found an unoccupied operator!");
+            unoccupiedOperatorIndex = m_OperatorOccupied.IndexOf(false);
+            m_OperatorOccupied[unoccupiedOperatorIndex] = true;
+            
+            yield return new WaitForSeconds(timeToFix);
+            
+            // Move Car object back onto the conveyor 
+            carToFix.gameObject.transform.position = new Vector3(0, 0.6f, -30);
+            m_FixingVirtualBuffer.Remove(carToFix);
+        }
+        else
+        {
+            // All operators are occupied 
+            // Keep looking for a free operator
+            Debug.Log("All operators are occupied");
+        }
+        
+        
+        
     }
 
     public Car GetCar(int index)
