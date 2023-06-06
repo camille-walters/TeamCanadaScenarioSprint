@@ -19,6 +19,7 @@ public class SimulationManager : MonoBehaviour
     public float conveyorSpeedFactor = 1;
     public int currentView;
     public int numberOfOperators = 2;
+    public int totalCarsProcessed;
 
     List<ConveyorController> m_ConveyorControllers = new();
     float m_PrevConveyorSpeedFactor;
@@ -37,7 +38,8 @@ public class SimulationManager : MonoBehaviour
         {Room.PaintingRoom, new List<int>()},
         {Room.BufferRoom, new List<int>()},
         {Room.CVRoom, new List<int>()},
-        {Room.QARoom, new List<int>()}
+        {Room.QARoom, new List<int>()},
+        {Room.ProcessedRoom, new List<int>()}
     };
     
     // CV capture resolution (16:9 aspect)
@@ -171,6 +173,11 @@ public class SimulationManager : MonoBehaviour
 
                 if (m_CarCurrentRooms[i] == Room.QARoom)
                     DisplayDefectsOnPanel(i);
+
+                if (m_CarCurrentRooms[i] == Room.ProcessedRoom)
+                {
+                    totalCarsProcessed += 1;
+                }
             }
         }
     }

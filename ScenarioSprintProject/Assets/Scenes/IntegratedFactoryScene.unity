@@ -961,6 +961,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4404492558182833482, guid: f94240f51132e1c4c97df2374d54eb00,
         type: 3}
+      propertyPath: m_LocalScale.y
+      value: 44.999996
+      objectReference: {fileID: 0}
+    - target: {fileID: 4404492558182833482, guid: f94240f51132e1c4c97df2374d54eb00,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 44.999996
+      objectReference: {fileID: 0}
+    - target: {fileID: 4404492558182833482, guid: f94240f51132e1c4c97df2374d54eb00,
+        type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -1248,6 +1258,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_RootOrder
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4404492558182833482, guid: f94240f51132e1c4c97df2374d54eb00,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 44.999996
+      objectReference: {fileID: 0}
+    - target: {fileID: 4404492558182833482, guid: f94240f51132e1c4c97df2374d54eb00,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 44.999996
       objectReference: {fileID: 0}
     - target: {fileID: 4404492558182833482, guid: f94240f51132e1c4c97df2374d54eb00,
         type: 3}
@@ -4883,6 +4903,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_RootOrder
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4404492558182833482, guid: f94240f51132e1c4c97df2374d54eb00,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 44.999996
+      objectReference: {fileID: 0}
+    - target: {fileID: 4404492558182833482, guid: f94240f51132e1c4c97df2374d54eb00,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 44.999996
       objectReference: {fileID: 0}
     - target: {fileID: 4404492558182833482, guid: f94240f51132e1c4c97df2374d54eb00,
         type: 3}
@@ -19437,7 +19467,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   car: {fileID: 2323256477472584832, guid: da7d8b8e311774a3c8a1003310150542, type: 3}
   simulationViews: {fileID: 1027041334}
-  paintingRoomDoors: {fileID: 387898704}
   centralConveyor: {fileID: 1145995944}
   cvCapturePositions: {fileID: 1291003312}
   panelMaterial: {fileID: 2100000, guid: 195ba76fea384cc4c8176f38ce10dc9a, type: 2}
@@ -19445,9 +19474,9 @@ MonoBehaviour:
   operatorPrefab: {fileID: 3858485341751626605, guid: 7acb72cf8e935864cab0cecc3d0d1cf4,
     type: 3}
   conveyorSpeedFactor: 1
-  paintingInProgress: 0
   currentView: 0
   numberOfOperators: 2
+  totalCarsProcessed: 0
 --- !u!114 &1369853160
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27753,8 +27782,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 0
   serializedVersion: 2
-  m_Size: {x: 8, y: 5, z: 74.55751}
-  m_Center: {x: 0, y: 1.56, z: -4.300476}
+  m_Size: {x: 8, y: 5, z: 37.29906}
+  m_Center: {x: 0, y: 1.56, z: 14.328749}
 --- !u!114 &1950266322
 MonoBehaviour:
   m_ObjectHideFlags: 0

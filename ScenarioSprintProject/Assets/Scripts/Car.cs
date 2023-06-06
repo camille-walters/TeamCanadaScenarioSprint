@@ -57,13 +57,25 @@ public class Car : MonoBehaviour
             if (b.Contains(p))
             {
                 Enum.TryParse(m_Rooms[i], out currentRoom);
+
+                switch (currentRoom)
+                {
+                    case Room.BufferRoom:
+                        // Painting is complete
+                        paintingComplete = true;
+                        break;
+                    case Room.QARoom:
+                        // CV Capture is complete
+                        analysisComplete = true;
+                        break;
+                }
+
                 break;
             }
-
-            if (currentRoom == Room.BufferRoom)
+            
+            if (currentRoom == Room.QARoom && i == 4 && !b.Contains(p))
             {
-                // Painting is complete
-                paintingComplete = true;
+                currentRoom = Room.ProcessedRoom;
             }
         }
     }
@@ -76,4 +88,5 @@ public enum Room
     BufferRoom,
     CVRoom,
     QARoom,
+    ProcessedRoom
 }
