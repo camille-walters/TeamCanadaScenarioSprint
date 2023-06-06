@@ -1,9 +1,13 @@
-### FactoryScene
+### Introduction
 
-### CV 
- * Algorithm
- * Area Lightning Setup
- * Running Python script
+### Quick Start
+  * open scene
+  * run python script
+  * play scene
+  * change parameters
+  * check analytics
+
+### Scene Hierarchy
 
 ### Spray Painting
 Paint3D
@@ -17,4 +21,12 @@ Mesh and material requirements (e.g. convex colliders)
   * Painting Paths
   * Robot Job system
 
+### CV 
+ * Algorithm
+ * Area Lightning Setup
+ * Running Python script
 
+### Modifying Simulation Parameters
+  * Control UI
+
+### Data collection and Analytics
