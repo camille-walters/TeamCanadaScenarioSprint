@@ -5,12 +5,8 @@ using UnityEngine;
 public class TabGroup : MonoBehaviour
 {
     public List<TabClick> tabButtons;
-    public Color tabIdle;
-    public Color tabHover;
-    public Color tabActive;
-
     public List<GameObject> objectsToSwap;
-    // Start is called before the first frame update
+
     public void Subscribe(TabClick button)
     {
         if(tabButtons == null)
@@ -21,24 +17,10 @@ public class TabGroup : MonoBehaviour
         tabButtons.Add(button);
     }
 
-    public void OnTabEnter(TabClick button)
-    {
-        ResetTabs();
-        button.background.color = tabHover;
-    }
-
-    public void OnTabExit(TabClick button)
-    {
-        ResetTabs();
-        button.background.color = tabIdle;
-    }
-
     public void OnTabSelected(TabClick button)
     {
-        ResetTabs();
-        button.background.color = tabActive;
         int index = button.transform.GetSiblingIndex();
-        for (int i =0; i<objectsToSwap.Count; i++)
+        for (int i = 0; i<objectsToSwap.Count; i++)
         {
             if (i == index)
             {
@@ -48,14 +30,6 @@ public class TabGroup : MonoBehaviour
             {
                 objectsToSwap[i].SetActive(false);
             }
-        }
-    }
-
-    public void ResetTabs()
-    {
-        foreach(TabClick button in tabButtons)
-        {
-            button.background.color = tabIdle;
         }
     }
 }
