@@ -64,11 +64,13 @@ public class SimulationManager : MonoBehaviour
             {
                 m_Views.Add(simulationViews.transform.GetChild(i).gameObject.GetComponent<Camera>());
                 m_Views[i].enabled = false;
+                m_Views[i].gameObject.SetActive(false);
             }
 
             // Enabling first camera view only
             currentView = 0;
             m_Views[0].enabled = true;
+            m_Views[0].gameObject.SetActive(true);
         }
 
         if (cvCapturePositions != null)
@@ -103,6 +105,7 @@ public class SimulationManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.C) && simulationViews != null)
         {
             m_Views[currentView].enabled = false;
+            m_Views[currentView].gameObject.SetActive(false);
             
             if (currentView < simulationViews.transform.childCount - 1)
                 currentView += 1;
@@ -110,6 +113,7 @@ public class SimulationManager : MonoBehaviour
                 currentView = 0;
             
             m_Views[currentView].enabled = true;
+            m_Views[currentView].gameObject.SetActive(true);
         }
         ManageCarSpawn();
         UpdateCarRooms();
