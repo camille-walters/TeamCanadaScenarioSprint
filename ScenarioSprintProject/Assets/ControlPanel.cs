@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using UnityEngine;
+using UnityEngine.UI;
+using System;
 
 public class ControlPanel : MonoBehaviour
 {
@@ -17,19 +20,44 @@ public class ControlPanel : MonoBehaviour
     #endregion
 
     #region Paint
+    public InputField sprayRadius;
+    public InputField sprayAngle;
+    public InputField sprayPressure;
+    SprayBehavior[] sprayers;
     public void OnSprayRadiusChange()
     {
-        Debug.Log("Test");
+        sprayers = Resources.FindObjectsOfTypeAll<SprayBehavior>();
+        foreach (var sprayer in sprayers)
+        {
+            ParticleSystem.ShapeModule shape = sprayer.ps.shape;
+            shape.radius = UpdateSprayerInfo(sprayRadius);
+        }
     }
 
     public void OnSprayAngleChange()
     {
-        Debug.Log("Test");
+        sprayers = Resources.FindObjectsOfTypeAll<SprayBehavior>();
+        foreach (var sprayer in sprayers)
+        {
+            ParticleSystem.ShapeModule shape = sprayer.ps.shape;
+            shape.radius = UpdateSprayerInfo(sprayAngle);
+        }
     }
 
     public void OnSprayPressureChange()
     {
-        Debug.Log("Test");
+        sprayers = Resources.FindObjectsOfTypeAll<SprayBehavior>();
+        foreach (var sprayer in sprayers)
+        {
+            ParticleSystem.EmissionModule emission = sprayer.ps.emission;
+            emission.rateOverTime = UpdateSprayerInfo(sprayPressure);
+        }
+    }
+
+    float UpdateSprayerInfo(InputField inputField)
+    {
+        return float.Parse(inputField.text, CultureInfo.InvariantCulture.NumberFormat);
+
     }
     #endregion
 

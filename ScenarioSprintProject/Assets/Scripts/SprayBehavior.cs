@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class SprayBehavior : MonoBehaviour
 {
-    ParticleSystem ps;
+    public ParticleSystem ps;
     public bool playOnStart = false;
     public bool playOnEnable = false;
+
+    ControlPanel controlPanel;
 
     void Start()
     {
