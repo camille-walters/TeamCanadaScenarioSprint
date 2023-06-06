@@ -17,6 +17,7 @@ public class SimulationManager : MonoBehaviour
     public GameObject operatorSpawnPoint;
     public GameObject operatorPrefab;
     public float conveyorSpeedFactor = 1;
+    public float interCarDistance = 92 - 61;
     public int currentView;
     public int numberOfOperators = 2;
     public int totalCarsProcessed;
@@ -154,7 +155,7 @@ public class SimulationManager : MonoBehaviour
 
     void SpawnCar()
     {
-        var newCar = Instantiate(car, new Vector3(0, 0.6f, 92), Quaternion.Euler(0, 180, 0));
+        var newCar = Instantiate(car, new Vector3(0, 0.6f, 61 + interCarDistance), Quaternion.Euler(0, 180, 0));
         newCar.transform.parent = m_CarsGameObject.transform;
         var carComponent = newCar.AddComponent<Car>();
         
