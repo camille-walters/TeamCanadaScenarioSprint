@@ -73,3 +73,7 @@ crashlytics-build.properties
 
 # Idea folder
 **/.idea/workspace.xml
+
+[Aa]ssets/CVCaptures/Contours* 
+[Aa]ssets/CVCaptures/flawed* 
+[Aa]ssets/Scripts/.idea
