@@ -252,7 +252,12 @@ public class SimulationManager : MonoBehaviour
 
     void DisplayDefectsOnPanel(int carNumber)
     {
-        var fileData = File.ReadAllBytes($"{Application.dataPath}/CVCaptures/Contours/contours{carNumber}_0.png");
+        var fileData = new byte[] { };
+        var path = $"{Application.dataPath}/CVCaptures/Contours/contours{carNumber}_0.png";
+        if (File.Exists(path))
+        {
+            fileData = File.ReadAllBytes(path);
+        }
         m_Texture2D.LoadImage(fileData);
         panelMaterial.mainTexture = m_Texture2D;
         
