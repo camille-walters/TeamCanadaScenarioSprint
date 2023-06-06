@@ -37,6 +37,7 @@ public class SimulationManager : MonoBehaviour
     GameObject m_CarsGameObject; // Cars GameObject spawned in scene
     List<Car> m_Cars = new(); // List of all cars in the scene
     List<Room> m_CarCurrentRooms = new(); // List of the rooms each corresponding car is in
+    List<Car> m_FixingVirtualBuffer = new();
     Dictionary<Room, List<int>> m_CarTracker = new Dictionary<Room, List<int>> // List indices of cars in each room
     {
         {Room.SpawnRoom, new List<int>()},
@@ -129,7 +130,7 @@ public class SimulationManager : MonoBehaviour
     {
         for (var i = 0; i < numberOfOperators; ++i)
         {
-            var newOp = Instantiate(operatorPrefab, new Vector3(-4, 0, -42+i*2), Quaternion.identity);
+            var newOp = Instantiate(operatorPrefab, new Vector3(6, 0, -42+i*2), Quaternion.identity);
             newOp.transform.parent = operatorSpawnPoint.transform;
         }
     }
@@ -273,17 +274,20 @@ public class SimulationManager : MonoBehaviour
     
     IEnumerator FixCar(int index)
     {
-        // Move Car object to the side (consider turning it off its too much)
-        m_Cars[index].gameObject.transform.position = new Vector3(4, 0.6f, -30);
+        var carToFix = m_Cars[index];
+        
+        // Move Car object to the side (consider turning it off its too much?)
+        m_FixingVirtualBuffer.Add(carToFix);
+        carToFix.gameObject.transform.position = new Vector3(4, 0.6f, -30 - (m_FixingVirtualBuffer.Count - 1) * 5);
         
         // var timeToFix = m_Cars[index].minorFlaws * fixingTimeForMinorDefects + m_Cars[index].majorFlaws * fixingTimeForMajorDefects;
-        var timeToFix = 4;
-        Debug.Log($"Car {m_Cars[index].carID} will take {timeToFix} seconds to be fixed");
+        var timeToFix = 3;
+        Debug.Log($"Car {carToFix.carID} will take {timeToFix} seconds to be fixed");
         yield return new WaitForSeconds(timeToFix);
-        Debug.Log(m_Cars[index].gameObject.transform.position);
         
         // Move Car object back onto the conveyor 
-        m_Cars[index].gameObject.transform.localPosition = new Vector3(0, 0.6f, -30);
+        carToFix.gameObject.transform.position = new Vector3(0, 0.6f, -30);
+        m_FixingVirtualBuffer.Remove(carToFix);
     }
 
     public Car GetCar(int index)
