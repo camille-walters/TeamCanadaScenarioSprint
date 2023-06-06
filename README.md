@@ -25,6 +25,7 @@ Mesh and material requirements (e.g. convex colliders)
  * Algorithm
  * Area Lightning Setup
  * Running Python script
+ * How to update the ground truth images
 
 ### Modifying Simulation Parameters
   * Control UI
