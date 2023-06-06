@@ -1,5 +1,7 @@
 ### Introduction
 
+![replace this with our own gif](https://phillipscorp.com/india/wp-content/uploads/sites/3/2020/07/ur10e.gif)
+
 ### Quick Start
   * open scene
   * run python script
