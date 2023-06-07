@@ -56,7 +56,9 @@ public class SimulationManager : MonoBehaviour
     Texture2D m_Texture2D;
     
     List<Car> m_FixingVirtualBuffer = new();
+    public List<bool> m_OccupiedPositionsInTheBuffer = new();
     List<bool> m_OperatorOccupied = new();
+    int m_BufferSize = 10;
     void Start()
     {
         // m_DoorPosition = paintingRoomDoors.transform.localPosition;
@@ -100,6 +102,7 @@ public class SimulationManager : MonoBehaviour
         // Spawn Operators
         SpawnOperators();
         m_OperatorOccupied = Enumerable.Repeat(false, numberOfOperators).ToList();
+        m_OccupiedPositionsInTheBuffer = Enumerable.Repeat(false, m_BufferSize).ToList();
     }
 
     void Update()
@@ -250,7 +253,7 @@ public class SimulationManager : MonoBehaviour
         
         var bytes = screenShot.EncodeToPNG();
         var filename = $"{Application.dataPath}/CVCaptures/flawed{carIndex}_{viewIndex}.png";
-        System.IO.File.WriteAllBytes(filename, bytes);
+        File.WriteAllBytes(filename, bytes);
     }
 
     void DisplayDefectsOnPanel(int carNumber)
@@ -286,38 +289,25 @@ public class SimulationManager : MonoBehaviour
         
         // Move Car object to the side (consider turning it off its too much?)
         m_FixingVirtualBuffer.Add(carToFix);
-        carToFix.gameObject.transform.position = new Vector3(4, 0.6f, -30 - (m_FixingVirtualBuffer.Count - 1) * 8);
+        var carPositionZ = m_OccupiedPositionsInTheBuffer.IndexOf(false);
+        m_OccupiedPositionsInTheBuffer[carPositionZ] = true;
+        carToFix.gameObject.transform.position = new Vector3(4, 0.6f, -30 - carPositionZ * 8);
         
         // var timeToFix = m_Cars[index].minorFlaws * fixingTimeForMinorDefects + m_Cars[index].majorFlaws * fixingTimeForMajorDefects;
         var timeToFix = 3 * fixingTimeForMinorDefects + 4 * fixingTimeForMajorDefects;
         carToFix.timeTakenToFix = timeToFix;
         Debug.Log($"Car {carToFix.carID} will take {timeToFix} seconds to be fixed. Trying to acquire an operator...");
         
-        var unoccupiedOperatorIndex = 0;
         if (m_OperatorOccupied.Contains(false))
         {
-            /*
-            Debug.Log("Found an unoccupied operator!");
-            unoccupiedOperatorIndex = m_OperatorOccupied.IndexOf(false);
-            m_OperatorOccupied[unoccupiedOperatorIndex] = true;
-            
-            yield return new WaitForSeconds(timeToFix);
-            
-            // Move Car object back onto the conveyor 
-            carToFix.gameObject.transform.position = new Vector3(0, 0.6f, -30);
-            m_FixingVirtualBuffer.Remove(carToFix);
-
-            m_OperatorOccupied[unoccupiedOperatorIndex] = false;
-            */
-            
-            StartCoroutine(FixCar(carToFix, timeToFix));
+            StartCoroutine(FixCar(carToFix, timeToFix, carPositionZ));
         }
         else
         {
-            // All operators are occupied 
             // Keep looking for a free operator
             Debug.Log("All operators are occupied, waiting for a free operator");
             var recheckTime = 1;
+            
             while (true)
             {
                 yield return new WaitForSeconds(recheckTime);
@@ -325,29 +315,16 @@ public class SimulationManager : MonoBehaviour
                 
                 if (m_OperatorOccupied.Contains(false))
                 {
-                    /*
-                    Debug.Log("Found an unoccupied operator!");
-                    unoccupiedOperatorIndex = m_OperatorOccupied.IndexOf(false);
-                    m_OperatorOccupied[unoccupiedOperatorIndex] = true;
-
-                    yield return new WaitForSeconds(timeToFix);
-
-                    // Move Car object back onto the conveyor 
-                    carToFix.gameObject.transform.position = new Vector3(0, 0.6f, -30);
-                    m_FixingVirtualBuffer.Remove(carToFix);
-
-                    m_OperatorOccupied[unoccupiedOperatorIndex] = false;
-                    */
-                    StartCoroutine(FixCar(carToFix, timeToFix));
+                    StartCoroutine(FixCar(carToFix, timeToFix, carPositionZ));
                     break;
                 }
             }
         }
     }
 
-    IEnumerator FixCar(Car carToFix, float timeToFix)
+    IEnumerator FixCar(Car carToFix, float timeToFix, int bufferPosition)
     {
-        Debug.Log("Found an unoccupied operator!");
+        Debug.Log($"Found an unoccupied operator for {carToFix.carID}!");
         var unoccupiedOperatorIndex = m_OperatorOccupied.IndexOf(false);
         m_OperatorOccupied[unoccupiedOperatorIndex] = true;
 
@@ -358,6 +335,7 @@ public class SimulationManager : MonoBehaviour
         m_FixingVirtualBuffer.Remove(carToFix);
 
         m_OperatorOccupied[unoccupiedOperatorIndex] = false;
+        m_OccupiedPositionsInTheBuffer[bufferPosition] = false;
     }
     
 
