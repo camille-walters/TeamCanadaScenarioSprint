@@ -21,7 +21,7 @@
   
   - Uses a Particle System. The particles are made up of P3DPaintSpheres (from PaintIn3D). One particle applies the colour, and the other applies the finish (more information about this in the following bullet point).
 
-- To be able to paint, the material must have a P3DPaintable component. Then, for each texture. there must be a P3DPaintableTexture assigned to each shader slot. We have materials assigned to the following shader slots:
+- To be able to paint, the gameobject with the mesh renderer must have a P3DPaintable component and have a material with the "Paint in 3D/..." shader. It also needs to have a convex mesh collider. Then, for each texture. there must be a P3DPaintableTexture assigned to each shader slot. We have materials assigned to the following shader slots:
   
   - _MainTex
   
@@ -30,6 +30,14 @@
 - The mesh requires Convex Colliders. 
 
 - The UV map cannot have overlapping coordinates. This can be fixed using PaintIn3D or doing an unwrap in Blender. 
+
+### Paintable Car
+  * PaitableCar.prefab
+  * Mesh downloaded from [insert link here]().
+  * Disabled the none required parts such as the interiors, wheels, headlights, windshields, etc.
+  * Paintable gameobjects are under GEO_body_carpaint, DOOR_L, DOOR_R, FRONT_BUMPER, MOTORHOOD. The meshes were made paintable following the steps  outlined in the previous section (`ExteriorPaint.mat` material).
+  * Some meshes were duplicated and assigned a basic material with front face culling (`EXT_Backface.mat`).
+  * Paint paths for the roof, left and right side were added following the steps described in the next section.
 
 ### RobotArm
 
