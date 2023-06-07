@@ -25,11 +25,9 @@ public class ConveyorBeltBehavior : MonoBehaviour
             m_InternalSpeed = 0;
             return;
         }
-        else
-        {
-            m_InternalSpeed = speed;
-        }
-        
+
+        m_InternalSpeed = speed;
+
         Vector3 pos = m_RigidBody.position;
         m_RigidBody.position += -transform.up * m_InternalSpeed * Time.fixedDeltaTime;
         m_RigidBody.MovePosition(pos);
