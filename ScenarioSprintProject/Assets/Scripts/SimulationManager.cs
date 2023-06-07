@@ -11,7 +11,6 @@ public class SimulationManager : MonoBehaviour
     // Public fields
     public GameObject car;
     public GameObject simulationViews;
-    // public GameObject paintingRoomDoors;
     public GameObject centralConveyor;
     public GameObject cvCapturePositions;
     public Material panelMaterial;
@@ -21,10 +20,11 @@ public class SimulationManager : MonoBehaviour
     public float interCarDistance = 92 - 61;
     public int currentView;
     public int numberOfOperators = 2;
-    public int totalCarsProcessed;
-    public float throughput;
     public float fixingTimeForMinorDefects;
     public float fixingTimeForMajorDefects;
+    public int totalCarsProcessed;
+    public float throughput;
+    public float totalOperatorBusyTime = 0;
     
     SimulationTimeTracker m_SimulationTimeTracker;
     List<ConveyorController> m_ConveyorControllers = new();
@@ -56,7 +56,7 @@ public class SimulationManager : MonoBehaviour
     Texture2D m_Texture2D;
     
     List<Car> m_FixingVirtualBuffer = new();
-    public List<bool> m_OccupiedPositionsInTheBuffer = new();
+    List<bool> m_OccupiedPositionsInTheBuffer = new();
     List<bool> m_OperatorOccupied = new();
     int m_BufferSize = 10;
     void Start()
@@ -135,7 +135,7 @@ public class SimulationManager : MonoBehaviour
     {
         for (var i = 0; i < numberOfOperators; ++i)
         {
-            var newOp = Instantiate(operatorPrefab, new Vector3(6, 0, -42+i*2), Quaternion.identity);
+            var newOp = Instantiate(operatorPrefab, new Vector3(6, 0, -42+i*2), Quaternion.Euler(0, -90, 0));
             newOp.transform.parent = operatorSpawnPoint.transform;
         }
     }
@@ -200,7 +200,10 @@ public class SimulationManager : MonoBehaviour
                     totalCarsProcessed += 1;
                     
                     // Update throughput
-                    throughput = (float)totalCarsProcessed / m_SimulationTimeTracker.minutesPassed;
+                    if (m_SimulationTimeTracker.minutesPassed == 0)
+                        throughput = 0;
+                    else
+                        throughput = (float)totalCarsProcessed / m_SimulationTimeTracker.minutesPassed;
                     
                     DespawnProcessedCar(i);
                 }
@@ -324,9 +327,12 @@ public class SimulationManager : MonoBehaviour
 
     IEnumerator FixCar(Car carToFix, float timeToFix, int bufferPosition)
     {
+        // Assign operator and move it 
         Debug.Log($"Found an unoccupied operator for {carToFix.carID}!");
         var unoccupiedOperatorIndex = m_OperatorOccupied.IndexOf(false);
         m_OperatorOccupied[unoccupiedOperatorIndex] = true;
+        totalOperatorBusyTime += timeToFix;
+        operatorSpawnPoint.transform.GetChild(unoccupiedOperatorIndex).position = new Vector3(6, 0, -30 - bufferPosition * 8);
 
         yield return new WaitForSeconds(timeToFix);
 
@@ -334,6 +340,7 @@ public class SimulationManager : MonoBehaviour
         carToFix.gameObject.transform.position = new Vector3(0, 0.6f, -35);
         m_FixingVirtualBuffer.Remove(carToFix);
 
+        operatorSpawnPoint.transform.GetChild(unoccupiedOperatorIndex).position = new Vector3(8, 0, -30 - unoccupiedOperatorIndex * 2);
         m_OperatorOccupied[unoccupiedOperatorIndex] = false;
         m_OccupiedPositionsInTheBuffer[bufferPosition] = false;
     }
@@ -346,9 +353,6 @@ public class SimulationManager : MonoBehaviour
     
     public void UpdateThroughputAfterTimeChange()
     {
-        if (totalCarsProcessed == 0)
-            throughput = 0;
-        else
-            throughput = (float)totalCarsProcessed / m_SimulationTimeTracker.minutesPassed;
+        throughput = (float)totalCarsProcessed / m_SimulationTimeTracker.minutesPassed;
     }
 }
