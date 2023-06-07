@@ -26,6 +26,7 @@ public class SimulationManager : MonoBehaviour
     public float carsProcessedPerMinute;
     public float carProcessingTime;
     public float totalOperatorBusyTime = 0;
+    public float totalOperatorUtilization = 0;
     
     SimulationTimeTracker m_SimulationTimeTracker;
     List<ConveyorController> m_ConveyorControllers = new();
@@ -110,6 +111,8 @@ public class SimulationManager : MonoBehaviour
 
     void Update()
     {
+        totalOperatorUtilization = totalOperatorBusyTime / (Time.realtimeSinceStartup * numberOfOperators);
+        
         // Update Conveyor speeds
         if (Math.Abs(conveyorSpeedFactor - m_PrevConveyorSpeedFactor) > 0.001f) 
             UpdateConveyorSpeeds();
@@ -201,15 +204,6 @@ public class SimulationManager : MonoBehaviour
                 {
                     Debug.Log($"Processed Car {m_Cars[i].carID}. Destroying it now.");
                     totalCarsProcessed += 1;
-                    
-                    // Would we calculate throughput here? Maybe cross check 
-                    /*
-                    // Update throughput
-                    if (m_SimulationTimeTracker.minutesPassed == 0)
-                        carsProcessedPerMinute = 0;
-                    else
-                        carsProcessedPerMinute = (float)totalCarsProcessed / m_SimulationTimeTracker.minutesPassed;
-                    */
                     
                     DespawnProcessedCar(i);
                 }
@@ -365,10 +359,5 @@ public class SimulationManager : MonoBehaviour
     public void UpdateThroughputAfterTimeChange()
     {
         carsProcessedPerMinute = (float)totalCarsProcessed / m_SimulationTimeTracker.minutesPassed;
-    }
-
-    public float CurrentOperatorBusyTime()
-    {
-        return totalOperatorBusyTime / (Time.realtimeSinceStartup * numberOfOperators);
     }
 }
