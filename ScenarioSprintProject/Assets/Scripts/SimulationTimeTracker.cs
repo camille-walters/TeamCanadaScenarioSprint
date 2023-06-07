@@ -14,6 +14,7 @@ public class SimulationTimeTracker : MonoBehaviour
         timeLeftForAMinute -= Time.deltaTime;
         if ( timeLeftForAMinute < 0 )
         {
+            // Recalculate throughput every minute
             minutesPassed += 1;
             Debug.Log($"{minutesPassed} minutes completed");
             m_SimulationManager.UpdateThroughputAfterTimeChange();

@@ -23,7 +23,8 @@ public class SimulationManager : MonoBehaviour
     public float fixingTimeForMinorDefects;
     public float fixingTimeForMajorDefects;
     public int totalCarsProcessed;
-    public float throughput;
+    public float carsProcessedPerMinute;
+    public float carProcessingTime;
     public float totalOperatorBusyTime = 0;
     
     SimulationTimeTracker m_SimulationTimeTracker;
@@ -59,6 +60,8 @@ public class SimulationManager : MonoBehaviour
     List<bool> m_OccupiedPositionsInTheBuffer = new();
     List<bool> m_OperatorOccupied = new();
     int m_BufferSize = 10;
+
+    float lastCarProcessTime = 0;
     void Start()
     {
         // m_DoorPosition = paintingRoomDoors.transform.localPosition;
@@ -199,11 +202,14 @@ public class SimulationManager : MonoBehaviour
                     Debug.Log($"Processed Car {m_Cars[i].carID}. Destroying it now.");
                     totalCarsProcessed += 1;
                     
+                    // Would we calculate throughput here? Maybe cross check 
+                    /*
                     // Update throughput
                     if (m_SimulationTimeTracker.minutesPassed == 0)
-                        throughput = 0;
+                        carsProcessedPerMinute = 0;
                     else
-                        throughput = (float)totalCarsProcessed / m_SimulationTimeTracker.minutesPassed;
+                        carsProcessedPerMinute = (float)totalCarsProcessed / m_SimulationTimeTracker.minutesPassed;
+                    */
                     
                     DespawnProcessedCar(i);
                 }
@@ -274,10 +280,15 @@ public class SimulationManager : MonoBehaviour
 
     void DespawnProcessedCar(int index)
     {
+        // Process car
         var carTemp = m_Cars[index];
         m_CarStartIndex = index + 1;
         m_Cars[index] = null;
         Destroy(carTemp.gameObject);
+        
+        // Update car process time
+        carProcessingTime = Time.realtimeSinceStartup - lastCarProcessTime;
+        lastCarProcessTime = Time.realtimeSinceStartup;
     }
     
     IEnumerator AcquireOperatorToFixCar(int index)
@@ -296,8 +307,8 @@ public class SimulationManager : MonoBehaviour
         m_OccupiedPositionsInTheBuffer[carPositionZ] = true;
         carToFix.gameObject.transform.position = new Vector3(4, 0.6f, -30 - carPositionZ * 8);
         
-        // var timeToFix = m_Cars[index].minorFlaws * fixingTimeForMinorDefects + m_Cars[index].majorFlaws * fixingTimeForMajorDefects;
-        var timeToFix = 3 * fixingTimeForMinorDefects + 4 * fixingTimeForMajorDefects;
+        var timeToFix = m_Cars[index].minorFlaws * fixingTimeForMinorDefects + m_Cars[index].majorFlaws * fixingTimeForMajorDefects;
+        // var timeToFix = 3 * fixingTimeForMinorDefects + 4 * fixingTimeForMajorDefects; // temp override
         carToFix.timeTakenToFix = timeToFix;
         Debug.Log($"Car {carToFix.carID} will take {timeToFix} seconds to be fixed. Trying to acquire an operator...");
         
@@ -353,6 +364,11 @@ public class SimulationManager : MonoBehaviour
     
     public void UpdateThroughputAfterTimeChange()
     {
-        throughput = (float)totalCarsProcessed / m_SimulationTimeTracker.minutesPassed;
+        carsProcessedPerMinute = (float)totalCarsProcessed / m_SimulationTimeTracker.minutesPassed;
+    }
+
+    public float CurrentOperatorBusyTime()
+    {
+        return totalOperatorBusyTime / (Time.realtimeSinceStartup * numberOfOperators);
     }
 }
