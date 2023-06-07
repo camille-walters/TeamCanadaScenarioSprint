@@ -24,48 +24,62 @@ public class ControlPanel : MonoBehaviour
     public TMP_InputField sprayRadius;
     public TMP_InputField sprayAngle;
     public TMP_InputField sprayPressure;
-    SprayBehavior[] sprayers;
 
-    //This assumes that the number/instances of sprayers will not change while in runtime
+    private SprayBehavior[] sprayers;
+
+    //This assumes that there are no sprayers added at runtime. 
     private void Awake()
     {
-        sprayers = Resources.FindObjectsOfTypeAll<SprayBehavior>();
+        sprayers = FindObjectsOfType<SprayBehavior>();
+    }
+
+    private void UpdateSprayers(Action<ParticleSystem> updateAction)
+    {
+        foreach (var sprayer in sprayers)
+        {
+            ParticleSystem spray = sprayer.gameObject.GetComponentInChildren<ParticleSystem>();
+            if (spray != null)
+            {
+                updateAction(spray);
+            }
+        }
     }
 
     public void OnSprayRadiusChange()
     {
-        foreach (var sprayer in sprayers)
+        UpdateSprayers((spray) =>
         {
-            ParticleSystem.ShapeModule shape = sprayer.ps.shape;
-            shape.radius = UpdateSprayerInfo(sprayRadius);
-        }
+            var shape = spray.shape;
+            shape.radius = ParseFloatValue(sprayRadius);
+        });
     }
 
     public void OnSprayAngleChange()
     {
-        foreach (var sprayer in sprayers)
+        UpdateSprayers((spray) =>
         {
-            ParticleSystem.ShapeModule shape = sprayer.ps.shape;
-            shape.radius = UpdateSprayerInfo(sprayAngle);
-        }
+            var shape = spray.shape;
+            shape.angle = ParseFloatValue(sprayAngle);
+        });
     }
 
     public void OnSprayPressureChange()
     {
-        foreach (var sprayer in sprayers)
+        UpdateSprayers((spray) =>
         {
-            ParticleSystem.EmissionModule emission = sprayer.ps.emission;
-            emission.rateOverTime = UpdateSprayerInfo(sprayPressure);
-        }
+            var emission = spray.emission;
+            emission.rateOverTime = ParseFloatValue(sprayPressure);
+        });
     }
 
-    float UpdateSprayerInfo(TMP_InputField inputField)
+    private float ParseFloatValue(TMP_InputField inputField)
     {
         float value = 0f;
         if (float.TryParse(inputField.text, NumberStyles.Float, CultureInfo.InvariantCulture, out value))
         {
             return value;
         }
+        Debug.Log("Could not parse value in " + inputField.name + ". Make sure input is a number.");
         return 0f;
     }
     #endregion
