@@ -30,7 +30,7 @@ public class ControlPanel : MonoBehaviour
     //This assumes that there are no sprayers added at runtime. 
     private void Awake()
     {
-        sprayers = FindObjectsOfType<SprayBehavior>();
+        sprayers = Resources.FindObjectsOfTypeAll<SprayBehavior>();
     }
 
     private void UpdateSprayers(Action<ParticleSystem> updateAction)
