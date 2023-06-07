@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class SimulationManager : MonoBehaviour
 {
@@ -187,7 +188,7 @@ public class SimulationManager : MonoBehaviour
                 if (m_CarCurrentRooms[i] == Room.QARoom)
                 {
                     DisplayDefectsOnPanel(i);
-                    StartCoroutine(FixCar(i));
+                    StartCoroutine(AcquireOperatorToFixCar(i));
                 }
 
                 if (m_CarCurrentRooms[i] == Room.ProcessedRoom)
@@ -273,7 +274,7 @@ public class SimulationManager : MonoBehaviour
         Destroy(carTemp.gameObject);
     }
     
-    IEnumerator FixCar(int index)
+    IEnumerator AcquireOperatorToFixCar(int index)
     {
         /*
          * Works under the assumption that each car is fixed by only one operator at a time as of now
@@ -288,13 +289,14 @@ public class SimulationManager : MonoBehaviour
         carToFix.gameObject.transform.position = new Vector3(4, 0.6f, -30 - (m_FixingVirtualBuffer.Count - 1) * 8);
         
         // var timeToFix = m_Cars[index].minorFlaws * fixingTimeForMinorDefects + m_Cars[index].majorFlaws * fixingTimeForMajorDefects;
-        var timeToFix = 3;
+        var timeToFix = 3 * fixingTimeForMinorDefects + 4 * fixingTimeForMajorDefects;
         carToFix.timeTakenToFix = timeToFix;
         Debug.Log($"Car {carToFix.carID} will take {timeToFix} seconds to be fixed. Trying to acquire an operator...");
         
         var unoccupiedOperatorIndex = 0;
         if (m_OperatorOccupied.Contains(false))
         {
+            /*
             Debug.Log("Found an unoccupied operator!");
             unoccupiedOperatorIndex = m_OperatorOccupied.IndexOf(false);
             m_OperatorOccupied[unoccupiedOperatorIndex] = true;
@@ -304,17 +306,60 @@ public class SimulationManager : MonoBehaviour
             // Move Car object back onto the conveyor 
             carToFix.gameObject.transform.position = new Vector3(0, 0.6f, -30);
             m_FixingVirtualBuffer.Remove(carToFix);
+
+            m_OperatorOccupied[unoccupiedOperatorIndex] = false;
+            */
+            
+            StartCoroutine(FixCar(carToFix, timeToFix));
         }
         else
         {
             // All operators are occupied 
             // Keep looking for a free operator
-            Debug.Log("All operators are occupied");
+            Debug.Log("All operators are occupied, waiting for a free operator");
+            var recheckTime = 1;
+            while (true)
+            {
+                yield return new WaitForSeconds(recheckTime);
+                carToFix.timeTakenToFix += recheckTime;
+                
+                if (m_OperatorOccupied.Contains(false))
+                {
+                    /*
+                    Debug.Log("Found an unoccupied operator!");
+                    unoccupiedOperatorIndex = m_OperatorOccupied.IndexOf(false);
+                    m_OperatorOccupied[unoccupiedOperatorIndex] = true;
+
+                    yield return new WaitForSeconds(timeToFix);
+
+                    // Move Car object back onto the conveyor 
+                    carToFix.gameObject.transform.position = new Vector3(0, 0.6f, -30);
+                    m_FixingVirtualBuffer.Remove(carToFix);
+
+                    m_OperatorOccupied[unoccupiedOperatorIndex] = false;
+                    */
+                    StartCoroutine(FixCar(carToFix, timeToFix));
+                    break;
+                }
+            }
         }
-        
-        
-        
     }
+
+    IEnumerator FixCar(Car carToFix, float timeToFix)
+    {
+        Debug.Log("Found an unoccupied operator!");
+        var unoccupiedOperatorIndex = m_OperatorOccupied.IndexOf(false);
+        m_OperatorOccupied[unoccupiedOperatorIndex] = true;
+
+        yield return new WaitForSeconds(timeToFix);
+
+        // Move Car object back onto the conveyor 
+        carToFix.gameObject.transform.position = new Vector3(0, 0.6f, -35);
+        m_FixingVirtualBuffer.Remove(carToFix);
+
+        m_OperatorOccupied[unoccupiedOperatorIndex] = false;
+    }
+    
 
     public Car GetCar(int index)
     {
