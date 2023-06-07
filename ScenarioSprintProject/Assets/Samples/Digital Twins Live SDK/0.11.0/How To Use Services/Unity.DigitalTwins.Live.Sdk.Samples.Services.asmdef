@@ -1,0 +1,21 @@
+{
+    "name": "Unity.DigitalTwins.Live.Sdk.Samples.Services",
+    "rootNamespace": "Unity.DigitalTwins.Live.Sdk.Samples.Services",
+    "references": [
+        "GUID:498d02e03062b2649b108f31a9668c56",
+        "GUID:b344fc90df84f5a4f968af99d3b862a9",
+        "GUID:f2f9fbb8654eff343bf4a94f2a688687",
+        "GUID:5c605a9c9e9b6421a8d175d64aaa4beb",
+        "GUID:276bf4fd0c825cf4b94eb157d3b3675f",
+        "GUID:d594d585f5834c3ab347c2db6bc9755e"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
