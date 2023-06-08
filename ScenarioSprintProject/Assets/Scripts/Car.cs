@@ -14,6 +14,7 @@ public class Car : MonoBehaviour
 
     public float minorFlaws = 0;
     public float majorFlaws = 0;
+    public float timeTakenToFix = 0;
 
     GameObject m_CentralConveyors;
     List<GameObject> m_Conveyors = new();
