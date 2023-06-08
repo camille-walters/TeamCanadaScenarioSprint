@@ -27,6 +27,8 @@ public class SimulationManager : MonoBehaviour
     public float carProcessingTime;
     public float totalOperatorBusyTime = 0;
     public float totalOperatorUtilization = 0;
+    public float totalMajorDefects = 0f;
+    public float totalMinorDefects = 0f;
     
     SimulationTimeTracker m_SimulationTimeTracker;
     List<ConveyorController> m_ConveyorControllers = new();
@@ -202,6 +204,8 @@ public class SimulationManager : MonoBehaviour
 
                 if (m_CarCurrentRooms[i] == Room.QARoom)
                 {
+                    totalMajorDefects += m_Cars[i].majorFlaws;
+                    totalMinorDefects += m_Cars[i].minorFlaws;
                     DisplayDefectsOnPanel(i);
                     StartCoroutine(AcquireOperatorToFixCar(i));
                 }

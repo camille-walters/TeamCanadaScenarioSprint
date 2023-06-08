@@ -23,6 +23,10 @@ public class AnalyticsPanel : MonoBehaviour
     void Start()
     {
         PopulateDropdownList();
+        
+    }
+    private void Update()
+    {
         StartCoroutine("UpdateValues");
     }
 
@@ -46,15 +50,15 @@ public class AnalyticsPanel : MonoBehaviour
     WaitForSeconds waitForSeconds = new WaitForSeconds(5f);//maybe should be longer?
     IEnumerator UpdateValues()
     {
-        throughPutOverTime.text = AnalyticsData.Instance.throughPutOverTime.ToString();
-        throughPutOverCar.text = AnalyticsData.Instance.throughPutOverCar.ToString();
-        paintAmount.text = AnalyticsData.Instance.paintAmount.ToString();
-        energyConsumption.text = AnalyticsData.Instance.energyConsumption.ToString();
-        workerUtilization.text = AnalyticsData.Instance.workerUtilization.ToString();
+        throughPutOverTime.text = ((int) AnalyticsData.Instance.avg_throughPutOverTime).ToString();//casting to int just for the aesthetics
+        throughPutOverCar.text = ((int)AnalyticsData.Instance.avg_throughPutOverCar).ToString();
+        paintAmount.text = ((int)AnalyticsData.Instance.avg_paintAmount).ToString();
+        energyConsumption.text = ((int)AnalyticsData.Instance.avg_energyConsumption).ToString();
+        workerUtilization.text = AnalyticsData.Instance.avg_workerUtilization.ToString();
 
-        totalDefects.text = AnalyticsData.Instance.totalDefects.ToString();
-        majorDefects.text = AnalyticsData.Instance.majorDefects.ToString();
-        minorDefects.text = AnalyticsData.Instance.minorDefects.ToString();
+        totalDefects.text = ((int)AnalyticsData.Instance.avg_totalDefects).ToString();
+        majorDefects.text = ((int)AnalyticsData.Instance.avg_majorDefects).ToString();
+        minorDefects.text = ((int)AnalyticsData.Instance.avg_minorDefects).ToString();
 
         yield return waitForSeconds;
     }
