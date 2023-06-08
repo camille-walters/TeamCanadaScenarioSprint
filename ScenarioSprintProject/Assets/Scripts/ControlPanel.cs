@@ -24,6 +24,14 @@ public class ControlPanel : MonoBehaviour
     public int defaultSprayAngle = 30;
     public int defaultSprayPressure = 5000;
     
+    // Robots
+    public TMP_InputField distanceFromCar;
+    public TMP_InputField movementSpeed;
+
+    public float defaultDistanceFromCar = 0.2f;
+    public int defaultMovementSpeed = 100;
+    
+    
     // Workers
     public TMP_InputField numberOfWorkers;
     public TMP_InputField timeToFixMinorDefects;
@@ -34,6 +42,8 @@ public class ControlPanel : MonoBehaviour
     public float defaultTimeToFixMajorDefects = 2;
 
     private SprayBehavior[] sprayers;
+    RobotArmController[] m_RobotArmControllers;
+    HybridInverseKinematicsNode[] m_HybridIks;
     SimulationManager m_SimulationManager;
     List<Camera> m_Views = new();
     int m_CurrentView = 0;
@@ -41,8 +51,10 @@ public class ControlPanel : MonoBehaviour
     private void Awake()
     {
         sprayers = FindObjectsOfType<SprayBehavior>();
-        m_SimulationManager = FindObjectOfType<SimulationManager>();
+        m_RobotArmControllers = FindObjectsOfType<RobotArmController>();
+        m_HybridIks = FindObjectsOfType<HybridInverseKinematicsNode>();
         
+        m_SimulationManager = FindObjectOfType<SimulationManager>();
         m_Views = m_SimulationManager.GetCameraViews();
         
         LoadInputFieldValues();
@@ -68,6 +80,12 @@ public class ControlPanel : MonoBehaviour
         sprayPressure.text = PlayerPrefs.HasKey("sprayPressure") ? PlayerPrefs.GetFloat("sprayPressure").ToString() : defaultSprayPressure.ToString();
         OnSprayPressureChange();
         
+        // Robots
+        distanceFromCar.text = PlayerPrefs.HasKey("distanceFromCar") ? PlayerPrefs.GetFloat("distanceFromCar").ToString() : defaultDistanceFromCar.ToString();
+        OnDistanceFromCarChange();
+        movementSpeed.text = PlayerPrefs.HasKey("movementSpeed") ? PlayerPrefs.GetFloat("movementSpeed").ToString() : defaultMovementSpeed.ToString();
+        OnMovementSpeedChange();
+        
         // Workers
         numberOfWorkers.text = PlayerPrefs.HasKey("numberOfWorkers") ? PlayerPrefs.GetFloat("numberOfWorkers").ToString() : defaultNumberOfWorkers.ToString();
         OnNumberOfWorkersChange();
@@ -87,6 +105,10 @@ public class ControlPanel : MonoBehaviour
         PlayerPrefs.SetFloat("sprayRadius", ParseFloatValue(sprayRadius));
         PlayerPrefs.SetFloat("sprayAngle", ParseFloatValue(sprayAngle));
         PlayerPrefs.SetFloat("sprayPressure", ParseFloatValue(sprayPressure));
+        
+        // Robots
+        PlayerPrefs.SetFloat("distanceFromCar", ParseFloatValue(distanceFromCar));
+        PlayerPrefs.SetFloat("movementSpeed", ParseFloatValue(movementSpeed));
         
         // Workers
         PlayerPrefs.SetFloat("numberOfWorkers", ParseFloatValue(numberOfWorkers));
@@ -219,11 +241,27 @@ public class ControlPanel : MonoBehaviour
     #region Robots
     public void OnDistanceFromCarChange()
     {
-        Debug.Log("Test");
+        if (distanceFromCar.text == "")
+        {
+            distanceFromCar.text = defaultDistanceFromCar.ToString();
+        }
+        
+        foreach (var robotArm in m_RobotArmControllers)
+        {
+            robotArm.distanceFromSurface = ParseFloatValue(distanceFromCar);
+        }
     }
     public void OnMovementSpeedChange()
     {
-        Debug.Log("Test");
+        if (movementSpeed.text == "")
+        {
+            movementSpeed.text = defaultMovementSpeed.ToString();
+        }
+        
+        foreach (var hybridIk in m_HybridIks)
+        {
+            hybridIk.jointAngularAcceleration = ParseFloatValue(movementSpeed);
+        }
     }
     #endregion
 

@@ -1258,7 +1258,7 @@ GameObject:
   - component: {fileID: 1933963830941504485}
   - component: {fileID: 1933963830941504474}
   m_Layer: 5
-  m_Name: Button (3)
+  m_Name: QA Room
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1392,7 +1392,7 @@ GameObject:
   - component: {fileID: 1933963831001068550}
   - component: {fileID: 1933963831001068551}
   m_Layer: 5
-  m_Name: Button (2)
+  m_Name: 'Computer Vision '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7677,7 +7677,7 @@ GameObject:
   - component: {fileID: 1933963832329077786}
   - component: {fileID: 1933963832329077787}
   m_Layer: 5
-  m_Name: Button (1)
+  m_Name: PaintingRoom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9942,6 +9942,10 @@ MonoBehaviour:
   defaultSprayRadius: 0.1
   defaultSprayAngle: 30
   defaultSprayPressure: 5000
+  distanceFromCar: {fileID: 1933963832344724987}
+  movementSpeed: {fileID: 1933963831562203135}
+  defaultDistanceFromCar: 0.2
+  defaultMovementSpeed: 100
   numberOfWorkers: {fileID: 1933963831323557503}
   timeToFixMinorDefects: {fileID: 1933963832598785352}
   timeToFixMajorDefects: {fileID: 1933963831136535732}
@@ -10812,7 +10816,7 @@ GameObject:
   - component: {fileID: 4535079474568910147}
   - component: {fileID: 6241034886816730225}
   m_Layer: 5
-  m_Name: Button (4)
+  m_Name: 'Buffer Area '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
