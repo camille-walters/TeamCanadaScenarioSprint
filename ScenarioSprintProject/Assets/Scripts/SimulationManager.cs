@@ -31,7 +31,8 @@ public class SimulationManager : MonoBehaviour
     SimulationTimeTracker m_SimulationTimeTracker;
     List<ConveyorController> m_ConveyorControllers = new();
     float m_PrevConveyorSpeedFactor;
-    
+    List<float> m_OriginalConveyorSpeeds = new();
+
     // Vector3 m_DoorPosition; // For painting room door close
     List<Camera> m_Views = new(); // Camera views
     int m_TotalViews;
@@ -98,8 +99,13 @@ public class SimulationManager : MonoBehaviour
 
         m_CarsGameObject = new GameObject("Cars");
         m_Texture2D = new Texture2D(782, 440);
-        
+
         // Conveyor speeds
+        foreach (var conveyorController in m_ConveyorControllers)
+        {
+            m_OriginalConveyorSpeeds.Add(conveyorController.speed);
+        }
+        
         UpdateConveyorSpeeds();
         m_PrevConveyorSpeedFactor = conveyorSpeedFactor;
         
@@ -154,9 +160,11 @@ public class SimulationManager : MonoBehaviour
 
     void UpdateConveyorSpeeds()
     {
+        var i = 0;
         foreach (var conveyorController in m_ConveyorControllers)
         {
-            conveyorController.speed = conveyorController.speed * conveyorSpeedFactor;
+            conveyorController.speed = m_OriginalConveyorSpeeds[i] * conveyorSpeedFactor;
+            i++;
         }
     }
 

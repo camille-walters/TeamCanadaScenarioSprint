@@ -6140,7 +6140,7 @@ GameObject:
   - component: {fileID: 1933963831633888115}
   - component: {fileID: 1933963831633888112}
   m_Layer: 5
-  m_Name: InputField (TMP)
+  m_Name: ConveyorSpeed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11313,9 +11313,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b15fedfb0522214e87947b25a812ebf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  conveyorSpeed: {fileID: 1933963831633888112}
+  defaultConveyorSpeed: 1
   sprayRadius: {fileID: 1933963831127391761}
   sprayAngle: {fileID: 1933963832062797481}
   sprayPressure: {fileID: 1933963832756383411}
+  defaultSprayRadius: 0.1
+  defaultSprayAngle: 30
+  defaultSprayPressure: 5000
 --- !u!1 &1933963832659240281
 GameObject:
   m_ObjectHideFlags: 0

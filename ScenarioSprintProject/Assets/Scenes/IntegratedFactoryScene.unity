@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 176.56812, g: 307.50598, b: 408.72443, a: 1}
+  m_IndirectSpecularColor: {r: 176.55225, g: 307.5854, b: 409.19092, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -14630,6 +14630,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1933963832082005354, guid: 67e8f9c75fbdd8f4bb838b42426a44d3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1933963832454533782, guid: 67e8f9c75fbdd8f4bb838b42426a44d3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1933963832611110443, guid: 67e8f9c75fbdd8f4bb838b42426a44d3,
         type: 3}
       propertyPath: m_Pivot.x
@@ -18985,10 +18995,13 @@ MonoBehaviour:
   interCarDistance: 31
   currentView: 0
   numberOfOperators: 2
-  totalCarsProcessed: 0
-  throughput: 0
   fixingTimeForMinorDefects: 1
   fixingTimeForMajorDefects: 2
+  totalCarsProcessed: 0
+  carsProcessedPerMinute: 0
+  carProcessingTime: 0
+  totalOperatorBusyTime: 0
+  totalOperatorUtilization: 0
 --- !u!114 &1369853160
 MonoBehaviour:
   m_ObjectHideFlags: 0

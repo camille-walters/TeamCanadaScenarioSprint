@@ -8,6 +8,12 @@ using TMPro;
 
 public class ControlPanel : MonoBehaviour
 {
+    // Conveyor
+    public TMP_InputField conveyorSpeed;
+
+    public float defaultConveyorSpeed = 1;
+    
+    // Paint 
     public TMP_InputField sprayRadius;
     public TMP_InputField sprayAngle;
     public TMP_InputField sprayPressure;
@@ -17,11 +23,13 @@ public class ControlPanel : MonoBehaviour
     public int defaultSprayPressure = 5000;
 
     private SprayBehavior[] sprayers;
+    SimulationManager m_SimulationManager;
 
 
     private void Awake()
     {
         sprayers = FindObjectsOfType<SprayBehavior>();
+        m_SimulationManager = FindObjectOfType<SimulationManager>();
 
         LoadInputFieldValues();
 
@@ -35,16 +43,26 @@ public class ControlPanel : MonoBehaviour
     //Add values to be persisted here
     private void LoadInputFieldValues()
     {
+        // Conveyor
+        conveyorSpeed.text = PlayerPrefs.HasKey("conveyorSpeed") ? PlayerPrefs.GetFloat("conveyorSpeed").ToString() : defaultConveyorSpeed.ToString();
+        OnConveyorSpeedChange();
+        
+        // Paint
         sprayRadius.text = PlayerPrefs.HasKey("sprayRadius") ? PlayerPrefs.GetFloat("sprayRadius").ToString() : defaultSprayRadius.ToString();
-
+        OnSprayRadiusChange();
         sprayAngle.text = PlayerPrefs.HasKey("sprayAngle;") ? PlayerPrefs.GetFloat("sprayAngle").ToString() : defaultSprayAngle.ToString();
-
+        OnSprayAngleChange();
         sprayPressure.text = PlayerPrefs.HasKey("sprayPressure") ? PlayerPrefs.GetFloat("sprayPressure").ToString() : defaultSprayPressure.ToString();
+        OnSprayPressureChange();
     }
 
     //Add values to be persisted here
     private void SaveInputFieldValues()
     {
+        // Conveyor
+        PlayerPrefs.SetFloat("conveyorSpeed", ParseFloatValue(conveyorSpeed));
+        
+        // Paint
         PlayerPrefs.SetFloat("sprayRadius", ParseFloatValue(sprayRadius));
         PlayerPrefs.SetFloat("sprayAngle", ParseFloatValue(sprayAngle));
         PlayerPrefs.SetFloat("sprayPressure", ParseFloatValue(sprayPressure));
@@ -65,11 +83,15 @@ public class ControlPanel : MonoBehaviour
 
     #endregion
 
-
     #region Conveyance
     public void OnConveyorSpeedChange()
     {
-        Debug.Log("Test");
+        if (conveyorSpeed.text == "")
+        {
+            conveyorSpeed.text = defaultConveyorSpeed.ToString();
+        }
+
+        m_SimulationManager.conveyorSpeedFactor = ParseFloatValue(conveyorSpeed);
     }
     #endregion
 
