@@ -5,7 +5,7 @@
 ## Prerequisites
 
 * Unity 2021.3 (LTS) or higher
-* Python 3.10, installed with all the pacakges listed in `Scripts/requirements.txt`
+* Python 3.10, installed with all the pacakges listed in `Scripts/requirements.txt`. This can be done using `pip install -r requirements.txt`.
 
 ## Quick Start
 
