@@ -33,7 +33,7 @@ The `IntegratedFactoryScene` contains the complete car painting simulation. This
 
 The `IntegratedFactoryScene` contains the following major GameObjects:
 
-- **Simulation Manager**: Controls the entire simulation. It has 3 improtant components:
+- **Simulation Manager**: Controls the entire simulation. It has 3 important components:
   - Simulation Manager, which drives the simulation.
   - Analysis Manager, which listens for data from Python after CV analysis of each car
   - Simulation Time Tracker, which tracks the passage of time in the simulation
