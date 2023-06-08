@@ -35,32 +35,11 @@ public class ControlPanel : MonoBehaviour
     //Add values to be persisted here
     private void LoadInputFieldValues()
     {
-        if (PlayerPrefs.HasKey("sprayRadius"))
-        {
-            sprayRadius.text = PlayerPrefs.GetFloat("sprayRadius").ToString();
-        }
-        else
-        {
-            sprayRadius.text = defaultSprayRadius.ToString();
-        }
+        sprayRadius.text = PlayerPrefs.HasKey("sprayRadius") ? PlayerPrefs.GetFloat("sprayRadius").ToString() : defaultSprayRadius.ToString();
 
-        if (PlayerPrefs.HasKey("sprayAngle;"))
-        {
-            sprayAngle.text = PlayerPrefs.GetFloat("sprayAngle").ToString();
-        }
-        else
-        {
-            sprayAngle.text = defaultSprayAngle.ToString();
-        }
+        sprayAngle.text = PlayerPrefs.HasKey("sprayAngle;") ? PlayerPrefs.GetFloat("sprayAngle").ToString() : defaultSprayAngle.ToString();
 
-        if (PlayerPrefs.HasKey("sprayPressure"))
-        {
-            sprayPressure.text = PlayerPrefs.GetFloat("sprayPressure").ToString();
-        }
-        else
-        {
-            sprayPressure.text = defaultSprayPressure.ToString();
-        }
+        sprayPressure.text = PlayerPrefs.HasKey("sprayPressure") ? PlayerPrefs.GetFloat("sprayPressure").ToString() : defaultSprayPressure.ToString();
     }
 
     //Add values to be persisted here
