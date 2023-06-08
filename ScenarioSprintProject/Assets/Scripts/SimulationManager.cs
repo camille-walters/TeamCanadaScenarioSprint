@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -60,10 +62,11 @@ public class SimulationManager : MonoBehaviour
     
     List<Car> m_FixingVirtualBuffer = new();
     List<bool> m_OccupiedPositionsInTheBuffer = new();
-    List<bool> m_OperatorOccupied = new();
+    public List<bool> m_OperatorOccupied = new();
     int m_BufferSize = 10;
 
     float lastCarProcessTime = 0;
+    int m_LastNumberOfOperators;
     void Start()
     {
         // m_DoorPosition = paintingRoomDoors.transform.localPosition;
@@ -111,12 +114,19 @@ public class SimulationManager : MonoBehaviour
         
         // Spawn Operators
         SpawnOperators();
+        m_LastNumberOfOperators = numberOfOperators;
         m_OperatorOccupied = Enumerable.Repeat(false, numberOfOperators).ToList();
         m_OccupiedPositionsInTheBuffer = Enumerable.Repeat(false, m_BufferSize).ToList();
     }
 
     void Update()
     {
+        if (m_LastNumberOfOperators != numberOfOperators)
+        {
+            // User updated number of operators 
+            RuntimeOperatorNumberUpdate();
+        }
+        
         totalOperatorUtilization = totalOperatorBusyTime / (Time.realtimeSinceStartup * numberOfOperators);
         
         // Update Conveyor speeds
@@ -124,22 +134,6 @@ public class SimulationManager : MonoBehaviour
             UpdateConveyorSpeeds();
         m_PrevConveyorSpeedFactor = conveyorSpeedFactor;
 
-        /*
-        // Switch camera view when C key is pressed
-        if (Input.GetKeyDown(KeyCode.C) && simulationViews != null)
-        {
-            m_Views[currentView].enabled = false;
-            m_Views[currentView].gameObject.SetActive(false);
-            
-            if (currentView < simulationViews.transform.childCount - 1)
-                currentView += 1;
-            else
-                currentView = 0;
-            
-            m_Views[currentView].enabled = true;
-            m_Views[currentView].gameObject.SetActive(true);
-        }
-        */
         ManageCarSpawn();
         UpdateCarRooms();
 
@@ -155,6 +149,7 @@ public class SimulationManager : MonoBehaviour
         for (var i = 0; i < numberOfOperators; ++i)
         {
             var newOp = Instantiate(operatorPrefab, new Vector3(6, 0, -42+i*2), Quaternion.Euler(0, -90, 0));
+            newOp.name = $"Operator{i}";
             newOp.transform.parent = operatorSpawnPoint.transform;
         }
     }
@@ -167,6 +162,39 @@ public class SimulationManager : MonoBehaviour
             conveyorController.speed = m_OriginalConveyorSpeeds[i] * conveyorSpeedFactor;
             i++;
         }
+    }
+
+    void RuntimeOperatorNumberUpdate()
+    {
+        var numberChanged = numberOfOperators - m_LastNumberOfOperators;
+
+        if (numberChanged > 0)
+        {
+            // Spawn more ops
+            for (var i = 0; i < numberChanged; ++i)
+            {
+                var newOp = Instantiate(operatorPrefab, new Vector3(6, 0, -42+(m_LastNumberOfOperators + i)*2), Quaternion.Euler(0, -90, 0));
+                newOp.name = $"Operator{m_LastNumberOfOperators + i}";
+                newOp.transform.parent = operatorSpawnPoint.transform;
+            }
+            
+            // Increase the occupied list 
+            m_OperatorOccupied.AddRange(Enumerable.Repeat(false, numberChanged).ToList());
+        }
+        else
+        {
+            // De-spawn last few ops 
+            numberChanged = Math.Abs(numberChanged);
+            for (var i = m_LastNumberOfOperators - 1; i > m_LastNumberOfOperators - 1 - numberChanged; --i)
+            {
+                Destroy(operatorSpawnPoint.transform.GetChild(i).gameObject);
+            }
+            
+            // Decrease the occupied list 
+            m_OperatorOccupied.RemoveRange(m_LastNumberOfOperators - numberChanged, numberChanged);
+        }
+
+        m_LastNumberOfOperators = numberOfOperators;
     }
 
     void ManageCarSpawn()

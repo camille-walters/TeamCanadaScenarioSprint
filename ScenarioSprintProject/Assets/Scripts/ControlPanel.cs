@@ -23,6 +23,15 @@ public class ControlPanel : MonoBehaviour
     public float defaultSprayRadius = 0.1f;
     public int defaultSprayAngle = 30;
     public int defaultSprayPressure = 5000;
+    
+    // Workers
+    public TMP_InputField numberOfWorkers;
+    public TMP_InputField timeToFixMinorDefects;
+    public TMP_InputField timeToFixMajorDefects;
+    
+    public int defaultNumberOfWorkers = 2;
+    public float defaultTimeToFixMinorDefects = 1;
+    public float defaultTimeToFixMajorDefects = 2;
 
     private SprayBehavior[] sprayers;
     SimulationManager m_SimulationManager;
@@ -35,8 +44,7 @@ public class ControlPanel : MonoBehaviour
         m_SimulationManager = FindObjectOfType<SimulationManager>();
         
         m_Views = m_SimulationManager.GetCameraViews();
-        OnPaintingRoomView();
-
+        
         LoadInputFieldValues();
     }
 
@@ -59,6 +67,14 @@ public class ControlPanel : MonoBehaviour
         OnSprayAngleChange();
         sprayPressure.text = PlayerPrefs.HasKey("sprayPressure") ? PlayerPrefs.GetFloat("sprayPressure").ToString() : defaultSprayPressure.ToString();
         OnSprayPressureChange();
+        
+        // Workers
+        numberOfWorkers.text = PlayerPrefs.HasKey("numberOfWorkers") ? PlayerPrefs.GetFloat("numberOfWorkers").ToString() : defaultNumberOfWorkers.ToString();
+        OnNumberOfWorkersChange();
+        timeToFixMinorDefects.text = PlayerPrefs.HasKey("timeToFixMinorDefects") ? PlayerPrefs.GetFloat("timeToFixMinorDefects").ToString() : defaultTimeToFixMinorDefects.ToString();
+        OnTimeToFixMinorChange();
+        timeToFixMajorDefects.text = PlayerPrefs.HasKey("timeToFixMajorDefects") ? PlayerPrefs.GetFloat("timeToFixMajorDefects").ToString() : defaultTimeToFixMajorDefects.ToString();
+        OnTimeToFixMajorChange();
     }
 
     //Add values to be persisted here
@@ -71,6 +87,11 @@ public class ControlPanel : MonoBehaviour
         PlayerPrefs.SetFloat("sprayRadius", ParseFloatValue(sprayRadius));
         PlayerPrefs.SetFloat("sprayAngle", ParseFloatValue(sprayAngle));
         PlayerPrefs.SetFloat("sprayPressure", ParseFloatValue(sprayPressure));
+        
+        // Workers
+        PlayerPrefs.SetFloat("numberOfWorkers", ParseFloatValue(numberOfWorkers));
+        PlayerPrefs.SetFloat("timeToFixMinorDefects", ParseFloatValue(timeToFixMinorDefects));
+        PlayerPrefs.SetFloat("timeToFixMajorDefects", ParseFloatValue(timeToFixMajorDefects));
     }
 
     private float ParseFloatValue(TMP_InputField inputField)
@@ -209,17 +230,32 @@ public class ControlPanel : MonoBehaviour
     #region Workers
     public void OnNumberOfWorkersChange()
     {
-        Debug.Log("workerchange");
+        if (numberOfWorkers.text == "")
+        {
+            numberOfWorkers.text = defaultNumberOfWorkers.ToString();
+        }
+
+        m_SimulationManager.numberOfOperators = (int) ParseFloatValue(numberOfWorkers);
     }
 
-    public void OnTimeToInspectChange()
+    public void OnTimeToFixMinorChange()
     {
-        Debug.Log("inspect change");
+        if (timeToFixMinorDefects.text == "")
+        {
+            timeToFixMinorDefects.text = defaultTimeToFixMinorDefects.ToString();
+        }
+
+        m_SimulationManager.fixingTimeForMinorDefects = ParseFloatValue(timeToFixMinorDefects);
     }
 
-    public void OnTimeToFixChange()
+    public void OnTimeToFixMajorChange()
     {
-        Debug.Log("Test");
+        if (timeToFixMajorDefects.text == "")
+        {
+            timeToFixMajorDefects.text = defaultTimeToFixMajorDefects.ToString();
+        }
+
+        m_SimulationManager.fixingTimeForMajorDefects = ParseFloatValue(timeToFixMajorDefects);
     }
     #endregion
 }
