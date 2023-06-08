@@ -8,6 +8,80 @@ using TMPro;
 
 public class ControlPanel : MonoBehaviour
 {
+    public TMP_InputField sprayRadius;
+    public TMP_InputField sprayAngle;
+    public TMP_InputField sprayPressure;
+
+    public float defaultSprayRadius = 0.1f;
+    public int defaultSprayAngle = 30;
+    public int defaultSprayPressure = 5000;
+
+    private SprayBehavior[] sprayers;
+
+
+    private void Awake()
+    {
+        sprayers = FindObjectsOfType<SprayBehavior>();
+
+        LoadInputFieldValues();
+
+    }
+
+    private void OnDisable()
+    {
+        SaveInputFieldValues();
+    }
+
+    //Add values to be persisted here
+    private void LoadInputFieldValues()
+    {
+        if (PlayerPrefs.HasKey("sprayRadius"))
+        {
+            sprayRadius.text = PlayerPrefs.GetFloat("sprayRadius").ToString();
+        }
+        else
+        {
+            sprayRadius.text = defaultSprayRadius.ToString();
+        }
+
+        if (PlayerPrefs.HasKey("sprayAngle;"))
+        {
+            sprayAngle.text = PlayerPrefs.GetFloat("sprayAngle").ToString();
+        }
+        else
+        {
+            sprayAngle.text = defaultSprayAngle.ToString();
+        }
+
+        if (PlayerPrefs.HasKey("sprayPressure"))
+        {
+            sprayPressure.text = PlayerPrefs.GetFloat("sprayPressure").ToString();
+        }
+        else
+        {
+            sprayPressure.text = defaultSprayPressure.ToString();
+        }
+    }
+
+    //Add values to be persisted here
+    private void SaveInputFieldValues()
+    {
+        PlayerPrefs.SetFloat("sprayRadius", ParseFloatValue(sprayRadius));
+        PlayerPrefs.SetFloat("sprayAngle", ParseFloatValue(sprayAngle));
+        PlayerPrefs.SetFloat("sprayPressure", ParseFloatValue(sprayPressure));
+    }
+
+    private float ParseFloatValue(TMP_InputField inputField)
+    {
+        float value = 0f;
+        if (float.TryParse(inputField.text, NumberStyles.Float, CultureInfo.InvariantCulture, out value))
+        {
+            return value;
+        }
+        Debug.Log("Could not parse value in " + inputField.name + ". Make sure input is a number.");
+        return 0f;
+    }
+
     #region Cameras
 
     #endregion
@@ -21,17 +95,6 @@ public class ControlPanel : MonoBehaviour
     #endregion
 
     #region Paint
-    public TMP_InputField sprayRadius;
-    public TMP_InputField sprayAngle;
-    public TMP_InputField sprayPressure;
-
-    private SprayBehavior[] sprayers;
-
-    //This assumes that there are no sprayers added at runtime. 
-    private void Awake()
-    {
-        sprayers = Resources.FindObjectsOfTypeAll<SprayBehavior>();
-    }
 
     private void UpdateSprayers(Action<ParticleSystem> updateAction)
     {
@@ -47,6 +110,10 @@ public class ControlPanel : MonoBehaviour
 
     public void OnSprayRadiusChange()
     {
+        if (sprayRadius.text == "")
+        {
+            sprayRadius.text = defaultSprayRadius.ToString();
+        }
         UpdateSprayers((spray) =>
         {
             var shape = spray.shape;
@@ -56,15 +123,23 @@ public class ControlPanel : MonoBehaviour
 
     public void OnSprayAngleChange()
     {
+        if (sprayAngle.text == "")
+        {
+            sprayAngle.text = defaultSprayAngle.ToString();
+        }
         UpdateSprayers((spray) =>
         {
-            var shape = spray.shape;
-            shape.angle = ParseFloatValue(sprayAngle);
+            var shape = spray.shape;            
+            shape.angle = ParseFloatValue(sprayAngle);      
         });
     }
 
     public void OnSprayPressureChange()
     {
+        if(sprayPressure.text == "")
+        {
+            sprayPressure.text = defaultSprayPressure.ToString();
+        }
         UpdateSprayers((spray) =>
         {
             var emission = spray.emission;
@@ -72,16 +147,6 @@ public class ControlPanel : MonoBehaviour
         });
     }
 
-    private float ParseFloatValue(TMP_InputField inputField)
-    {
-        float value = 0f;
-        if (float.TryParse(inputField.text, NumberStyles.Float, CultureInfo.InvariantCulture, out value))
-        {
-            return value;
-        }
-        Debug.Log("Could not parse value in " + inputField.name + ". Make sure input is a number.");
-        return 0f;
-    }
     #endregion
 
     #region Robots
