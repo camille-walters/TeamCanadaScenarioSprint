@@ -14630,10 +14630,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1933963830941504472, guid: 67e8f9c75fbdd8f4bb838b42426a44d3,
+        type: 3}
+      propertyPath: m_Name
+      value: QA Room
+      objectReference: {fileID: 0}
+    - target: {fileID: 1933963831001068549, guid: 67e8f9c75fbdd8f4bb838b42426a44d3,
+        type: 3}
+      propertyPath: m_Name
+      value: 'Computer Vision '
+      objectReference: {fileID: 0}
     - target: {fileID: 1933963832082005354, guid: 67e8f9c75fbdd8f4bb838b42426a44d3,
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1933963832329077785, guid: 67e8f9c75fbdd8f4bb838b42426a44d3,
+        type: 3}
+      propertyPath: m_Name
+      value: PaintingRoom
       objectReference: {fileID: 0}
     - target: {fileID: 1933963832454533782, guid: 67e8f9c75fbdd8f4bb838b42426a44d3,
         type: 3}
@@ -14749,6 +14764,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Control Panel
+      objectReference: {fileID: 0}
+    - target: {fileID: 4236338444603587873, guid: 67e8f9c75fbdd8f4bb838b42426a44d3,
+        type: 3}
+      propertyPath: m_Name
+      value: 'Buffer Area '
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 67e8f9c75fbdd8f4bb838b42426a44d3, type: 3}

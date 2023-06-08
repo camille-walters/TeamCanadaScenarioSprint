@@ -8,6 +8,8 @@ using TMPro;
 
 public class ControlPanel : MonoBehaviour
 {
+    // Camera 
+    
     // Conveyor
     public TMP_InputField conveyorSpeed;
 
@@ -24,15 +26,18 @@ public class ControlPanel : MonoBehaviour
 
     private SprayBehavior[] sprayers;
     SimulationManager m_SimulationManager;
-
+    List<Camera> m_Views = new();
+    int m_CurrentView = 0;
 
     private void Awake()
     {
         sprayers = FindObjectsOfType<SprayBehavior>();
         m_SimulationManager = FindObjectOfType<SimulationManager>();
+        
+        m_Views = m_SimulationManager.GetCameraViews();
+        OnPaintingRoomView();
 
         LoadInputFieldValues();
-
     }
 
     private void OnDisable()
@@ -80,6 +85,46 @@ public class ControlPanel : MonoBehaviour
     }
 
     #region Cameras
+
+    void ChangeCameraView()
+    {
+        m_Views[m_CurrentView].enabled = true;
+        m_Views[m_CurrentView].gameObject.SetActive(true);
+
+        for (var i = 0; i < m_Views.Count; ++i)
+        {
+            if (i == m_CurrentView)
+                continue;
+            
+            
+            m_Views[i].enabled = false;
+            m_Views[i].gameObject.SetActive(false);
+        }
+    }
+
+    public void OnPaintingRoomView()
+    {
+        m_CurrentView = 0;
+        ChangeCameraView();
+    }
+
+    public void OnBufferRoomView()
+    {
+        m_CurrentView = 1;
+        ChangeCameraView();
+    }
+
+    public void OnCVRoomView()
+    {
+        m_CurrentView = 2;
+        ChangeCameraView();
+    }
+
+    public void OnQARoomView()
+    {
+        m_CurrentView = 3;
+        ChangeCameraView();
+    }
 
     #endregion
 

@@ -124,8 +124,8 @@ public class SimulationManager : MonoBehaviour
             UpdateConveyorSpeeds();
         m_PrevConveyorSpeedFactor = conveyorSpeedFactor;
 
+        /*
         // Switch camera view when C key is pressed
-        // TODO: Connect with UI
         if (Input.GetKeyDown(KeyCode.C) && simulationViews != null)
         {
             m_Views[currentView].enabled = false;
@@ -139,6 +139,7 @@ public class SimulationManager : MonoBehaviour
             m_Views[currentView].enabled = true;
             m_Views[currentView].gameObject.SetActive(true);
         }
+        */
         ManageCarSpawn();
         UpdateCarRooms();
 
@@ -366,7 +367,6 @@ public class SimulationManager : MonoBehaviour
         m_OperatorOccupied[unoccupiedOperatorIndex] = false;
         m_OccupiedPositionsInTheBuffer[bufferPosition] = false;
     }
-    
 
     public Car GetCar(int index)
     {
@@ -376,5 +376,10 @@ public class SimulationManager : MonoBehaviour
     public void UpdateThroughputAfterTimeChange()
     {
         carsProcessedPerMinute = (float)totalCarsProcessed / m_SimulationTimeTracker.minutesPassed;
+    }
+
+    public List<Camera> GetCameraViews()
+    {
+        return m_Views;
     }
 }
