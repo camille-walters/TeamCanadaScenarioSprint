@@ -80,7 +80,7 @@ The `IntegratedFactoryScene` contains the following major GameObjects:
 
 Vision analysis takes place once painting is done, in the CV Room.
 
-* Area Lighting Setup: The `QARoomLighting` GameObject under `Lighting` contains the lighting and capture set up. Its child `CVFixture` contains the upside down U shaped roof with rods of evenly spaced area lights that can be reflected off of the glossy car surface. Its other child `CameraPositions` lists out the positions from which the cars will be captured. Incoming cars stop under the lights for a few seconds, which allows the camera to capture pictures without too much motion blur.
+* Area Lighting Setup: The `QARoomLighting` GameObject under `Lighting` contains the lighting and capture set up. Its child `CVFixture` contains the upside down U-shaped roof with rods of evenly spaced area lights that can be reflected off of the glossy car surface. Its other child `CameraPositions` lists out the positions from which the cars will be captured. Incoming cars stop under the lights for a few seconds, which allows the camera to capture pictures without too much motion blur.
 
 * Algorithm: The CV analysis for this simulation uses [Structural Similarity Index](https://en.wikipedia.org/wiki/Structural_similarity) to calculate the differences between the painted car being evaluated, and the ground truth images of a perfectly painted car in the same lighting set up. The differences are mapped out as Minor (green) or Major (red) depending on their size, and sent back to Unity to calculate the time to fix each car. While the time to fix both kinds of defects can be set in the `SimulationManager` GameObject, it is assumed that Minor defects take less time to fix compare to Major defects.
 
