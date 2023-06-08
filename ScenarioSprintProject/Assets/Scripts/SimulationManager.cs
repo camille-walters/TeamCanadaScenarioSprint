@@ -135,6 +135,12 @@ public class SimulationManager : MonoBehaviour
         }
         ManageCarSpawn();
         UpdateCarRooms();
+
+        foreach (var op in m_OperatorOccupied)
+        {
+            if (op)
+                totalOperatorBusyTime += Time.deltaTime;
+        }
     }
 
     void SpawnOperators()
@@ -337,7 +343,7 @@ public class SimulationManager : MonoBehaviour
         Debug.Log($"Found an unoccupied operator for {carToFix.carID}!");
         var unoccupiedOperatorIndex = m_OperatorOccupied.IndexOf(false);
         m_OperatorOccupied[unoccupiedOperatorIndex] = true;
-        totalOperatorBusyTime += timeToFix;
+        // totalOperatorBusyTime += timeToFix;
         var selectedOperator = operatorSpawnPoint.transform.GetChild(unoccupiedOperatorIndex);
         selectedOperator.position = new Vector3(6, 0, -30 - bufferPosition * 8);
 
