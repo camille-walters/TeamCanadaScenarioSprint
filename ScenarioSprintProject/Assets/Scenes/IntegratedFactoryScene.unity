@@ -4537,7 +4537,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 377999934}
   m_LocalRotation: {x: 0.098349266, y: 0.57294446, z: -0.06950638, w: 0.8106978}
-  m_LocalPosition: {x: -15.3, y: 5.4, z: 3}
+  m_LocalPosition: {x: -15.3, y: 5.4, z: 3.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7330,7 +7330,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 535597074}
   m_LocalRotation: {x: 0.06530181, y: 0.83411115, z: -0.101189084, w: 0.53828895}
-  m_LocalPosition: {x: -10.2, y: 5.4, z: -9.99}
+  m_LocalPosition: {x: -10.2, y: 5.4, z: -12.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -15851,7 +15851,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1139422983}
   m_LocalRotation: {x: 0.06530181, y: 0.83411115, z: -0.101189084, w: 0.53828895}
-  m_LocalPosition: {x: -13.06, y: 4.4, z: -29.5}
+  m_LocalPosition: {x: -13.06, y: 4.4, z: -32.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -18938,6 +18938,7 @@ GameObject:
   - component: {fileID: 1369853158}
   - component: {fileID: 1369853159}
   - component: {fileID: 1369853160}
+  - component: {fileID: 1369853161}
   m_Layer: 0
   m_Name: SimulationManager
   m_TagString: Untagged
@@ -18985,6 +18986,9 @@ MonoBehaviour:
   currentView: 0
   numberOfOperators: 2
   totalCarsProcessed: 0
+  throughput: 0
+  fixingTimeForMinorDefects: 1
+  fixingTimeForMajorDefects: 2
 --- !u!114 &1369853160
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18997,6 +19001,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 729d404032a5d21488bfb7ae095fe178, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1369853161
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1369853157}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25330228f86d9a742a3cbc2d685443c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minutesPassed: 0
+  timeLeftForAMinute: 60
 --- !u!1 &1377870913
 GameObject:
   m_ObjectHideFlags: 0
