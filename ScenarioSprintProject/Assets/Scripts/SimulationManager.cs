@@ -299,7 +299,8 @@ public class SimulationManager : MonoBehaviour
         m_FixingVirtualBuffer.Add(carToFix);
         var carPositionZ = m_OccupiedPositionsInTheBuffer.IndexOf(false);
         m_OccupiedPositionsInTheBuffer[carPositionZ] = true;
-        carToFix.gameObject.transform.position = new Vector3(4, 0.6f, -30 - carPositionZ * 8);
+        var selectedCar = carToFix.gameObject;
+        selectedCar.transform.position = new Vector3(4, 0.6f, -30 - carPositionZ * 8);
         
         var timeToFix = m_Cars[index].minorFlaws * fixingTimeForMinorDefects + m_Cars[index].majorFlaws * fixingTimeForMajorDefects;
         // var timeToFix = 3 * fixingTimeForMinorDefects + 4 * fixingTimeForMajorDefects; // temp override
@@ -337,15 +338,17 @@ public class SimulationManager : MonoBehaviour
         var unoccupiedOperatorIndex = m_OperatorOccupied.IndexOf(false);
         m_OperatorOccupied[unoccupiedOperatorIndex] = true;
         totalOperatorBusyTime += timeToFix;
-        operatorSpawnPoint.transform.GetChild(unoccupiedOperatorIndex).position = new Vector3(6, 0, -30 - bufferPosition * 8);
+        var selectedOperator = operatorSpawnPoint.transform.GetChild(unoccupiedOperatorIndex);
+        selectedOperator.position = new Vector3(6, 0, -30 - bufferPosition * 8);
 
         yield return new WaitForSeconds(timeToFix);
 
         // Move Car object back onto the conveyor 
-        carToFix.gameObject.transform.position = new Vector3(0, 0.6f, -35);
+        var selectedCar = carToFix.gameObject;
+        selectedCar.transform.position = new Vector3(0, 0.6f, -35);
         m_FixingVirtualBuffer.Remove(carToFix);
-
-        operatorSpawnPoint.transform.GetChild(unoccupiedOperatorIndex).position = new Vector3(8, 0, -30 - unoccupiedOperatorIndex * 2);
+        
+        selectedOperator.position = new Vector3(8, 0, -30 - unoccupiedOperatorIndex * 2);
         m_OperatorOccupied[unoccupiedOperatorIndex] = false;
         m_OccupiedPositionsInTheBuffer[bufferPosition] = false;
     }
