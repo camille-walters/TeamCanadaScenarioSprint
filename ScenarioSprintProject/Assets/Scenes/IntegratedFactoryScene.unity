@@ -2934,6 +2934,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: UR10wIK Roof Painter
       objectReference: {fileID: 0}
+    - target: {fileID: 2076870908279315091, guid: 4879ed0054abc47838f7eabed2192603,
+        type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2076870908279315091, guid: 4879ed0054abc47838f7eabed2192603,
+        type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 0.6
+      objectReference: {fileID: 0}
     - target: {fileID: 5419259420079186709, guid: 4879ed0054abc47838f7eabed2192603,
         type: 3}
       propertyPath: robotPath
