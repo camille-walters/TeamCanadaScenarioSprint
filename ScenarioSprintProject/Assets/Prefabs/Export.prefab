@@ -250,8 +250,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   csvPath: 
-  input: {fileID: 0}
-  output: {fileID: 0}
+  timeInterval: 10
 --- !u!1 &3098203991090870796
 GameObject:
   m_ObjectHideFlags: 0
