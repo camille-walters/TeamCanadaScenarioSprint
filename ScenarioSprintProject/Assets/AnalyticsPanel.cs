@@ -47,10 +47,10 @@ public class AnalyticsPanel : MonoBehaviour
         dropdown.AddOptions(dropdownOptions);
     }
 
-    WaitForSeconds waitForSeconds = new WaitForSeconds(5f);//maybe should be longer?
+    WaitForSeconds waitForSeconds = new WaitForSeconds(10f);//maybe should be longer?
     IEnumerator UpdateValues()
     {
-        throughPutOverTime.text = ((int) AnalyticsData.Instance.avg_throughPutOverTime).ToString();//casting to int just for the aesthetics
+        throughPutOverTime.text =  AnalyticsData.Instance.avg_throughPutOverTime.ToString();//casting to int just for the aesthetics
         throughPutOverCar.text = ((int)AnalyticsData.Instance.avg_throughPutOverCar).ToString();
         paintAmount.text = ((int)AnalyticsData.Instance.avg_paintAmount).ToString();
         energyConsumption.text = ((int)AnalyticsData.Instance.avg_energyConsumption).ToString();

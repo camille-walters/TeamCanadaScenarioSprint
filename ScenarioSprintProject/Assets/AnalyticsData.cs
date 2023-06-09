@@ -71,7 +71,7 @@ public class AnalyticsData : MonoBehaviour
         return sum / numPoints;
     }
 
-    WaitForSeconds waitForSeconds = new WaitForSeconds(5f);//maybe should be longer?
+    WaitForSeconds waitForSeconds = new WaitForSeconds(10f);//maybe should be longer?
     IEnumerator AddValuesToList()
     {
         while (true)
