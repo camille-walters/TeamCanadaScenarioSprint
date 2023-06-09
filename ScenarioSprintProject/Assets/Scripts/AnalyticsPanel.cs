@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using ChartAndGraph;
 
 //updates Panel with Data from AnalyticsData
 public class AnalyticsPanel : MonoBehaviour 
@@ -19,11 +20,16 @@ public class AnalyticsPanel : MonoBehaviour
     public TMP_Text majorDefects;
     public TMP_Text minorDefects;
 
+    public GraphChart defectsGraph;
+    public GraphChart throughputGraph;
+
     // Start is called before the first frame update
     void Start()
     {
         PopulateDropdownList();
-        
+        throughputGraph.gameObject.SetActive(true);
+        defectsGraph.gameObject.SetActive(false);
+
     }
     private void Update()
     {
@@ -35,10 +41,14 @@ public class AnalyticsPanel : MonoBehaviour
         if (index == 0)
         {
             Debug.Log("showing throughput");//TODO: replace this accordingly with graph
+            throughputGraph.gameObject.SetActive(true);
+            defectsGraph.gameObject.SetActive(false);
         }
         else if (index == 1)
         {
             Debug.Log("showing defects");//TODO: replace this accordingly with graph
+            throughputGraph.gameObject.SetActive(false);
+            defectsGraph.gameObject.SetActive(true);
         }
         else return;
     }
