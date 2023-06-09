@@ -75,6 +75,10 @@ public class AnalyticsData : MonoBehaviour
     }
 
     WaitForSeconds waitForSeconds = new WaitForSeconds(60f);//maybe should be longer?
+    public void SetTimeInterval(float interval)
+    {
+        waitForSeconds = new WaitForSeconds(interval);
+    }
     IEnumerator AddValuesToList()
     {
         while (true)
