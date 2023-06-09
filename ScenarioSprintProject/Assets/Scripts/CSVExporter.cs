@@ -8,6 +8,8 @@ public class CSVExporter : MonoBehaviour
 {
     public string csvPath;
     public float timeInterval = 10;
+    public DefectChartFeed defectChartFeed;
+    public ThroughputChartFeed throughputChartFeed;
     ControlPanel m_Input;
     AnalyticsData m_Output;
     DateTime m_StartTime;
@@ -19,8 +21,14 @@ public class CSVExporter : MonoBehaviour
         m_StartTime = DateTime.Now;
         m_Input = FindObjectOfType<ControlPanel>();
         m_Output = FindObjectOfType<AnalyticsData>();
+        
+        // var defectChartFeed = FindObjectOfType<DefectChartFeed>();
+        // var throughputChartFeed = FindObjectOfType<ThroughputChartFeed>();
 
         m_Input.SetTimeInterval(timeInterval);
+        m_Output.SetTimeInterval(timeInterval);
+        defectChartFeed.SetTimeInterval(timeInterval);
+        throughputChartFeed.SetTimeInterval(timeInterval);
     }
 
     public void OnExportButtonClick()
@@ -47,15 +55,16 @@ public class CSVExporter : MonoBehaviour
                     m_Output.totalDefectsList.Count,
                     m_Output.throughPutOverTimeList.Count,
                     m_Output.throughPutOverCarList.Count,
-                    m_Output.workerUtilizationList.Count
+                    m_Output.workerUtilizationList.Count,
+                    m_Output.totalCarsProcessedList.Count
                 }.Min();
                 
                 writer.WriteLine("time," + 
                     "conveyorSpeed,sprayRadius,sprayAngle,sprayPressure,distanceFromCar,movementSpeed,numberOfWorkers,timeToFixMinorDefects,timeToFixMajorDefects," +
-                    "minorDefects,majorDefects,totalDefects,throughPutOverTime,throughPutOverCar,workerUtilization");
+                    "minorDefects,majorDefects,totalDefects,throughPutOverTime,throughPutOverCar,workerUtilization,totalCarsProcessed");
                 for (var i = 0; i < count; ++i)
                 {
-                    var rowTime = m_StartTime.AddSeconds(i * 10);
+                    var rowTime = m_StartTime.AddSeconds(i * timeInterval);
                     writer.WriteLine(rowTime.ToString("HH:mm:ss") + "," +
                         m_Input.conveyorSpeedList[i].ToString("0.###") + "," + 
                         m_Input.sprayRadiusList[i].ToString("0.###") + "," + 
@@ -71,7 +80,8 @@ public class CSVExporter : MonoBehaviour
                         m_Output.totalDefectsList[i].ToString("0.###") + "," + 
                         m_Output.throughPutOverTimeList[i].ToString("0.###") + "," + 
                         m_Output.throughPutOverCarList[i].ToString("0.###") + "," + 
-                        m_Output.workerUtilizationList[i].ToString("0.###") + ",");
+                        m_Output.workerUtilizationList[i].ToString("0.###") + "," +
+                        m_Output.totalCarsProcessedList[i].ToString("0.###"));
                 }
 
                 writer.Flush();
