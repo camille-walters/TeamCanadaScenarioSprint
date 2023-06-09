@@ -24,11 +24,13 @@ public class SimulationManager : MonoBehaviour
     public int numberOfOperators = 2;
     public float fixingTimeForMinorDefects;
     public float fixingTimeForMajorDefects;
-    public int totalCarsProcessed;
+    public float totalCarsProcessed = 0;
     public float carsProcessedPerMinute;
     public float carProcessingTime;
     public float totalOperatorBusyTime = 0;
     public float totalOperatorUtilization = 0;
+    public float totalMajorDefects = 0f;
+    public float totalMinorDefects = 0f;
     
     SimulationTimeTracker m_SimulationTimeTracker;
     List<ConveyorController> m_ConveyorControllers = new();
@@ -239,6 +241,8 @@ public class SimulationManager : MonoBehaviour
 
                 if (m_CarCurrentRooms[i] == Room.QARoom)
                 {
+                    totalMajorDefects += m_Cars[i].majorFlaws;
+                    totalMinorDefects += m_Cars[i].minorFlaws;
                     DisplayDefectsOnPanel(i);
                     StartCoroutine(AcquireOperatorToFixCar(i));
                 }
@@ -403,7 +407,7 @@ public class SimulationManager : MonoBehaviour
     
     public void UpdateThroughputAfterTimeChange()
     {
-        carsProcessedPerMinute = (float)totalCarsProcessed / m_SimulationTimeTracker.minutesPassed;
+        carsProcessedPerMinute = totalCarsProcessed / m_SimulationTimeTracker.minutesPassed;
     }
 
     public List<Camera> GetCameraViews()
