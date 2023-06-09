@@ -7,6 +7,7 @@ public class ThroughputChartFeed : MonoBehaviour
 {
     public GraphChart Graph;
     public AnalyticsData analyticsData;
+    float graphInterval = 60f;
 
     void Start()
     {
@@ -21,8 +22,7 @@ public class ThroughputChartFeed : MonoBehaviour
         {
             Debug.Log("didnt find analytics data");
         }
-
-
+        StartCoroutine(RedrawChart());
     }
 
     private void OnEnable()
@@ -30,8 +30,13 @@ public class ThroughputChartFeed : MonoBehaviour
         StartCoroutine(RedrawChart());
     }
 
-
-    WaitForSeconds waitForSeconds = new WaitForSeconds(30f);//maybe should be longer?
+ 
+    WaitForSeconds waitForSeconds = new WaitForSeconds(60f);//maybe should be longer?
+    public void SetTimeInterval(float interval)
+    {
+        waitForSeconds = new WaitForSeconds(interval);
+        graphInterval = interval;
+    }
     //graph gets rerendered every time. This is needed because whenever we deactivate it , the values will not update properly
     IEnumerator RedrawChart()
     {
@@ -43,8 +48,8 @@ public class ThroughputChartFeed : MonoBehaviour
             float x = 0f;
             for (int i = 0; i < numPoints; i++)  //add random points to the graph
             {
-                Graph.DataSource.AddPointToCategoryRealtime("Total Defects", x, analyticsData.throughPutOverTimeList[i]); // each time we call AddPointToCategory 
-                x += 3f;
+                Graph.DataSource.AddPointToCategoryRealtime("Total Defects", x, analyticsData.totalCarsProcessedList[i]); // each time we call AddPointToCategory 
+                x += graphInterval;
 
             }
             Graph.DataSource.EndBatch();

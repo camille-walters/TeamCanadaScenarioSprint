@@ -22,7 +22,7 @@ public class SimulationManager : MonoBehaviour
     public int numberOfOperators = 2;
     public float fixingTimeForMinorDefects;
     public float fixingTimeForMajorDefects;
-    public int totalCarsProcessed;
+    public float totalCarsProcessed = 0;
     public float carsProcessedPerMinute;
     public float carProcessingTime;
     public float totalOperatorBusyTime = 0;
@@ -371,6 +371,6 @@ public class SimulationManager : MonoBehaviour
     
     public void UpdateThroughputAfterTimeChange()
     {
-        carsProcessedPerMinute = (float)totalCarsProcessed / m_SimulationTimeTracker.minutesPassed;
+        carsProcessedPerMinute = totalCarsProcessed / m_SimulationTimeTracker.minutesPassed;
     }
 }
