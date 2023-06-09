@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using ChartAndGraph;
 
-public class DefectChartFeed : MonoBehaviour
+public class ThroughputChartFeed : MonoBehaviour
 {
     public GraphChart Graph;
     public AnalyticsData analyticsData;
@@ -25,12 +25,12 @@ public class DefectChartFeed : MonoBehaviour
         //}
 
         analyticsData = GetComponentInParent<AnalyticsData>();
-        if(analyticsData == null)
+        if (analyticsData == null)
         {
             Debug.Log("didnt find analytics data");
         }
 
-        
+
     }
 
     private void OnEnable()
@@ -48,7 +48,7 @@ public class DefectChartFeed : MonoBehaviour
         //    Graph.DataSource.AddPointToCategoryRealtime("Total Defects", lastX, Random.value * 20f + 10f, 1f); // each time we call AddPointToCategory 
         //    //Graph.DataSource.AddPointToCategoryRealtime("Total Defects", lastX, AnalyticsData.avg_totalDefects, 1f); // each time we call AddPointToCategory 
         //}
-        
+
     }
 
     WaitForSeconds waitForSeconds = new WaitForSeconds(2f);//maybe should be longer?

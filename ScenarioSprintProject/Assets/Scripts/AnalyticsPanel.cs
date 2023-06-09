@@ -40,13 +40,11 @@ public class AnalyticsPanel : MonoBehaviour
     {
         if (index == 0)
         {
-            Debug.Log("showing throughput");//TODO: replace this accordingly with graph
             throughputGraph.gameObject.SetActive(true);
             defectsGraph.gameObject.SetActive(false);
         }
         else if (index == 1)
         {
-            Debug.Log("showing defects");//TODO: replace this accordingly with graph
             throughputGraph.gameObject.SetActive(false);
             defectsGraph.gameObject.SetActive(true);
         }
