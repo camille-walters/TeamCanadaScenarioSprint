@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -33,7 +35,8 @@ public class SimulationManager : MonoBehaviour
     SimulationTimeTracker m_SimulationTimeTracker;
     List<ConveyorController> m_ConveyorControllers = new();
     float m_PrevConveyorSpeedFactor;
-    
+    List<float> m_OriginalConveyorSpeeds = new();
+
     // Vector3 m_DoorPosition; // For painting room door close
     List<Camera> m_Views = new(); // Camera views
     int m_TotalViews;
@@ -61,10 +64,11 @@ public class SimulationManager : MonoBehaviour
     
     List<Car> m_FixingVirtualBuffer = new();
     List<bool> m_OccupiedPositionsInTheBuffer = new();
-    List<bool> m_OperatorOccupied = new();
+    public List<bool> m_OperatorOccupied = new();
     int m_BufferSize = 10;
 
     float lastCarProcessTime = 0;
+    int m_LastNumberOfOperators;
     void Start()
     {
         // m_DoorPosition = paintingRoomDoors.transform.localPosition;
@@ -100,19 +104,31 @@ public class SimulationManager : MonoBehaviour
 
         m_CarsGameObject = new GameObject("Cars");
         m_Texture2D = new Texture2D(782, 440);
-        
+
         // Conveyor speeds
+        foreach (var conveyorController in m_ConveyorControllers)
+        {
+            m_OriginalConveyorSpeeds.Add(conveyorController.speed);
+        }
+        
         UpdateConveyorSpeeds();
         m_PrevConveyorSpeedFactor = conveyorSpeedFactor;
         
         // Spawn Operators
         SpawnOperators();
+        m_LastNumberOfOperators = numberOfOperators;
         m_OperatorOccupied = Enumerable.Repeat(false, numberOfOperators).ToList();
         m_OccupiedPositionsInTheBuffer = Enumerable.Repeat(false, m_BufferSize).ToList();
     }
 
     void Update()
     {
+        if (m_LastNumberOfOperators != numberOfOperators)
+        {
+            // User updated number of operators 
+            RuntimeOperatorNumberUpdate();
+        }
+        
         totalOperatorUtilization = totalOperatorBusyTime / (Time.realtimeSinceStartup * numberOfOperators);
         
         // Update Conveyor speeds
@@ -120,21 +136,6 @@ public class SimulationManager : MonoBehaviour
             UpdateConveyorSpeeds();
         m_PrevConveyorSpeedFactor = conveyorSpeedFactor;
 
-        // Switch camera view when C key is pressed
-        // TODO: Connect with UI
-        if (Input.GetKeyDown(KeyCode.C) && simulationViews != null)
-        {
-            m_Views[currentView].enabled = false;
-            m_Views[currentView].gameObject.SetActive(false);
-            
-            if (currentView < simulationViews.transform.childCount - 1)
-                currentView += 1;
-            else
-                currentView = 0;
-            
-            m_Views[currentView].enabled = true;
-            m_Views[currentView].gameObject.SetActive(true);
-        }
         ManageCarSpawn();
         UpdateCarRooms();
 
@@ -150,16 +151,52 @@ public class SimulationManager : MonoBehaviour
         for (var i = 0; i < numberOfOperators; ++i)
         {
             var newOp = Instantiate(operatorPrefab, new Vector3(6, 0, -42+i*2), Quaternion.Euler(0, -90, 0));
+            newOp.name = $"Operator{i}";
             newOp.transform.parent = operatorSpawnPoint.transform;
         }
     }
 
     void UpdateConveyorSpeeds()
     {
+        var i = 0;
         foreach (var conveyorController in m_ConveyorControllers)
         {
-            conveyorController.speed = conveyorController.speed * conveyorSpeedFactor;
+            conveyorController.speed = m_OriginalConveyorSpeeds[i] * conveyorSpeedFactor;
+            i++;
         }
+    }
+
+    void RuntimeOperatorNumberUpdate()
+    {
+        var numberChanged = numberOfOperators - m_LastNumberOfOperators;
+
+        if (numberChanged > 0)
+        {
+            // Spawn more ops
+            for (var i = 0; i < numberChanged; ++i)
+            {
+                var newOp = Instantiate(operatorPrefab, new Vector3(6, 0, -42+(m_LastNumberOfOperators + i)*2), Quaternion.Euler(0, -90, 0));
+                newOp.name = $"Operator{m_LastNumberOfOperators + i}";
+                newOp.transform.parent = operatorSpawnPoint.transform;
+            }
+            
+            // Increase the occupied list 
+            m_OperatorOccupied.AddRange(Enumerable.Repeat(false, numberChanged).ToList());
+        }
+        else
+        {
+            // De-spawn last few ops 
+            numberChanged = Math.Abs(numberChanged);
+            for (var i = m_LastNumberOfOperators - 1; i > m_LastNumberOfOperators - 1 - numberChanged; --i)
+            {
+                Destroy(operatorSpawnPoint.transform.GetChild(i).gameObject);
+            }
+            
+            // Decrease the occupied list 
+            m_OperatorOccupied.RemoveRange(m_LastNumberOfOperators - numberChanged, numberChanged);
+        }
+
+        m_LastNumberOfOperators = numberOfOperators;
     }
 
     void ManageCarSpawn()
@@ -362,7 +399,6 @@ public class SimulationManager : MonoBehaviour
         m_OperatorOccupied[unoccupiedOperatorIndex] = false;
         m_OccupiedPositionsInTheBuffer[bufferPosition] = false;
     }
-    
 
     public Car GetCar(int index)
     {
@@ -372,5 +408,10 @@ public class SimulationManager : MonoBehaviour
     public void UpdateThroughputAfterTimeChange()
     {
         carsProcessedPerMinute = (float)totalCarsProcessed / m_SimulationTimeTracker.minutesPassed;
+    }
+
+    public List<Camera> GetCameraViews()
+    {
+        return m_Views;
     }
 }
