@@ -16,6 +16,7 @@ public class AnalyticsData : MonoBehaviour
     public List<float> throughPutOverTimeList = new List<float>();
     public List <float> throughPutOverCarList = new List<float>();
     public List <float> workerUtilizationList = new List<float> ();
+    public List <float> totalCarsProcessedList = new List<float>();
 
     public float avg_throughPutOverTime { get { return GetRollingAverage(throughPutOverTimeList); } }
     public float avg_throughPutOverCar { get { return GetRollingAverage(throughPutOverCarList); } }
@@ -34,6 +35,8 @@ public class AnalyticsData : MonoBehaviour
     public float minorDefects { get {;  return simulationManager.totalMinorDefects; } }
     public float majorDefects { get { return simulationManager.totalMajorDefects; } }
     public float totalDefects { get { return simulationManager.totalMinorDefects + simulationManager.totalMajorDefects; } }
+
+    public float totalCarsProcessed { get { return simulationManager.totalCarsProcessed; } }
 
     private void Awake()
     {
@@ -71,7 +74,7 @@ public class AnalyticsData : MonoBehaviour
         return sum / numPoints;
     }
 
-    WaitForSeconds waitForSeconds = new WaitForSeconds(10f);//maybe should be longer?
+    WaitForSeconds waitForSeconds = new WaitForSeconds(60f);//maybe should be longer?
     IEnumerator AddValuesToList()
     {
         while (true)
@@ -83,6 +86,7 @@ public class AnalyticsData : MonoBehaviour
             throughPutOverTimeList.Add(throughPutOverTime);
             throughPutOverCarList.Add(throughPutOverCar);
             workerUtilizationList.Add(workerUtilization);
+            totalCarsProcessedList.Add(totalCarsProcessed);
 
             yield return waitForSeconds;
         }        
