@@ -17647,6 +17647,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3098203990190892835, guid: 38dcc3629127ad749af92b4d2ab4d03e,
         type: 3}
+      propertyPath: timeInterval
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 3098203990190892835, guid: 38dcc3629127ad749af92b4d2ab4d03e,
+        type: 3}
       propertyPath: defectChartFeed
       value: 
       objectReference: {fileID: 60792572}
