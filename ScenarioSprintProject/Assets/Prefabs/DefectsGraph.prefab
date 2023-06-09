@@ -333,5 +333,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Graph: {fileID: 1142658249250757838}
-  TotalPoints: 5
   analyticsData: {fileID: 0}
