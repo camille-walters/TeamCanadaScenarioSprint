@@ -14630,10 +14630,100 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1933963831083791897, guid: 67e8f9c75fbdd8f4bb838b42426a44d3,
+        type: 3}
+      propertyPath: m_OnEndEdit.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1933963831083791897, guid: 67e8f9c75fbdd8f4bb838b42426a44d3,
+        type: 3}
+      propertyPath: m_OnEndEdit.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1933963831083791897, guid: 67e8f9c75fbdd8f4bb838b42426a44d3,
+        type: 3}
+      propertyPath: m_OnEndEdit.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1903031775}
+    - target: {fileID: 1933963831083791897, guid: 67e8f9c75fbdd8f4bb838b42426a44d3,
+        type: 3}
+      propertyPath: m_OnEndEdit.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1933963831083791897, guid: 67e8f9c75fbdd8f4bb838b42426a44d3,
+        type: 3}
+      propertyPath: m_OnEndEdit.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnTimeToFixMinorChange
+      objectReference: {fileID: 0}
+    - target: {fileID: 1933963831083791897, guid: 67e8f9c75fbdd8f4bb838b42426a44d3,
+        type: 3}
+      propertyPath: m_OnEndEdit.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ControlPanel, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1933963831083791897, guid: 67e8f9c75fbdd8f4bb838b42426a44d3,
+        type: 3}
+      propertyPath: m_OnEndEdit.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 1933963831178800724, guid: 67e8f9c75fbdd8f4bb838b42426a44d3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1933963831508679620, guid: 67e8f9c75fbdd8f4bb838b42426a44d3,
+        type: 3}
+      propertyPath: m_OnEndEdit.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1933963831508679620, guid: 67e8f9c75fbdd8f4bb838b42426a44d3,
+        type: 3}
+      propertyPath: m_OnEndEdit.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1933963831508679620, guid: 67e8f9c75fbdd8f4bb838b42426a44d3,
+        type: 3}
+      propertyPath: m_OnEndEdit.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1903031775}
+    - target: {fileID: 1933963831508679620, guid: 67e8f9c75fbdd8f4bb838b42426a44d3,
+        type: 3}
+      propertyPath: m_OnEndEdit.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1933963831508679620, guid: 67e8f9c75fbdd8f4bb838b42426a44d3,
+        type: 3}
+      propertyPath: m_OnEndEdit.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnTimeToFixMajorChange
+      objectReference: {fileID: 0}
+    - target: {fileID: 1933963831508679620, guid: 67e8f9c75fbdd8f4bb838b42426a44d3,
+        type: 3}
+      propertyPath: m_OnEndEdit.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ControlPanel, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1933963831508679620, guid: 67e8f9c75fbdd8f4bb838b42426a44d3,
+        type: 3}
+      propertyPath: m_OnEndEdit.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 1933963831562203133, guid: 67e8f9c75fbdd8f4bb838b42426a44d3,
+        type: 3}
+      propertyPath: m_Name
+      value: 'Movement Speed '
+      objectReference: {fileID: 0}
     - target: {fileID: 1933963832082005354, guid: 67e8f9c75fbdd8f4bb838b42426a44d3,
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1933963832086535988, guid: 67e8f9c75fbdd8f4bb838b42426a44d3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1933963832344724985, guid: 67e8f9c75fbdd8f4bb838b42426a44d3,
+        type: 3}
+      propertyPath: m_Name
+      value: Distance from Car
       objectReference: {fileID: 0}
     - target: {fileID: 1933963832454533782, guid: 67e8f9c75fbdd8f4bb838b42426a44d3,
         type: 3}
@@ -19002,6 +19092,7 @@ MonoBehaviour:
   carProcessingTime: 0
   totalOperatorBusyTime: 0
   totalOperatorUtilization: 0
+  m_OperatorOccupied: 
 --- !u!114 &1369853160
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26253,6 +26344,18 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &1903031775 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1933963832611110442, guid: 67e8f9c75fbdd8f4bb838b42426a44d3,
+    type: 3}
+  m_PrefabInstance: {fileID: 1043617589}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b15fedfb0522214e87947b25a812ebf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1905874439
 GameObject:
   m_ObjectHideFlags: 0
