@@ -7,7 +7,7 @@
     "com.unity.ide.vscode": "1.2.5",
     "com.unity.render-pipelines.high-definition": "12.1.11",
     "com.unity.simulation.foundation": "file:com.unity.simulation.foundation.tgz",
-    "com.unity.simulation.sensors": "file:com.unity.simulation.sensors.tgz",
+    "com.unity.simulation.sensors": "file:com.unity.simulation.sensors-0.3.1.tgz",
     "com.unity.simulation.urdf-importer": "file:com.unity.simulation.urdf-importer.tgz",
     "com.unity.test-framework": "1.1.33",
     "com.unity.textmeshpro": "3.0.6",

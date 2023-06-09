@@ -19236,6 +19236,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7060662569922814932, guid: bad4499ddd9856d449f8158654b6b1b9,
+        type: 3}
+      propertyPath: <CameraNode>k__BackingField.m_Camera
+      value: 
+      objectReference: {fileID: 809146256}
     - target: {fileID: 7060662569922814935, guid: bad4499ddd9856d449f8158654b6b1b9,
         type: 3}
       propertyPath: m_Name
@@ -19249,6 +19254,35 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1348840286}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1348840288 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7060662569922814935, guid: bad4499ddd9856d449f8158654b6b1b9,
+    type: 3}
+  m_PrefabInstance: {fileID: 1348840286}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1348840289
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1348840288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0e9324d7682abb438a36ae3aef2be89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Topic: 
+  m_NumberOfCaptures: 1
+  m_StartTime: 0.25
+  m_TimeBetweenCaptures: 0
+  m_SaveDirectory:
+    m_Path: 
+    m_DefaultPath: 
+  m_FileName: capture_%n
+  m_Overwrite: 1
+  m_CaptureOnStart: 0
+  m_LogToConsole: 1
 --- !u!1 &1369853157
 GameObject:
   m_ObjectHideFlags: 0
@@ -22068,6 +22102,35 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1551887247}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1551887249 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7060662569922814935, guid: bad4499ddd9856d449f8158654b6b1b9,
+    type: 3}
+  m_PrefabInstance: {fileID: 1551887247}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1551887250
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1551887249}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0e9324d7682abb438a36ae3aef2be89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Topic: 
+  m_NumberOfCaptures: 1
+  m_StartTime: 0.25
+  m_TimeBetweenCaptures: 0
+  m_SaveDirectory:
+    m_Path: 
+    m_DefaultPath: 
+  m_FileName: capture_%n
+  m_Overwrite: 1
+  m_CaptureOnStart: 0
+  m_LogToConsole: 1
 --- !u!1 &1552729753
 GameObject:
   m_ObjectHideFlags: 0
@@ -27530,6 +27593,35 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1968678727}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1968678729 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7060662569922814935, guid: bad4499ddd9856d449f8158654b6b1b9,
+    type: 3}
+  m_PrefabInstance: {fileID: 1968678727}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1968678730
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1968678729}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0e9324d7682abb438a36ae3aef2be89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Topic: 
+  m_NumberOfCaptures: 1
+  m_StartTime: 0.25
+  m_TimeBetweenCaptures: 0
+  m_SaveDirectory:
+    m_Path: 
+    m_DefaultPath: 
+  m_FileName: capture_%n
+  m_Overwrite: 1
+  m_CaptureOnStart: 0
+  m_LogToConsole: 1
 --- !u!4 &1980704049 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4404492558182833482, guid: f94240f51132e1c4c97df2374d54eb00,
