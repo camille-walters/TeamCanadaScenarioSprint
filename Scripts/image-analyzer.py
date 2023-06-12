@@ -73,7 +73,7 @@ def flaw_analysis(base, flawed, image_number, car_number):
     bounding_boxes = merge_overlapping_boxes(bounding_boxes)
     # bounding_boxes = cv2.groupRectangles(bounding_boxes, 1, 0.01)
 
-    threshold = 1000
+    threshold = 2000
     ignore_threshold = 20
     minor_counter = 0
     major_counter = 0
