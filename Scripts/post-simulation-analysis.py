@@ -4,6 +4,7 @@ import sys
 import plotly.express as px
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
+from datetime import datetime
 
 files = []
 sims = []
@@ -25,21 +26,23 @@ for f in files:
             for i in range(0, len(split)):
                 if i == 0:
                     # time
-                    sim[i].append(split[i])
+                    # sim[i].append(split[i])
+                    sim_time = datetime.strptime(split[i], '%H:%M:%S')  # .time()
+                    sim[i].append(sim_time)
                 else:
                     sim[i].append(float(split[i]))
-    # print(sim)
-    sims.append(sim)
-'''
-fig = make_subplots(specs=[[{"secondary_y": True}]])
-for i in range(0, len(sims)):
-    # fig = px.line(x=sims[i][0], y=sims[i][15])
-    trace = go.Line(x=sims[i][0], y=sims[i][15])
-    fig.add_trace(trace)
 
-fig.write_html('sims.html', auto_open=True)
-'''
-print(len(sims))
+    # switch from time to time intervals, needed for overlay graphs
+    base_time = sim[0][0]
+    times = sim[0]
+    #sim[0] = [t for t in times]
+    index = 0
+    for t in times:
+        times[index] = t-base_time
+        times[index] = times[index].seconds
+        index += 1
+    sim[0] = times
+    sims.append(sim)
 
 # Get minimum number of values for uniformity across graphs
 min_array = []
@@ -48,6 +51,8 @@ for i in range(0, len(sims)):
 count = min(min_array)
 print(count)
 
+'''
+# working, one under the other 
 fig = make_subplots(rows=len(sims[0][0]), cols=1)
 for i in range(0, len(sims)):
     trace = go.Line(x=sims[i][0][:count], y=sims[i][15][:count], name="Simulation"+str(i))
@@ -55,3 +60,39 @@ for i in range(0, len(sims)):
 
 fig.update_layout(height=8000, title_text="Worker Utilization")
 fig.write_html('sims.html', auto_open=True)
+'''
+
+# working, overlay graphs
+fig_total_cars_processed = make_subplots(specs=[[{"secondary_y": True}]])
+fig_time_to_process_car = make_subplots(specs=[[{"secondary_y": True}]])
+fig_defects = make_subplots(specs=[[{"secondary_y": True}]])
+fig_worker_utilization = make_subplots(specs=[[{"secondary_y": True}]])
+
+for i in range(0, len(sims)):
+    trace_total_cars_processed = go.Line(x=sims[i][0][:count], y=sims[i][16][:count], name="Simulation" + str(i))
+    trace_total_time_to_process_cars = go.Line(x=sims[i][0][:count], y=sims[i][14][:count], name="Simulation" + str(i))
+    trace_total_defects = go.Line(x=sims[i][0][:count], y=sims[i][12][:count], name="Simulation" + str(i))
+    trace_worker_utilization = go.Line(x=sims[i][0][:count], y=sims[i][15][:count], name="Simulation" + str(i))
+
+    if i == 0:
+        fig_total_cars_processed.add_trace(trace_total_cars_processed)
+        fig_time_to_process_car.add_trace(trace_total_time_to_process_cars)
+        fig_defects.add_trace(trace_total_defects)
+        fig_worker_utilization.add_trace(trace_worker_utilization)
+    else:
+        fig_total_cars_processed.add_trace(trace_total_cars_processed, secondary_y=True)
+        fig_time_to_process_car.add_trace(trace_total_time_to_process_cars, secondary_y=True)
+        fig_defects.add_trace(trace_total_defects, secondary_y=True)
+        fig_worker_utilization.add_trace(trace_worker_utilization, secondary_y=True)
+
+fig_total_cars_processed.update_layout(title_text="Total Cars Processed")
+fig_total_cars_processed.write_html('total_cars_processed.html', auto_open=True)
+
+fig_time_to_process_car.update_layout(title_text="Time to process each car")
+fig_time_to_process_car.write_html('time_to_process_car.html', auto_open=True)
+
+fig_defects.update_layout(title_text="Total Defects")
+fig_defects.write_html('total_defects.html', auto_open=True)
+
+fig_worker_utilization.update_layout(title_text="Worker Utilization")
+fig_worker_utilization.write_html('worker_utilization.html', auto_open=True)
