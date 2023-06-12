@@ -15722,7 +15722,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e017eede985307d4394a071e912aa48b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.5
+  speed: 0.45
   stopTime: 5
   stop: 0
   stopForTime: 0
@@ -19374,7 +19374,7 @@ MonoBehaviour:
   operatorPrefab: {fileID: 3858485341751626605, guid: 7acb72cf8e935864cab0cecc3d0d1cf4,
     type: 3}
   conveyorSpeedFactor: 1
-  interCarDistance: 31
+  interCarDistance: 22
   currentView: 0
   numberOfOperators: 2
   fixingTimeForMinorDefects: 1

@@ -218,7 +218,7 @@ try:
 
         if number_of_flawed_images != prev_number_of_flawed_images:
             # 3 new images incoming
-            print(f'{number_of_flawed_images} and {prev_number_of_flawed_images}')
+            # print(f'{number_of_flawed_images} and {prev_number_of_flawed_images}')
             time.sleep(0.8)
             analyze_one_car(car_counter)
             car_counter += 1
