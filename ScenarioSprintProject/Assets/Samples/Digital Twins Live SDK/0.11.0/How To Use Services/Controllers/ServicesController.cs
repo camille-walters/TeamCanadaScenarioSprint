@@ -26,13 +26,15 @@ namespace Unity.DigitalTwins.Live.Sdk.Samples.Services.Controllers
         public CompositeAuthenticator Authenticator;
         public IUserInfoProvider UserInfoProvider;
         public ISceneProvider SceneProvider;
+        
+        public ISignalBus signalBus { get; private set; }
 
         IHttpClient m_HttpClient;
         MessagingClientWrapper m_MessagingClientWrapper;
 
         void Awake()
         {
-            ISignalBus signalBus = new DebugSignalBus();
+            signalBus = new DebugSignalBus();
             m_HttpClient = new UnityHttpClient();
 
             var authenticationPlatformSupport = PlatformSupportFactory.GetAuthenticationPlatformSupport();

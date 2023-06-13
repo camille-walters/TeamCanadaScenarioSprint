@@ -9,9 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2722dfb18824c824aa0d916721873f75, type: 3}
-  m_Name: UnityCloudPlayerSettings
+  m_Script: {fileID: 11500000, guid: e4e590ec07fb442b8633ec183d08e14b, type: 3}
+  m_Name: EnvironmentSettings
   m_EditorClassIdentifier: 
-  AppId: SgOlnq9LcODnxFt0U6uNG08yUUW2ZtWC
-  AppName: teamcanada
-  AppDisplayName: UCS Scenario Week - Team Canada
+  BaseAddress: https://dt.unity.com
+  WebSocketBaseAddress: wss://dt.unity.com
+  WorkspaceId: 46573a5b-d964-48b0-9dde-59e51d15d064
+  FacilityId: 195c77f0-860b-4e46-b4a5-0d2ab0c1d20e
