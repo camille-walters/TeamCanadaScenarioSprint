@@ -84,7 +84,7 @@ def flaw_analysis(base, flawed, image_number, car_number):
             cv2.rectangle(flawed, (x, y), (x + w, y + h), (0, 0, 255), 2)  # Red
         elif w * h > ignore_threshold:
             minor_counter += 1
-            cv2.rectangle(flawed, (x, y), (x + w, y + h), (0, 255, 0), 2)  # Green
+            cv2.rectangle(flawed, (x, y), (x + w, y + h), (255, 0, 0), 2)  # Blue
         else:
             continue  # ignore
 
