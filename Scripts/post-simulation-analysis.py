@@ -80,6 +80,7 @@ fig.write_html('sims.html', auto_open=True)
 
 # working, overlay graphs
 fig_total_cars_processed = make_subplots(specs=[[{"secondary_y": True}]])
+fig_total_cars_processed_per_minute = make_subplots(specs=[[{"secondary_y": True}]])
 fig_time_to_process_car = make_subplots(specs=[[{"secondary_y": True}]])
 fig_defects = make_subplots(specs=[[{"secondary_y": True}]])
 fig_defects_per_car = make_subplots(specs=[[{"secondary_y": True}]])
@@ -87,6 +88,7 @@ fig_worker_utilization = make_subplots(specs=[[{"secondary_y": True}]])
 
 for i in range(0, len(sims)):
     trace_total_cars_processed = go.Line(x=sims[i][0][:count], y=sims[i][16][:count], name="Simulation" + str(i))
+    trace_total_cars_processed_per_minute = go.Line(x=sims[i][0][:count], y=sims[i][13][:count], name="Simulation" + str(i))
     trace_total_time_to_process_cars = go.Line(x=sims[i][0][:count], y=sims[i][14][:count], name="Simulation" + str(i))
     trace_total_defects = go.Line(x=sims[i][0][:count], y=sims[i][12][:count], name="Simulation" + str(i))
     trace_total_defects_per_car = go.Line(x=sims[i][0][:count], y=sims[i][17][:count], name="Simulation" + str(i))
@@ -94,12 +96,14 @@ for i in range(0, len(sims)):
 
     if i == 0:
         fig_total_cars_processed.add_trace(trace_total_cars_processed)
+        fig_total_cars_processed_per_minute.add_trace(trace_total_cars_processed_per_minute)
         fig_time_to_process_car.add_trace(trace_total_time_to_process_cars)
         fig_defects.add_trace(trace_total_defects)
         fig_defects_per_car.add_trace(trace_total_defects_per_car)
         fig_worker_utilization.add_trace(trace_worker_utilization)
     else:
         fig_total_cars_processed.add_trace(trace_total_cars_processed)  #, secondary_y=True)
+        fig_total_cars_processed_per_minute.add_trace(trace_total_cars_processed_per_minute)  #, secondary_y=True)
         fig_time_to_process_car.add_trace(trace_total_time_to_process_cars)  #, secondary_y=True)
         fig_defects.add_trace(trace_total_defects)  #, secondary_y=True)
         fig_defects_per_car.add_trace(trace_total_defects_per_car)  #, secondary_y=True)
@@ -107,6 +111,9 @@ for i in range(0, len(sims)):
 
 fig_total_cars_processed.update_layout(yaxis_title="Number of cars processed", xaxis_title="Time (seconds)", title_text="Total Cars Processed")
 fig_total_cars_processed.write_html('total_cars_processed.html', auto_open=True)
+
+fig_total_cars_processed_per_minute.update_layout(yaxis_title="Number of cars processed per minute", xaxis_title="Time (seconds)", title_text="Total Cars Processed per Minute")
+fig_total_cars_processed_per_minute.write_html('total_cars_processed_per_min.html', auto_open=True)
 
 '''
 fig_time_to_process_car.update_layout(yaxis_title="Time to process each car", xaxis_title="Time (seconds)", title_text="Time to process each car")
