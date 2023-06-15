@@ -1,6 +1,6 @@
 ## Introduction
 
-![replace this with our own gif](https://phillipscorp.com/india/wp-content/uploads/sites/3/2020/07/ur10e.gif)
+<p align="center"><img src="Resources/ScenarioWeekTeamCanada.gif"  height="200"> <br><em>Final Simulation Overview</em></p>
 
 ## Prerequisites
 
@@ -45,6 +45,8 @@ The `IntegratedFactoryScene` contains the following major GameObjects:
 
 ### Spray Painting
 
+<p align="center"><img src="Resources/SprayingTest.gif"  height="200"> <br><em>Spraying Test using Paint In 3D</em></p>
+
 - Spray Painting using PaintIn3D asset from Asset Store: ([Paint in 3D | Painting | Unity Asset Store](https://assetstore.unity.com/packages/tools/painting/paint-in-3d-26286))
   
   - Uses a Particle System. The particles are made up of P3DPaintSpheres (from PaintIn3D). One particle applies the colour, and the other applies the finish (more information about this in the following bullet point).
@@ -60,6 +62,7 @@ The `IntegratedFactoryScene` contains the following major GameObjects:
 - The UV map cannot have overlapping coordinates. This can be fixed using PaintIn3D or doing an unwrap in Blender. 
 
 ### Paintable Car
+<p align="center"><img src="Resources/CarMovableParts.gif"  height="200"> <br><em>Car Mesh with Movable Parts</em></p>
   * PaitableCar.prefab
   * Mesh downloaded from [insert link here]().
   * Disabled the none required parts such as the interiors, wheels, headlights, windshields, etc.
@@ -68,13 +71,16 @@ The `IntegratedFactoryScene` contains the following major GameObjects:
   * Paint paths for the roof, left and right side were added following the steps described in the next section.
 
 ### RobotArm
+The user needs accurate robot models to correctly simulate the robots in the factory. A UR10 robot description downloaded from [ros_industrial](https://github.com/ros-industrial/universal_robot/tree/melodic-devel/ur_description/urdf) in .xacro and converted to .urdf in ROS.
 
-* URDF downloaded from and converted with
-* HybridIK
-* setting joints
-* setting the constraint to last two joints
-* Painting Paths
-* Robot Job system
+For a realistic simulation, the robot arm should move such that the end effector (sprayer) is at desired location and orientation, and movements respect joint constraints. We used [HybridIK](https://assetstore.unity.com/packages/tools/animation/hybrid-ik-174069) to set up joint constraints for the UR10 robot.
+
+<p align="center"><img src="Resources/HybridIK.gif"  height="200"><br><em>Setting up joint constrains in HybridIK</em></p>
+
+To plan and control the path of the movement of the robot arms paths waypoints are manually placed in Unity Editor. A simple job system assigns a robot to a path on a car when it hits a trigger. The end effector target follows the path points at a controllable distance.
+
+<p align="center"><img src="Resources/RobotPath.gif"  height="200"><br><em>Setting up waypoints for spray painting path</em></p>
+<p align="center"><img src="Resources/RobotArmPlanning.gif"  height="200"><br><em>Robot arms using IK to follow spray painting path</em></p>
 
 ### CV
 
@@ -84,11 +90,7 @@ Vision analysis takes place once painting is done, in the CV Room.
 
 * Algorithm: The CV analysis for this simulation uses [Structural Similarity Index](https://en.wikipedia.org/wiki/Structural_similarity) to calculate the differences between the painted car being evaluated, and the ground truth images of a perfectly painted car in the same lighting set up. The differences are categorized as Minor (green) or Major (red) depending on their size, and sent back to Unity to calculate the time to fix each car. While the time to fix both kinds of defects can be set in the `SimulationManager` GameObject, it is assumed that Minor defects take less time to fix compared to Major defects.
 
-<p align="center">
-<img src=Resources/Contours.png>
-<br>
-<em>Sample detected defects on a car</em>
-</p>
+<p align="center"><img src=Resources/Contours.png><br><em>Sample detected defects on a car</em></p>
 
 * Running Python script: The Python script `image-analyzer.py` is stored in the `Scripts` folder at the root of this project. The script continously waits for new incoming captured images, and analyze them as they are detected. By default it reads the images in `ScenarioSprintProject/Assets/CVCaptures` and stores the results to `ScenarioSprintProject/Assets/CVCaptures/Contours`, but these can be modified by sending them in as command line arguments while running the script. 
 
