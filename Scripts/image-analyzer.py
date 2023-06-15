@@ -73,7 +73,7 @@ def flaw_analysis(base, flawed, image_number, car_number):
     bounding_boxes = merge_overlapping_boxes(bounding_boxes)
     # bounding_boxes = cv2.groupRectangles(bounding_boxes, 1, 0.01)
 
-    threshold = 1000
+    threshold = 2000
     ignore_threshold = 20
     minor_counter = 0
     major_counter = 0
@@ -84,7 +84,7 @@ def flaw_analysis(base, flawed, image_number, car_number):
             cv2.rectangle(flawed, (x, y), (x + w, y + h), (0, 0, 255), 2)  # Red
         elif w * h > ignore_threshold:
             minor_counter += 1
-            cv2.rectangle(flawed, (x, y), (x + w, y + h), (0, 255, 0), 2)  # Green
+            cv2.rectangle(flawed, (x, y), (x + w, y + h), (255, 0, 0), 2)  # Blue
         else:
             continue  # ignore
 
@@ -218,8 +218,8 @@ try:
 
         if number_of_flawed_images != prev_number_of_flawed_images:
             # 3 new images incoming
-            print(f'{number_of_flawed_images} and {prev_number_of_flawed_images}')
-            time.sleep(0.8)
+            # print(f'{number_of_flawed_images} and {prev_number_of_flawed_images}')
+            time.sleep(1)
             analyze_one_car(car_counter)
             car_counter += 1
             number_of_flawed_images = prev_number_of_flawed_images + 3

@@ -29,7 +29,7 @@ public class ControlPanel : MonoBehaviour
     public TMP_InputField movementSpeed;
 
     public float defaultDistanceFromCar = 0.2f;
-    public int defaultMovementSpeed = 100;
+    public float defaultMovementSpeed = 100;
     
     
     // Workers
@@ -47,6 +47,28 @@ public class ControlPanel : MonoBehaviour
     SimulationManager m_SimulationManager;
     List<Camera> m_Views = new();
     int m_CurrentView = 0;
+    
+    WaitForSeconds m_WaitForSeconds = new WaitForSeconds(10f);
+    public List<float> conveyorSpeedList = new();
+    float m_CurrentConveyorSpeed;
+    public List<float> sprayRadiusList = new();
+    float m_CurrentSprayRadius;
+    public List<float> sprayAngleList = new();
+    float m_CurrentSprayAngle;
+    public List<float> sprayPressureList = new();
+    float m_CurrentSprayPressure;
+    public List<float> distanceFromCarList = new();
+    float m_CurrentDistanceFromCar;
+    public List<float> movementSpeedList = new();
+    float m_CurrentMovementSpeed;
+    public List<int> numberOfWorkersList = new();
+    int m_CurrentNumberOfWorkers;
+    public List<float> timeToFixMinorDefectsList = new();
+    float m_CurrentTimeToFixMinorDefects;
+    public List<float> timeToFixMajorDefectsList = new();
+    float m_CurrentTimeToFixMajorDefects;
+    
+
 
     private void Awake()
     {
@@ -58,11 +80,35 @@ public class ControlPanel : MonoBehaviour
         m_Views = m_SimulationManager.GetCameraViews();
         
         LoadInputFieldValues();
+        StartCoroutine(AddValuesToList());
     }
 
     private void OnDisable()
     {
         SaveInputFieldValues();
+    }
+
+    public void SetTimeInterval(float interval)
+    {
+        m_WaitForSeconds = new WaitForSeconds(interval);
+    }
+    
+    IEnumerator AddValuesToList()
+    {
+        while (true)
+        {
+            conveyorSpeedList.Add(m_CurrentConveyorSpeed);
+            sprayRadiusList.Add(m_CurrentSprayRadius);
+            sprayAngleList.Add(m_CurrentSprayAngle);
+            sprayPressureList.Add(m_CurrentSprayPressure);
+            distanceFromCarList.Add(m_CurrentDistanceFromCar);
+            movementSpeedList.Add(m_CurrentMovementSpeed);
+            numberOfWorkersList.Add(m_CurrentNumberOfWorkers);
+            timeToFixMinorDefectsList.Add(m_CurrentTimeToFixMinorDefects);
+            timeToFixMajorDefectsList.Add(m_CurrentTimeToFixMajorDefects);
+
+            yield return m_WaitForSeconds;
+        }        
     }
 
     //Add values to be persisted here
@@ -180,6 +226,7 @@ public class ControlPanel : MonoBehaviour
         }
 
         m_SimulationManager.conveyorSpeedFactor = ParseFloatValue(conveyorSpeed);
+        m_CurrentConveyorSpeed = m_SimulationManager.conveyorSpeedFactor;
     }
     #endregion
 
@@ -207,6 +254,7 @@ public class ControlPanel : MonoBehaviour
         {
             var shape = spray.shape;
             shape.radius = ParseFloatValue(sprayRadius);
+            m_CurrentSprayRadius = shape.radius;
         });
     }
 
@@ -219,7 +267,8 @@ public class ControlPanel : MonoBehaviour
         UpdateSprayers((spray) =>
         {
             var shape = spray.shape;            
-            shape.angle = ParseFloatValue(sprayAngle);      
+            shape.angle = ParseFloatValue(sprayAngle);
+            m_CurrentSprayAngle = shape.angle;
         });
     }
 
@@ -233,6 +282,7 @@ public class ControlPanel : MonoBehaviour
         {
             var emission = spray.emission;
             emission.rateOverTime = ParseFloatValue(sprayPressure);
+            m_CurrentSprayPressure = ParseFloatValue(sprayPressure);
         });
     }
 
@@ -249,6 +299,7 @@ public class ControlPanel : MonoBehaviour
         foreach (var robotArm in m_RobotArmControllers)
         {
             robotArm.distanceFromSurface = ParseFloatValue(distanceFromCar);
+            m_CurrentDistanceFromCar = robotArm.distanceFromSurface;
         }
     }
     public void OnMovementSpeedChange()
@@ -261,6 +312,7 @@ public class ControlPanel : MonoBehaviour
         foreach (var hybridIk in m_HybridIks)
         {
             hybridIk.jointAngularAcceleration = ParseFloatValue(movementSpeed);
+            m_CurrentMovementSpeed = hybridIk.jointAngularAcceleration;
         }
     }
     #endregion
@@ -274,6 +326,7 @@ public class ControlPanel : MonoBehaviour
         }
 
         m_SimulationManager.numberOfOperators = (int) ParseFloatValue(numberOfWorkers);
+        m_CurrentNumberOfWorkers = m_SimulationManager.numberOfOperators;
     }
 
     public void OnTimeToFixMinorChange()
@@ -284,6 +337,7 @@ public class ControlPanel : MonoBehaviour
         }
 
         m_SimulationManager.fixingTimeForMinorDefects = ParseFloatValue(timeToFixMinorDefects);
+        m_CurrentTimeToFixMinorDefects = m_SimulationManager.fixingTimeForMinorDefects;
     }
 
     public void OnTimeToFixMajorChange()
@@ -294,6 +348,7 @@ public class ControlPanel : MonoBehaviour
         }
 
         m_SimulationManager.fixingTimeForMajorDefects = ParseFloatValue(timeToFixMajorDefects);
+        m_CurrentTimeToFixMajorDefects = m_SimulationManager.fixingTimeForMajorDefects;
     }
     #endregion
 }
